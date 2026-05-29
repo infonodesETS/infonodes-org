@@ -483,11 +483,61 @@ footer a:hover { color: var(--green); }
 
 .section-hero p { color: var(--grey); font-size: 16px; }
 
+/* ===== FILTRI TIPO ===== */
+#filtri-tipo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 14px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+.filtro-label {
+  color: var(--grey);
+  font-size: 13px;
+  letter-spacing: 2px;
+  margin-right: 4px;
+}
+
+.filtro-btn {
+  background: transparent;
+  border: 1px solid var(--green-dim);
+  color: var(--green-dim);
+  font-family: 'VT323', monospace;
+  font-size: 15px;
+  padding: 2px 12px;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: background 0.1s, color 0.1s, border-color 0.1s;
+}
+
+.filtro-btn:hover {
+  border-color: var(--green);
+  color: var(--green);
+}
+
+.filtro-btn.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--bg);
+}
+
 /* ===== MATERIAL CARD ===== */
 .material-grid {
   display: grid;
   gap: 12px;
 }
+
+.mat-loading {
+  color: var(--grey);
+  font-size: 15px;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.mat-error { color: var(--red); }
 
 .material-card {
   border: 1px solid var(--border);
@@ -510,7 +560,7 @@ footer a:hover { color: var(--green); }
   padding-top: 2px;
 }
 
-.material-card .mat-title {
+.mat-title {
   color: var(--cyan);
   font-size: 17px;
   display: block;
@@ -519,20 +569,48 @@ footer a:hover { color: var(--green); }
 
 .material-card:hover .mat-title { color: var(--green); }
 
-.material-card .mat-desc {
+.mat-desc {
   color: var(--grey);
   font-size: 14px;
   line-height: 1.5;
 }
 
-.material-card .mat-badge {
-  font-size: 12px;
+.mat-autori {
+  color: var(--amber);
+  font-size: 13px;
+}
+
+.mat-meta {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--grey);
+}
+
+.mat-pdf { color: var(--green); }
+
+/* Badge multipli: colonna verticale a destra */
+.mat-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-end;
+}
+
+.mat-badge {
+  font-size: 11px;
   padding: 2px 8px;
   border: 1px solid;
   white-space: nowrap;
+  letter-spacing: 1px;
 }
 
-.mat-badge.pdf  { color: var(--red);   border-color: var(--red);   }
-.mat-badge.img  { color: var(--amber); border-color: var(--amber); }
-.mat-badge.video{ color: var(--cyan);  border-color: var(--cyan);  }
-.mat-badge.doc  { color: var(--green); border-color: var(--green); }
+/* Colori per tipo */
+.mat-badge.inchiesta  { color: #ff6b6b; border-color: #ff6b6b; }
+.mat-badge.ricerca    { color: var(--cyan);  border-color: var(--cyan);  }
+.mat-badge.reportage  { color: var(--amber); border-color: var(--amber); }
+.mat-badge.video      { color: #bf7fff; border-color: #bf7fff; }
+.mat-badge.podcast    { color: #7fffbf; border-color: #7fffbf; }
+.mat-badge.formazione { color: var(--green); border-color: var(--green); }
+.mat-badge.documento  { color: var(--green); border-color: var(--green); }
+.mat-badge.campagna   { color: var(--amber); border-color: var(--amber); }
+.mat-badge.altro      { color: var(--grey);  border-color: var(--grey);  }

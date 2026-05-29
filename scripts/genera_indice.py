@@ -22,6 +22,48 @@ CHIAVI = [
 ]
 
 
+def normalizza_tipi(tipo_raw):
+    """
+    Converte la stringa "Tipo" in una lista di tipi normalizzati.
+    Esempi:
+      "Inchiesta e Ricerca"         → ["inchiesta", "ricerca"]
+      "Reportage, Inchiesta"        → ["reportage", "inchiesta"]
+      "Documentario video"          → ["video"]
+      "Reportage con fotografie e video" → ["reportage", "video"]
+    """
+    if not tipo_raw:
+        return ["altro"]
+
+    # Separa su virgola, " e ", slash, "con"
+    parti = re.split(r',\s*|\s+e\s+|/\s*|\s+con\s+', tipo_raw.lower())
+
+    MAPPA = {
+        'inchiesta':   'inchiesta',
+        'ricerca':     'ricerca',
+        'reportage':   'reportage',
+        'video':       'video',
+        'documentario':'video',
+        'podcast':     'podcast',
+        'fotografi':   'reportage',   # "fotografie" → reportage
+        'formazione':  'formazione',
+        'documento':   'documento',
+        'campagna':    'campagna',
+    }
+
+    risultato = []
+    for parte in parti:
+        parte = parte.strip()
+        trovato = None
+        for chiave, valore in MAPPA.items():
+            if chiave in parte:
+                trovato = valore
+                break
+        if trovato and trovato not in risultato:
+            risultato.append(trovato)
+
+    return risultato if risultato else ["altro"]
+
+
 def slugify(testo):
     """Converte un testo in un id URL-safe."""
     testo = testo.lower()
@@ -117,7 +159,7 @@ def processa_file(cartella, nome_file, sezione):
         'sezione':     sezione,
         'titolo':      dati.get('titolo', nome_base).strip(),
         'autori':      autori,
-        'tipo':        dati.get('tipo', '').strip().lower(),
+        'tipi':        normalizza_tipi(dati.get('tipo', '')),
         'piattaforma': dati.get('piattaforma', '').strip(),
         'url':         dati.get('url', '').strip(),
         'pdf':         pdf_file,
