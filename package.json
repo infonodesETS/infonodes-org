@@ -1,0 +1,8 @@
+{
+  "name": "infonodes-org",
+  "version": "1.0.0",
+  "description": "Sito archivio di info.nodes con chatbot MARLA",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.39.0"
+  }
+}

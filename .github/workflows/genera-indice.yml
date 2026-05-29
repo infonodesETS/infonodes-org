@@ -1,18 +1,16 @@
-name: Genera indice materiali
+name: Genera indice e knowledge base
 
-# Si attiva ogni volta che carichi file nelle cartelle delle sezioni
 on:
   push:
     branches: [master]
     paths:
       - 'pubblicazioni/**'
-      - 'scripts/genera_indice.py'
+      - 'MARLA/**'
+      - 'scripts/**'
 
 jobs:
-  genera-indice:
+  build:
     runs-on: ubuntu-latest
-
-    # Permesso per fare commit nel repo
     permissions:
       contents: write
 
@@ -25,15 +23,21 @@ jobs:
         with:
           python-version: '3.11'
 
+      - name: Installa dipendenze Python
+        run: pip install -r scripts/requirements.txt
+
       - name: Genera search-index.json
         run: python scripts/genera_indice.py
 
-      - name: Pubblica l'indice aggiornato
+      - name: Genera kb.json (memoria di MARLA)
+        run: python scripts/costruisci_kb.py
+
+      - name: Pubblica i file aggiornati
         run: |
           git config user.name  "infonodes-bot"
           git config user.email "bot@infonodes.org"
-          git add search-index.json
+          git add search-index.json kb.json
           git diff --cached --quiet && echo "Nessuna modifica." || (
-            git commit -m "Auto: aggiorna search-index.json [skip ci]" &&
+            git commit -m "Auto: aggiorna indice e knowledge base [skip ci]" &&
             git push
           )
