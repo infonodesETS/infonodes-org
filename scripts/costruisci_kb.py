@@ -28,6 +28,7 @@ except ImportError:
 CARTELLE = {
     'MARLA':        'newsletter',
     'pubblicazioni': 'pubblicazione',
+    'archivio':     'archivio',        # materiali interni non pubblicati
 }
 
 CHUNK_PAROLE = 400      # lunghezza massima di ogni chunk (in parole)
@@ -82,6 +83,22 @@ def chunkerizza(testo, nome_base, fonte, tipo):
 
 # ── estrattori ───────────────────────────────────────────────────────────────
 
+def estrai_pdf_ocr(percorso):
+    """Fallback OCR per PDF scansionati (immagini)."""
+    try:
+        from pdf2image import convert_from_path
+        import pytesseract
+        print(f"    → OCR in corso (PDF scansionato)...")
+        immagini = convert_from_path(percorso, dpi=200)
+        pagine = []
+        for img in immagini:
+            pagine.append(pytesseract.image_to_string(img, lang='ita+eng'))
+        return pulisci('\n'.join(pagine))
+    except Exception as e:
+        print(f"    ⚠ OCR fallito: {e}")
+        return ''
+
+
 def estrai_pdf(percorso):
     if not PYPDF_OK:
         return ''
@@ -93,7 +110,16 @@ def estrai_pdf(percorso):
                 pagine.append(pagina.extract_text() or '')
             except Exception:
                 pass
-        return pulisci('\n'.join(pagine))
+        testo = pulisci('\n'.join(pagine))
+
+        # Se il testo è troppo scarso, è probabile che il PDF sia scansionato:
+        # proviamo con OCR
+        if len(testo.split()) < 100:
+            testo_ocr = estrai_pdf_ocr(percorso)
+            if len(testo_ocr.split()) > len(testo.split()):
+                return testo_ocr
+
+        return testo
     except Exception as e:
         print(f"    ⚠ Errore PDF {os.path.basename(percorso)}: {e}")
         return ''

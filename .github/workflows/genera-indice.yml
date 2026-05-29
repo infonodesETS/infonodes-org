@@ -6,6 +6,7 @@ on:
     paths:
       - 'pubblicazioni/**'
       - 'MARLA/**'
+      - 'archivio/**'
       - 'scripts/**'
 
 jobs:
@@ -22,6 +23,9 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+
+      - name: Installa dipendenze sistema (OCR)
+        run: sudo apt-get install -y tesseract-ocr tesseract-ocr-ita poppler-utils
 
       - name: Installa dipendenze Python
         run: pip install -r scripts/requirements.txt
