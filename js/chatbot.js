@@ -1,15 +1,7 @@
-/* ===== INFONODES CHATBOT ===== */
+/* ===== MARLA — chatbot di info.nodes ===== */
 /* Chiama l'API serverless /api/chat e mostra le risposte */
 
-const WELCOME_MSG = `SISTEMA INFONODES v1.0 ATTIVO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Ciao! Sono l'assistente di Infonodes.
-Posso aiutarti a trovare materiali su:
-• inchieste e ricerche
-• formazione e incontri
-• campagne e progetti
-
-Cosa stai cercando?`;
+const WELCOME_MSG = `Ciao, sono MARLA. Cosa stai cercando? Vuoi parlare di qualcosa in particolare?`;
 
 class InfonodesChat {
   constructor() {
@@ -39,7 +31,7 @@ class InfonodesChat {
   addMessage(role, text) {
     const msg = document.createElement('div');
     msg.className = `msg ${role}`;
-    const label = role === 'bot' ? '[ INFONODES-BOT ]' : '[ TU ]';
+    const label = role === 'bot' ? '[ MARLA ]' : '[ TU ]';
     msg.innerHTML = `<div class="msg-label">${label}</div>${this.escapeHtml(text).replace(/\n/g, '<br>')}`;
     this.messagesEl.appendChild(msg);
     this.scrollBottom();

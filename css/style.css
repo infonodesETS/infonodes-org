@@ -425,6 +425,37 @@ nav .nav-label {
 
 .chat-form button:hover { background: var(--green); }
 
+/* ===== MARLA BIO ===== */
+#marla-bio {
+  margin-top: 20px;
+  border: 1px solid #3a2a00;
+  background: #0c0800;
+  padding: 16px;
+}
+
+.bio-divider {
+  color: var(--amber);
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-align: center;
+  margin-bottom: 14px;
+  opacity: 0.7;
+}
+
+#marla-bio p {
+  color: #9a8060;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 12px;
+  font-family: 'VT323', monospace;
+}
+
+#marla-bio p:last-child {
+  margin-bottom: 0;
+  color: var(--amber);
+  opacity: 0.85;
+}
+
 /* ===== FOOTER ===== */
 footer {
   border-top: 1px solid var(--border);
