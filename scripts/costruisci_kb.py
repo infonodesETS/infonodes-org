@@ -99,13 +99,39 @@ def estrai_pdf(percorso):
         return ''
 
 
+def estrai_titolo_html(soup):
+    """Estrae il titolo reale dall'HTML (Substack o generico)."""
+    # 1. og:title (Substack lo include sempre)
+    og = soup.find('meta', property='og:title')
+    if og and og.get('content', '').strip():
+        return og['content'].strip()
+    # 2. Primo h1
+    h1 = soup.find('h1')
+    if h1 and h1.get_text().strip():
+        t = h1.get_text().strip()
+        if len(t) > 3:
+            return t
+    # 3. Tag <title>, ripulito da suffissi tipo " | Substack" o " — info.nodes"
+    title_tag = soup.find('title')
+    if title_tag:
+        t = title_tag.get_text().strip()
+        for sep in [' | ', ' — ', ' - ', ' – ']:
+            if sep in t:
+                t = t.split(sep)[0].strip()
+        if len(t) > 3:
+            return t
+    return None
+
+
 def estrai_html(percorso):
     if not BS4_OK:
-        return ''
+        return '', None
     try:
         with open(percorso, 'r', encoding='utf-8', errors='replace') as f:
             contenuto = f.read()
         soup = BeautifulSoup(contenuto, 'lxml')
+
+        titolo = estrai_titolo_html(soup)
 
         # Rimuovi nav, footer, script, style, header
         for tag in soup(['nav', 'footer', 'script', 'style', 'header',
@@ -118,10 +144,10 @@ def estrai_html(percorso):
                  soup.find('main') or
                  soup.body or soup)
 
-        return pulisci(corpo.get_text(separator='\n'))
+        return pulisci(corpo.get_text(separator='\n')), titolo
     except Exception as e:
         print(f"    ⚠ Errore HTML {os.path.basename(percorso)}: {e}")
-        return ''
+        return '', None
 
 
 def estrai_txt(percorso):
@@ -147,14 +173,16 @@ def processa_cartella(cartella, tipo):
         # Salta file non di testo
         if estensione not in ('.pdf', '.html', '.htm', '.txt', '.md'):
             continue
-        # Salta README
-        if nome_file.lower() in ('readme.md', 'readme.txt'):
+        # Salta README e index
+        if nome_file.lower() in ('readme.md', 'readme.txt', 'index.html', 'index.htm'):
             continue
+
+        titolo_estratto = None
 
         if estensione == '.pdf':
             testo = estrai_pdf(percorso)
         elif estensione in ('.html', '.htm'):
-            testo = estrai_html(percorso)
+            testo, titolo_estratto = estrai_html(percorso)
         else:
             testo = estrai_txt(percorso)
 
@@ -162,10 +190,14 @@ def processa_cartella(cartella, tipo):
             print(f"    ↷ {nome_file} (testo insufficiente, saltato)")
             continue
 
-        nuovi_chunks = chunkerizza(testo, nome_base, cartella, tipo)
+        # Usa il titolo estratto dall'HTML se disponibile, altrimenti il nome file
+        titolo_finale = titolo_estratto if titolo_estratto else nome_base
+
+        nuovi_chunks = chunkerizza(testo, titolo_finale, cartella, tipo)
         chunks.extend(nuovi_chunks)
         n_parole = len(testo.split())
-        print(f"    ✓ {nome_file} → {len(nuovi_chunks)} chunk ({n_parole} parole)")
+        label = f" [{titolo_finale}]" if titolo_estratto else ""
+        print(f"    ✓ {nome_file}{label} → {len(nuovi_chunks)} chunk ({n_parole} parole)")
 
     return chunks
 
