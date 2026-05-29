@@ -26,7 +26,7 @@ html {
   background-color: var(--bg);
   color: var(--green);
   font-family: 'VT323', 'Courier New', monospace;
-  font-size: 18px;
+  font-size: 19.5px;
   line-height: 1.6;
   cursor: default;
 }
@@ -109,7 +109,7 @@ header::before {
   margin-bottom: 20px;
   overflow: hidden;
   color: var(--cyan);
-  font-size: 15px;
+  font-size: 16.5px;
 }
 
 .ticker-inner {
@@ -139,7 +139,7 @@ nav a {
   background: var(--green-dim);
   text-decoration: none;
   padding: 4px 12px;
-  font-size: 15px;
+  font-size: 16.5px;
   border: 1px solid var(--green);
   letter-spacing: 1px;
   transition: background 0.1s, color 0.1s;
@@ -152,7 +152,7 @@ nav a:hover, nav a.active {
 
 nav .nav-label {
   color: var(--grey);
-  font-size: 13px;
+  font-size: 14.5px;
   padding: 4px 8px;
   display: flex;
   align-items: center;
@@ -180,7 +180,7 @@ nav .nav-label {
 
 .box-title {
   color: var(--amber);
-  font-size: 14px;
+  font-size: 15.5px;
   letter-spacing: 3px;
   border-bottom: 1px solid var(--border);
   padding-bottom: 8px;
@@ -235,7 +235,7 @@ nav .nav-label {
 
 .category-card .cat-name {
   font-family: 'Press Start 2P', monospace;
-  font-size: 11px;
+  font-size: 12.5px;
   color: var(--green);
   display: block;
   margin-bottom: 8px;
@@ -243,7 +243,7 @@ nav .nav-label {
 }
 
 .category-card .cat-desc {
-  font-size: 15px;
+  font-size: 16.5px;
   color: var(--grey);
   line-height: 1.5;
 }
@@ -252,7 +252,7 @@ nav .nav-label {
   position: absolute;
   top: 12px;
   right: 12px;
-  font-size: 12px;
+  font-size: 13.5px;
   color: var(--amber);
 }
 
@@ -271,12 +271,12 @@ nav .nav-label {
 
 .file-list li:last-child { border-bottom: none; }
 
-.file-list .file-icon { color: var(--amber); font-size: 14px; }
+.file-list .file-icon { color: var(--amber); font-size: 14.5px; }
 
 .file-list a {
   color: var(--cyan);
   text-decoration: none;
-  font-size: 16px;
+  font-size: 17.5px;
 }
 
 .file-list a:hover {
@@ -286,7 +286,7 @@ nav .nav-label {
 
 .file-list .file-meta {
   color: var(--grey);
-  font-size: 13px;
+  font-size: 14.5px;
   margin-left: auto;
 }
 
@@ -313,7 +313,7 @@ nav .nav-label {
   background: var(--green-dim);
   color: var(--bg);
   padding: 8px 12px;
-  font-size: 13px;
+  font-size: 14.5px;
   letter-spacing: 2px;
   display: flex;
   align-items: center;
@@ -334,7 +334,7 @@ nav .nav-label {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: 18px;
+  font-size: 19.5px;
 }
 
 .chat-messages::-webkit-scrollbar { width: 6px; }
@@ -363,14 +363,14 @@ nav .nav-label {
 }
 
 .msg.bot .msg-label {
-  font-size: 11px;
+  font-size: 12.5px;
   color: var(--green-dim);
   margin-bottom: 4px;
   letter-spacing: 1px;
 }
 
 .msg.user .msg-label {
-  font-size: 11px;
+  font-size: 12.5px;
   color: #886600;
   margin-bottom: 4px;
   letter-spacing: 1px;
@@ -412,7 +412,7 @@ nav .nav-label {
   border: none;
   color: var(--green);
   font-family: 'VT323', monospace;
-  font-size: 19px;
+  font-size: 20.5px;
   padding: 10px 12px;
   outline: none;
 }
@@ -424,7 +424,7 @@ nav .nav-label {
   border: none;
   color: var(--bg);
   font-family: 'VT323', monospace;
-  font-size: 19px;
+  font-size: 20.5px;
   padding: 10px 16px;
   cursor: pointer;
   letter-spacing: 1px;
@@ -455,7 +455,7 @@ nav .nav-label {
 
 .bio-divider {
   color: var(--amber);
-  font-size: 12px;
+  font-size: 13.5px;
   letter-spacing: 2px;
   text-align: center;
   margin-bottom: 14px;
@@ -464,7 +464,7 @@ nav .nav-label {
 
 #marla-bio p {
   color: #9a8060;
-  font-size: 15px;
+  font-size: 16.5px;
   line-height: 1.7;
   margin-bottom: 12px;
   font-family: 'VT323', monospace;
@@ -483,7 +483,7 @@ footer {
   padding-top: 16px;
   text-align: center;
   color: var(--grey);
-  font-size: 14px;
+  font-size: 15.5px;
 }
 
 footer a { color: var(--green-dim); text-decoration: none; }
@@ -497,13 +497,19 @@ footer a:hover { color: var(--green); }
   margin: 8px 0;
   color: var(--amber);
   letter-spacing: 3px;
-  font-size: 13px;
+  font-size: 14.5px;
+}
+
+.pixel-heart {
+  color: #ff4444;
+  text-shadow: 0 0 6px #ff4444;
+  letter-spacing: 0;
 }
 
 /* ===== SECTION PAGES ===== */
 .breadcrumb {
   color: var(--grey);
-  font-size: 14px;
+  font-size: 15.5px;
   margin-bottom: 12px;
   letter-spacing: 1px;
 }
@@ -526,13 +532,13 @@ footer a:hover { color: var(--green); }
 
 .section-hero h1 {
   font-family: 'Press Start 2P', monospace;
-  font-size: 13px;
+  font-size: 14.5px;
   color: var(--green);
   line-height: 2;
   margin-bottom: 6px;
 }
 
-.section-hero p { color: var(--grey); font-size: 16px; }
+.section-hero p { color: var(--grey); font-size: 17.5px; }
 
 /* ===== FILTRI TIPO ===== */
 #filtri-tipo {
@@ -547,7 +553,7 @@ footer a:hover { color: var(--green); }
 
 .filtro-label {
   color: var(--grey);
-  font-size: 13px;
+  font-size: 14.5px;
   letter-spacing: 2px;
   margin-right: 4px;
 }
@@ -557,7 +563,7 @@ footer a:hover { color: var(--green); }
   border: 1px solid var(--green-dim);
   color: var(--green-dim);
   font-family: 'VT323', monospace;
-  font-size: 15px;
+  font-size: 16.5px;
   padding: 2px 12px;
   cursor: pointer;
   letter-spacing: 1px;
@@ -583,7 +589,7 @@ footer a:hover { color: var(--green); }
 
 .mat-loading {
   color: var(--grey);
-  font-size: 15px;
+  font-size: 16.5px;
   padding: 20px 0;
   text-align: center;
 }
@@ -613,7 +619,7 @@ footer a:hover { color: var(--green); }
 
 .mat-title {
   color: var(--cyan);
-  font-size: 17px;
+  font-size: 18.5px;
   display: block;
   margin-bottom: 4px;
 }
@@ -622,18 +628,18 @@ footer a:hover { color: var(--green); }
 
 .mat-desc {
   color: var(--grey);
-  font-size: 14px;
+  font-size: 15.5px;
   line-height: 1.5;
 }
 
 .mat-autori {
   color: var(--amber);
-  font-size: 13px;
+  font-size: 14.5px;
 }
 
 .mat-meta {
   margin-top: 6px;
-  font-size: 13px;
+  font-size: 14.5px;
   color: var(--grey);
 }
 
@@ -648,7 +654,7 @@ footer a:hover { color: var(--green); }
 }
 
 .mat-badge {
-  font-size: 11px;
+  font-size: 12.5px;
   padding: 2px 8px;
   border: 1px solid;
   white-space: nowrap;
