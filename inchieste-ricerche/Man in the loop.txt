@@ -1,6 +1,6 @@
 Titolo: Man in the loop
 Autori: Davide Del Monte, Laura Carrer, Andrea Daniele Signorelli
-Tipo: Inchiesta e Ricerca
+Tipo: Inchiesta, Ricerca
 Piattaforma: info.nodes
 URL: https://www.infonodes.org/man-in-the-loop
 PDF: Man in the loop
