@@ -10,7 +10,10 @@
         "Davide Del Monte",
         "Federica Bonalumi"
       ],
-      "tipo": "reportage con fotografie e video",
+      "tipi": [
+        "reportage",
+        "video"
+      ],
       "piattaforma": "IrpiMedia",
       "url": "https://irpimedia.irpi.eu/senzasegnaledue-calvairate/",
       "pdf": null,
@@ -35,7 +38,9 @@
         "Sara Rocca",
         "Francesca Trinchini"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "Scomodo",
       "url": "https://scomodo.org/a-san-ferdinando-in-calabria-si-cerca-di-recuperare-un-centro-di-accoglienza-che-non-ha-mai-accolto-nessuno/",
       "pdf": null,
@@ -61,7 +66,9 @@
         "Matilda Ferraris",
         "Gabriele Furia"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "L'Espresso",
       "url": "https://lespresso.it/c/politica/2025/2/7/confiscati-e-in-balia-dei-vandali/52744",
       "pdf": null,
@@ -84,7 +91,9 @@
       "autori": [
         "Sofia Grew"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "IrpiMedia",
       "url": "https://irpimedia.irpi.eu/cittainaffitto-piazza-angilberto-milano-beautification-urbanistica-tattica/",
       "pdf": null,
@@ -107,7 +116,9 @@
       "autori": [
         "Flavia Baldinucci"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "info.nodes",
       "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/Report_aware.pdf",
       "pdf": null,
@@ -130,7 +141,9 @@
         "Novella Gianfrasceschi",
         "Federica Scannavacca"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "Voice Over",
       "url": "https://www.voiceoverfoundation.org/it/miccia-mag/politica-del-mare-taranto-farina-gianfranceschi-scannavacca",
       "pdf": null,
@@ -153,7 +166,9 @@
         "Francesca Polizzi",
         "Elisa Rossi"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "Domani Editoriale",
       "url": "https://www.editorialedomani.it/fatti/carcere-ferrara-nuovo-padiglione-detenuti-progetto-pnrr-awhzgqqu",
       "pdf": null,
@@ -179,7 +194,9 @@
         "Guenter Richter",
         "Gloria Riva"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "info.nodes",
       "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/Sesso_e_potere_2023_rev.pdf",
       "pdf": "Sesso è Potere 2023.pdf",
@@ -208,7 +225,9 @@
         "Paola Chiara Masuzzo",
         "Andrea Nelson Mauro"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "info.nodes",
       "url": "https://drive.google.com/file/d/15NPjII-W5_yFpBVJLyEVYk1GUsK2v64e/view",
       "pdf": "Sesso è Potere 2025.pdf",
@@ -231,7 +250,10 @@
       "autori": [
         "Stefano Vergine"
       ],
-      "tipo": "podcast, inchiesta",
+      "tipi": [
+        "podcast",
+        "inchiesta"
+      ],
       "piattaforma": "Spotify",
       "url": "https://open.spotify.com/show/3zcUG0l8xT8cjSiXoVP79H?si=sUYr5HsfTGqImUIdzmDodg&nd=1&dlsi=84fb11eb3aee4896",
       "pdf": null,
@@ -251,7 +273,9 @@
       "autori": [
         "Valeria Guardo"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "Bike Italia",
       "url": "https://www.bikeitalia.it/2025/02/27/torino-sempre-piu-ciclabile-ma-lauto-resta-protagonista-della-mobilita/",
       "pdf": null,
@@ -277,7 +301,9 @@
         "Susanna Rugghia",
         "Sofia Turati"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "L'Espresso",
       "url": "https:https://lespresso.it/c/-/2025/2/28/case-rifugio-violenza-abusi-donne-fondi/52986",
       "pdf": null,
@@ -301,7 +327,10 @@
         "Davide Del Monte",
         "Federica Bonalumi"
       ],
-      "tipo": "reportage, inchiesta",
+      "tipi": [
+        "reportage",
+        "inchiesta"
+      ],
       "piattaforma": "IrpiMedia",
       "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-colonizzazione/",
       "pdf": null,
@@ -331,7 +360,9 @@
       "autori": [
         "Stefano Vergine"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "Domani Editoriale",
       "url": "https://www.editorialedomani.it/politica/mondo/emirati-cina-turchia-nomi-intermediari-usati-per-aggirare-sanzioni-contro-gas-russia-upogzijn",
       "pdf": null,
@@ -362,7 +393,10 @@
         "Davide Del Monte",
         "Federica Bonalumi"
       ],
-      "tipo": "reportage, inchiesta",
+      "tipi": [
+        "reportage",
+        "inchiesta"
+      ],
       "piattaforma": "IrpiMedia",
       "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-isola-dei-tesori/",
       "pdf": null,
@@ -389,7 +423,10 @@
         "Davide Del Monte",
         "Federica Bonalumi"
       ],
-      "tipo": "reportage, inchiesta",
+      "tipi": [
+        "reportage",
+        "inchiesta"
+      ],
       "piattaforma": "IrpiMedia",
       "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-contesa-ue-russia-cina-australia/",
       "pdf": null,
@@ -422,7 +459,10 @@
         "Laura Carrer",
         "Andrea Daniele Signorelli"
       ],
-      "tipo": "inchiesta, ricerca",
+      "tipi": [
+        "inchiesta",
+        "ricerca"
+      ],
       "piattaforma": "info.nodes",
       "url": "https://www.infonodes.org/man-in-the-loop",
       "pdf": "Man in the loop.pdf",
@@ -445,7 +485,9 @@
         "Davide Del Monte",
         "Federica Bonalumi"
       ],
-      "tipo": "documentario video",
+      "tipi": [
+        "video"
+      ],
       "piattaforma": "Internazionale",
       "url": "https://www.internazionale.it/video/2024/12/18/materie-prima-groenlandia",
       "pdf": null,
@@ -473,7 +515,9 @@
         "Stefano Vergine",
         "Manuel Rico"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "info.nodes",
       "url": "https://www.infonodes.org/chinese-underworld",
       "pdf": null,
@@ -493,7 +537,9 @@
         "Stefano Vergine",
         "Daniele Zendroni"
       ],
-      "tipo": "documentario video",
+      "tipi": [
+        "video"
+      ],
       "piattaforma": "YouTube",
       "url": "https://www.youtube.com/watch?v=LOlex5KRUZY",
       "pdf": null,
@@ -514,7 +560,9 @@
         "Stefano Vergine",
         "Manuel Rico"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "infoLibre",
       "url": "https://www.infolibre.es/politica/italia-juzga-jefe-principal-mafia-china-pais-contaba-ramificaciones-espana_1_1219011.html",
       "pdf": null,
@@ -544,7 +592,10 @@
         "Marco Armiero",
         "Anita No"
       ],
-      "tipo": "inchiesta e reportage",
+      "tipi": [
+        "inchiesta",
+        "reportage"
+      ],
       "piattaforma": "info.nodes",
       "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/marla-06-22-web-low.pdf",
       "pdf": "Le città invivibili.pdf",
@@ -572,7 +623,9 @@
         "Michela Gnaldi",
         "Antonella Napolitano"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "info.nodes",
       "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/SESSO_E_POTERE_-_rev.pdf",
       "pdf": "Sesso è Potere 2022.pdf",
@@ -595,7 +648,9 @@
         "Stefano Vergine",
         "Gloria Riva"
       ],
-      "tipo": "inchiesta",
+      "tipi": [
+        "inchiesta"
+      ],
       "piattaforma": "OCCRP",
       "url": "https://www.occrp.org/en/investigation/murder-drugs-and-extortion-in-tuscanys-chinese-underworld",
       "pdf": null,
