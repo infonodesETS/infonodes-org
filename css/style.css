@@ -334,7 +334,7 @@ nav .nav-label {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  font-size: 17px;
+  font-size: 18px;
 }
 
 .chat-messages::-webkit-scrollbar { width: 6px; }
@@ -412,7 +412,7 @@ nav .nav-label {
   border: none;
   color: var(--green);
   font-family: 'VT323', monospace;
-  font-size: 18px;
+  font-size: 19px;
   padding: 10px 12px;
   outline: none;
 }
@@ -424,7 +424,7 @@ nav .nav-label {
   border: none;
   color: var(--bg);
   font-family: 'VT323', monospace;
-  font-size: 18px;
+  font-size: 19px;
   padding: 10px 16px;
   cursor: pointer;
   letter-spacing: 1px;
@@ -464,7 +464,7 @@ nav .nav-label {
 
 #marla-bio p {
   color: #9a8060;
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.7;
   margin-bottom: 12px;
   font-family: 'VT323', monospace;
