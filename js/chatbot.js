@@ -71,7 +71,7 @@ class InfonodesChat {
     this.showTyping();
 
     try {
-      const res = await fetch('/api/chat', {
+      const res = await fetch('https://infonodes-org.vercel.app/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: this.messages })
@@ -87,7 +87,7 @@ class InfonodesChat {
     } catch (err) {
       this.hideTyping();
       this.addMessage('bot',
-        'Errore di connessione.\nIl servizio chatbot non è ancora configurato.\nControlla /api/chat.');
+        'Errore di connessione. Riprova tra qualche secondo.');
       console.error('Chat error:', err);
     } finally {
       this.isTyping = false;
