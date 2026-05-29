@@ -1,0 +1,41 @@
+name: Genera indice materiali
+
+# Si attiva ogni volta che carichi file nelle cartelle delle sezioni
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'inchieste-ricerche/**'
+      - 'formazione-incontri/**'
+      - 'campagne-progetti/**'
+      - 'scripts/genera_indice.py'
+
+jobs:
+  genera-indice:
+    runs-on: ubuntu-latest
+
+    # Permesso per fare commit nel repo
+    permissions:
+      contents: write
+
+    steps:
+      - name: Scarica il repository
+        uses: actions/checkout@v4
+
+      - name: Configura Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Genera search-index.json
+        run: python scripts/genera_indice.py
+
+      - name: Pubblica l'indice aggiornato
+        run: |
+          git config user.name  "infonodes-bot"
+          git config user.email "bot@infonodes.org"
+          git add search-index.json
+          git diff --cached --quiet && echo "Nessuna modifica." || (
+            git commit -m "Auto: aggiorna search-index.json [skip ci]" &&
+            git push
+          )
