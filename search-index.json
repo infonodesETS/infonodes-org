@@ -1,317 +1,611 @@
 {
   "lastUpdated": "2026-05-29",
+  "totale": 24,
   "materiali": [
-    {
-      "id": "man-in-the-loop",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Man in the loop",
-      "autori": ["Davide Del Monte", "Laura Carrer", "Andrea Daniele Signorelli"],
-      "tipo": "inchiesta",
-      "piattaforma": "info.nodes",
-      "url": "https://www.infonodes.org/man-in-the-loop",
-      "pdf": "Man in the loop.pdf",
-      "anno": 2024,
-      "keywords": ["armi autonome", "AI", "intelligenza artificiale", "killer robots", "autonomous weapons", "LEAW", "difesa"],
-      "descrizione": "Il settore della difesa mostra crescente interesse nel potenziale offerto dall'utilizzo di sistemi di intelligenza artificiale applicati agli armamenti. La ricerca tenta di far luce sullo stato dell'arte di investimenti in ricerca e produzioni di sistemi d'arma autonomi in Italia, attraverso interviste ad esperti, documenti FOIA e relazioni di Governo ed Esercito."
-    },
-    {
-      "id": "sesso-e-potere-2025",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Sesso è Potere 2025",
-      "autori": ["Marta Abbà", "Flavia Baldinucci", "Andrea Borruso", "Donata Columbro", "Davide Del Monte", "Paola Chiara Masuzzo", "Andrea Nelson Mauro"],
-      "tipo": "inchiesta",
-      "piattaforma": "info.nodes",
-      "url": "https://drive.google.com/file/d/15NPjII-W5_yFpBVJLyEVYk1GUsK2v64e/view",
-      "pdf": "Sesso è Potere 2025.pdf",
-      "anno": 2025,
-      "keywords": ["giornalismo investigativo", "inclusione sociale", "violenza di genere", "femminicidi", "patriarcato", "potere", "disuguaglianza"],
-      "descrizione": "Il report 'Sesso è Potere' approfondisce ogni anno le diverse opportunità di accesso ai ruoli di comando per gli uomini e le donne. La questione centrale non è se le donne siano più o meno brave degli uomini a comandare, ma quali siano le reali dinamiche di potere che governano la nostra società."
-    },
-    {
-      "id": "sesso-e-potere-2023",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Sesso è Potere 2023",
-      "autori": ["Andrea Borruso", "Davide Del Monte", "Paola Chiara Masuzzo", "Chiara Putaturo", "Guenter Richter", "Gloria Riva"],
-      "tipo": "inchiesta",
-      "piattaforma": "info.nodes",
-      "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/Sesso_e_potere_2023_rev.pdf",
-      "pdf": "Sesso è Potere 2023.pdf",
-      "anno": 2023,
-      "keywords": ["giornalismo investigativo", "inclusione sociale", "violenza di genere", "femminicidi", "patriarcato", "potere", "disuguaglianza"],
-      "descrizione": "Il report 'Sesso è Potere' approfondisce ogni anno le diverse opportunità di accesso ai ruoli di comando per gli uomini e le donne, analizzando le reali dinamiche di potere che governano la nostra società."
-    },
-    {
-      "id": "sesso-e-potere-2022",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Sesso è Potere 2022",
-      "autori": ["Valentina Bazzarin", "Irene Doda", "Michela Gnaldi", "Antonella Napolitano"],
-      "tipo": "inchiesta",
-      "piattaforma": "info.nodes",
-      "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/SESSO_E_POTERE_-_rev.pdf",
-      "pdf": "Sesso è Potere 2022.pdf",
-      "anno": 2022,
-      "keywords": ["giornalismo investigativo", "giustizia sociale", "violenza di genere", "femminicidi", "patriarcato", "potere", "disuguaglianza"],
-      "descrizione": "Il report 'Sesso è Potere' approfondisce le diverse opportunità di accesso ai ruoli di comando per gli uomini e le donne. La risposta al momento è molto semplice: il potere è stabilmente in mano agli uomini."
-    },
-    {
-      "id": "le-citta-invivibili",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Le città invivibili",
-      "autori": ["Davide Del Monte", "Luca Rinaldi", "Giuseppe Imbrogno", "Giorgia Zoe Righini", "Elisabetta Castellari", "Laura Carrer", "Luca Quagliato", "Stefano Vergine", "Davide Monteleone", "Irene Doda", "Marco Armiero", "Anita Nø"],
-      "tipo": "inchiesta",
-      "piattaforma": "info.nodes",
-      "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/marla-06-22-web-low.pdf",
-      "pdf": "Le città invivibili.pdf",
-      "anno": 2022,
-      "keywords": ["rigenerazione urbana", "periferie", "città", "cambiamenti climatici", "solitudine", "Milano", "Azerbaijan", "Corea del Nord", "Pyongyang", "gentrificazione"],
-      "descrizione": "Raccolta di inchieste e reportage sulle trasformazioni delle città contemporanee: dalla gentrificazione di Milano alle cartoline da Pyongyang, dal petrolio dell'Azerbaijan all'era del Wasteocene. Un libro collettivo che esplora il diritto alla città e le sue contraddizioni."
-    },
     {
       "id": "calvairate",
       "sezione": "inchieste-ricerche",
-      "titolo": "Calvairate, l'isola di fronte alla marea della gentrificazione di Milano",
-      "autori": ["Davide Del Monte", "Federica Bonalumi"],
-      "tipo": "reportage",
+      "titolo": "Calvairate, l’isola di fronte alla marea della gentrificazione di Milano",
+      "autori": [
+        "Davide Del Monte",
+        "Federica Bonalumi"
+      ],
+      "tipo": "reportage con fotografie e video",
       "piattaforma": "IrpiMedia",
       "url": "https://irpimedia.irpi.eu/senzasegnaledue-calvairate/",
       "pdf": null,
       "anno": 2026,
-      "keywords": ["periferie", "gentrificazione", "case popolari", "giustizia sociale", "Milano", "rigenerazione urbana", "speculazione edilizia"],
-      "descrizione": "Reportage fotografico, con inserti video, sul quartiere di Calvairate a Milano e il complesso di case popolari 'Ettore Ponti'. Il reportage racconta le trasformazioni del quartiere attraverso le parole di quattro abitanti delle case popolari."
+      "keywords": [
+        "periferie",
+        "gentrificazione",
+        "case popolari",
+        "giustizia sociale",
+        "Milano",
+        "rigenerazione urbana",
+        "speculazione edilizia"
+      ],
+      "descrizione": "Reportage fotografico, con inserti video, sul quartiere di Calvairate a Milano e in particolare il complesso di case popolari \"Ettore Ponti\", in via del Turchino. Il reportage racconta le trasformazioni del quartiere attraverso le parobele di vita e le parole di quattro abitanti delle case popolari."
     },
     {
-      "id": "corvetto",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Corvetto vuole i fiori. Ma soprattutto le case",
-      "autori": ["Sofia Grew"],
-      "tipo": "inchiesta",
-      "piattaforma": "IrpiMedia",
-      "url": "https://irpimedia.irpi.eu/cittainaffitto-piazza-angilberto-milano-beautification-urbanistica-tattica/",
-      "pdf": null,
-      "anno": 2025,
-      "keywords": ["periferie", "gentrificazione", "case popolari", "giustizia sociale", "Milano", "rigenerazione urbana", "speculazione edilizia"],
-      "descrizione": "Reportage sul quartiere di Corvetto a Milano. Piazza Angilberto, al centro di un progetto di riqualificazione, racconta le tensioni di una zona in cui abitare diventa sempre più costoso. Anche le trasformazioni estetiche preparano il terreno all'arrivo di abitanti più ricchi."
-    },
-    {
-      "id": "colonizzazione-artica",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Colonizzazione artica",
-      "autori": ["Davide Del Monte", "Federica Bonalumi"],
-      "tipo": "reportage",
-      "piattaforma": "IrpiMedia",
-      "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-colonizzazione/",
-      "pdf": null,
-      "anno": 2024,
-      "keywords": ["Groenlandia", "USA", "Trump", "Danimarca", "EU", "cambiamenti climatici", "neocolonialismo", "estrattivismo", "scioglimento dei ghiacci", "inuit", "geopolitica", "materie prime", "terre rare", "uranio"],
-      "descrizione": "Industrializzazione imposta, trasferimenti forzati dai villaggi alle città: così la cultura inuit è stata marginalizzata in Groenlandia. E i cambiamenti climatici rischiano di scioglierla come i ghiacci dell'isola."
-    },
-    {
-      "id": "groenlandia-isola-tesori",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Groenlandia, l'isola dei tesori",
-      "autori": ["Davide Del Monte", "Federica Bonalumi"],
-      "tipo": "reportage",
-      "piattaforma": "IrpiMedia",
-      "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-isola-dei-tesori/",
-      "pdf": null,
-      "anno": 2024,
-      "keywords": ["Groenlandia", "cambiamenti climatici", "neocolonialismo", "estrattivismo", "scioglimento dei ghiacci", "inuit", "geopolitica", "materie prime", "terre rare", "uranio"],
-      "descrizione": "La crisi climatica sta rendendo più semplice accedere a patrimoni di risorse naturali finora nascosti o irraggiungibili. Con conseguenze che la politica groenlandese prova ad anticipare, seguendo il principio che la natura governa tutto."
-    },
-    {
-      "id": "groenlandia-grande-gioco",
-      "sezione": "inchieste-ricerche",
-      "titolo": "La Groenlandia al centro del Grande Gioco dell'Artico",
-      "autori": ["Davide Del Monte", "Federica Bonalumi"],
-      "tipo": "reportage",
-      "piattaforma": "IrpiMedia",
-      "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-contesa-ue-russia-cina-australia/",
-      "pdf": null,
-      "anno": 2024,
-      "keywords": ["Groenlandia", "USA", "Trump", "Russia", "Cina", "EU", "cambiamenti climatici", "neocolonialismo", "geopolitica", "materie prime", "terre rare", "uranio"],
-      "descrizione": "L'isola è contesa da diverse potenze internazionali per le sue ricchezze minerarie e la sua posizione strategica. Eppure l'attuale governo locale si dice sicuro di non finire vittima del neocolonialismo."
-    },
-    {
-      "id": "groenlandia-sotto-il-ghiaccio",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Sotto il ghiaccio della Groenlandia si nasconde un tesoro",
-      "autori": ["Davide Del Monte", "Federica Bonalumi"],
-      "tipo": "video",
-      "piattaforma": "Internazionale",
-      "url": "https://www.internazionale.it/video/2024/12/18/materie-prima-groenlandia",
-      "pdf": null,
-      "anno": 2024,
-      "keywords": ["Groenlandia", "cambiamenti climatici", "neocolonialismo", "estrattivismo", "scioglimento dei ghiacci", "inuit", "geopolitica", "materie prime", "terre rare", "uranio"],
-      "descrizione": "Negli ultimi vent'anni la Groenlandia è stata particolarmente colpita dalla crisi climatica. Il rapido scioglimento del ghiaccio sta attirando l'interesse delle multinazionali estrattive straniere per le risorse del sottosuolo: petrolio, terre rare e uranio."
-    },
-    {
-      "id": "chinese-underworld-it",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Chinese Underworld (italiano)",
-      "autori": ["Davide Del Monte", "Stefano Vergine", "Manuel Rico"],
-      "tipo": "inchiesta",
-      "piattaforma": "info.nodes",
-      "url": "https://www.infonodes.org/chinese-underworld",
-      "pdf": null,
-      "anno": 2022,
-      "keywords": ["mafia cinese", "criminalità organizzata", "traffico di droga", "Toscana", "Europa"],
-      "descrizione": "Violenza, collegamenti politici e affari illeciti della principale organizzazione criminale cinese in Europa. Inchiesta sulla rete criminale che gestisce il trasporto di merci cinesi nel continente attraverso intimidazioni e violenza."
-    },
-    {
-      "id": "chinese-underworld-es",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Chinese Underworld (spagnolo)",
-      "autori": ["Davide Del Monte", "Stefano Vergine", "Manuel Rico"],
-      "tipo": "inchiesta",
-      "piattaforma": "infoLibre",
-      "url": "https://www.infolibre.es/politica/italia-juzga-jefe-principal-mafia-china-pais-contaba-ramificaciones-espana_1_1219011.html",
-      "pdf": null,
-      "anno": 2022,
-      "keywords": ["mafia cinese", "criminalità organizzata", "traffico di droga", "Spagna", "Europa"],
-      "descrizione": "Versione spagnola dell'inchiesta sulla principale organizzazione criminale cinese in Europa, pubblicata su infoLibre. Racconta le ramificazioni spagnole della rete criminale."
-    },
-    {
-      "id": "chinese-underworld-video",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Chinese Underworld — documentario video",
-      "autori": ["Stefano Vergine", "Daniele Zendroni"],
-      "tipo": "video",
-      "piattaforma": "YouTube",
-      "url": "https://www.youtube.com/watch?v=LOlex5KRUZY",
-      "pdf": null,
-      "anno": 2022,
-      "keywords": ["mafia cinese", "criminalità organizzata", "traffico di droga", "Toscana", "documentario"],
-      "descrizione": "Documentario video sulle attività della principale organizzazione criminale cinese in Europa: violenza, collegamenti politici e affari illeciti."
-    },
-    {
-      "id": "chinese-underworld-occrp",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Murder, Drugs and Extortion in Tuscany's Chinese Underworld",
-      "autori": ["Davide Del Monte", "Stefano Vergine", "Gloria Riva"],
-      "tipo": "inchiesta",
-      "piattaforma": "OCCRP",
-      "url": "https://www.occrp.org/en/investigation/murder-drugs-and-extortion-in-tuscanys-chinese-underworld",
-      "pdf": null,
-      "anno": 2020,
-      "keywords": ["mafia cinese", "criminalità organizzata", "traffico di droga", "Toscana", "OCCRP", "Europa"],
-      "descrizione": "A Chinese gang is using guns, threats, and fear to corner the market for transporting Chinese-made goods in Europe. Published by OCCRP, the international investigative journalism network."
-    },
-    {
-      "id": "sanzioni-gas-russia",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Così le aziende italiane aggirano le sanzioni contro il gas della Russia",
-      "autori": ["Stefano Vergine"],
-      "tipo": "inchiesta",
-      "piattaforma": "Domani Editoriale",
-      "url": "https://www.editorialedomani.it/politica/mondo/emirati-cina-turchia-nomi-intermediari-usati-per-aggirare-sanzioni-contro-gas-russia-upogzijn",
-      "pdf": null,
-      "anno": 2024,
-      "keywords": ["Russia", "gas", "sanzioni", "Italia", "Emirati", "Cina", "Arctic LNG", "guerra", "energia"],
-      "descrizione": "Nonostante i divieti contro l'impianto Arctic LNG 2, forniture italiane verso Mosca per 134 milioni di euro inviate tramite Emirati e Cina. Le merci da Nuovo Pignone, Tenaris, Marcegaglia e da due aziende di Stato."
-    },
-    {
-      "id": "simone-podcast",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Simone",
-      "autori": ["Stefano Vergine"],
-      "tipo": "podcast",
-      "piattaforma": "Spotify",
-      "url": "https://open.spotify.com/show/3zcUG0l8xT8cjSiXoVP79H?si=sUYr5HsfTGqImUIdzmDodg&nd=1&dlsi=84fb11eb3aee4896",
-      "pdf": null,
-      "anno": 2025,
-      "keywords": ["giornalismo investigativo", "abuso di potere", "violenza di stato", "morte in custodia", "carabinieri", "podcast"],
-      "descrizione": "Podcast in sei puntate sulla morte di Simone Mattarelli, 28 anni. Per la giustizia italiana si è suicidato sotto effetto di cocaina dopo tre ore di inseguimento con sei macchine dei carabinieri. Grazie ad audio inediti e interviste, Stefano Vergine ricostruisce la storia e i tanti punti oscuri."
-    },
-    {
-      "id": "ghiacciai-alto-adige",
-      "sezione": "inchieste-ricerche",
-      "titolo": "I ghiacciai dell'Alto Adige e Tirolo",
-      "autori": ["Flavia Baldinucci"],
-      "tipo": "inchiesta",
-      "piattaforma": "info.nodes",
-      "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/Report_aware.pdf",
-      "pdf": null,
-      "anno": 2025,
-      "keywords": ["giornalismo scientifico", "ambiente", "cambiamenti climatici", "crisi climatica", "ghiacciai", "Alto Adige", "Tirolo"],
-      "descrizione": "Ricerca sullo scioglimento dei ghiacciai in Trentino-Alto Adige e nel Tirolo austriaco, con analisi degli impatti ambientali, economici e culturali della crisi climatica sulla regione alpina."
-    },
-    {
-      "id": "mar-piccolo-taranto",
-      "sezione": "inchieste-ricerche",
-      "titolo": "Il Mar Piccolo di Taranto",
-      "autori": ["Dora Farina", "Novella Gianfranceschi", "Federica Scannavacca"],
-      "tipo": "inchiesta",
-      "piattaforma": "Voice Over",
-      "url": "https://www.voiceoverfoundation.org/it/miccia-mag/politica-del-mare-taranto-farina-gianfranceschi-scannavacca",
-      "pdf": null,
-      "anno": 2025,
-      "keywords": ["ambiente", "cambiamenti climatici", "crisi climatica", "Taranto", "Ilva", "inquinamento", "mare", "rifiuti"],
-      "descrizione": "Le responsabilità del degrado ambientale di Taranto non ricadono solo sull'Ilva. Per anni la città ha coperto lo smaltimento incontrollato di rifiuti e sfruttato il mare esclusivamente a vantaggio dell'essere umano, senza considerarlo una risorsa da rispettare."
-    },
-    {
-      "id": "casa-marinaio-san-ferdinando",
+      "id": "casa-del-marinaio-di-san-ferdinando",
       "sezione": "inchieste-ricerche",
       "titolo": "Casa del marinaio di San Ferdinando",
-      "autori": ["Martina Paolucci", "Sara Rocca", "Francesca Trinchini"],
+      "autori": [
+        "Martina Paolucci",
+        "Sara Rocca",
+        "Francesca Trinchini"
+      ],
       "tipo": "inchiesta",
       "piattaforma": "Scomodo",
       "url": "https://scomodo.org/a-san-ferdinando-in-calabria-si-cerca-di-recuperare-un-centro-di-accoglienza-che-non-ha-mai-accolto-nessuno/",
       "pdf": null,
       "anno": 2025,
-      "keywords": ["accoglienza", "Calabria", "PNRR", "fondi pubblici", "spreco", "Europa", "porto Gioia Tauro"],
-      "descrizione": "Quasi 9 milioni di euro per un albergo di lusso destinato ai marinai di passaggio nel porto di Gioia Tauro, ma la struttura è rimasta abbandonata per anni. Una storia di spreco di fondi europei per lo sviluppo urbano."
+      "keywords": [
+        "accoglienza",
+        "Calabria",
+        "Casa del Marinaio",
+        "europa",
+        "fondi pubblici",
+        "italia",
+        "locale",
+        "territori",
+        "Pnrr"
+      ],
+      "descrizione": "A San Ferdinando, in Calabria, si cerca di recuperare un centro di accoglienza che non ha mai accolto nessuno\nLa Casa del Marinaio, una storia di spreco di fondi europei per lo sviluppo urbano. Erano stati stanziati quasi 9 milioni di euro per un albergo di lusso destinato ai marinai di passaggio nel porto di Gioia Tauro, ma la struttura è rimasta abbandonata per anni. Cosa ne sarà ora della Casa del Marinaio?"
     },
     {
-      "id": "confiscati-vandali",
+      "id": "confiscati-e-in-balia-dei-vandali",
       "sezione": "inchieste-ricerche",
       "titolo": "Confiscati e in balia dei vandali",
-      "autori": ["Matilda Ferraris", "Gabriele Furia"],
+      "autori": [
+        "Matilda Ferraris",
+        "Gabriele Furia"
+      ],
       "tipo": "inchiesta",
       "piattaforma": "L'Espresso",
       "url": "https://lespresso.it/c/politica/2025/2/7/confiscati-e-in-balia-dei-vandali/52744",
       "pdf": null,
       "anno": 2025,
-      "keywords": ["beni confiscati", "mafia", "criminalità organizzata", "corruzione", "PNRR", "antimafia"],
-      "descrizione": "Liti burocratiche, carenze d'organico, amministrazioni distratte o colluse, prefetti non sempre vigili. Così i beni tolti ai boss languono nell'incuria. E i padrini gongolano."
+      "keywords": [
+        "Giornalismo investigativo",
+        "inclusione sociale",
+        "beni confiscati",
+        "mafia",
+        "criminalità organizzata",
+        "corruzione",
+        "Pnrr"
+      ],
+      "descrizione": "Liti burocratiche, carenze d’organico, amministrazioni distratte o colluse, prefetti non sempre vigili. Così i beni tolti ai boss languono nell’incuria. E i padrini gongolano."
     },
     {
-      "id": "carcere-ferrara",
+      "id": "corvetto-vuole-i-fiori-ma-soprattutto-le-case",
       "sezione": "inchieste-ricerche",
-      "titolo": "Più celle e meno spazio per le attività: il carcere di Ferrara non è un buon modello",
-      "autori": ["Francesca Polizzi", "Elisa Rossi"],
+      "titolo": "Corvetto vuole i fiori. Ma soprattutto le case",
+      "autori": [
+        "Sofia Grew"
+      ],
+      "tipo": "inchiesta",
+      "piattaforma": "IrpiMedia",
+      "url": "https://irpimedia.irpi.eu/cittainaffitto-piazza-angilberto-milano-beautification-urbanistica-tattica/",
+      "pdf": null,
+      "anno": 2025,
+      "keywords": [
+        "periferie",
+        "gentrificazione",
+        "case popolari",
+        "giustizia sociale",
+        "Milano",
+        "rigenerazione urbana",
+        "speculazione edilizia"
+      ],
+      "descrizione": "Reportage sul quartiere di Corvetto a Milano. Piazza Angilberto, al centro di un progetto di riqualificazione, racconta le tensioni di una zona in cui abitare diventa sempre più costoso. Anche le trasformazioni estetiche, a Milano, preparano il terreno all'arrivo di abitanti più ricchi"
+    },
+    {
+      "id": "i-ghiacciai-dellalto-adige-e-tirolo",
+      "sezione": "inchieste-ricerche",
+      "titolo": "I ghiacciai dell'Alto Adige e Tirolo",
+      "autori": [
+        "Flavia Baldinucci"
+      ],
+      "tipo": "inchiesta",
+      "piattaforma": "info.nodes",
+      "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/Report_aware.pdf",
+      "pdf": null,
+      "anno": 2025,
+      "keywords": [
+        "Giornalismo scientifico",
+        "ambiente",
+        "cambiamenti climatici",
+        "crisi climatica",
+        "climate change Pnrr"
+      ],
+      "descrizione": "ricerca sullo scioglimento dei ghiacciai in Trentino."
+    },
+    {
+      "id": "il-mar-piccolo-di-taranto",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Il Mar Piccolo di Taranto",
+      "autori": [
+        "Dora Farina",
+        "Novella Gianfrasceschi",
+        "Federica Scannavacca"
+      ],
+      "tipo": "inchiesta",
+      "piattaforma": "Voice Over",
+      "url": "https://www.voiceoverfoundation.org/it/miccia-mag/politica-del-mare-taranto-farina-gianfranceschi-scannavacca",
+      "pdf": null,
+      "anno": 2025,
+      "keywords": [
+        "Giornalismo scientifico",
+        "ambiente",
+        "cambiamenti climatici",
+        "crisi climatica",
+        "climate change",
+        "Pnrr"
+      ],
+      "descrizione": "Sebbene Taranto venga spesso associata ai fumi dell’Ilva, le responsabilità del degrado ambientale non ricadono solo sullo stabilimento siderurgico. Le attività industriali sono spesso rimaste nascoste dietro la struttura architettonica della città che, per anni, ha coperto lo smaltimento incontrollato di rifiuti e sfruttato il mare esclusivamente a vantaggio dell’essere umano, senza considerarlo una risorsa naturale da rispettare."
+    },
+    {
+      "id": "piu-celle-e-meno-spazio-per-le-attivita-il-carcere-di-ferrara-non-e-un-buon-mode",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Più celle e meno spazio per le attività il carcere di Ferrara non è un buon modello",
+      "autori": [
+        "Francesca Polizzi",
+        "Elisa Rossi"
+      ],
       "tipo": "inchiesta",
       "piattaforma": "Domani Editoriale",
       "url": "https://www.editorialedomani.it/fatti/carcere-ferrara-nuovo-padiglione-detenuti-progetto-pnrr-awhzgqqu",
       "pdf": null,
       "anno": 2025,
-      "keywords": ["carcere", "prigione", "PNRR", "giustizia", "detenuti", "Ferrara", "riabilitazione"],
-      "descrizione": "Nella casa circondariale di Ferrara è prevista la costruzione di un nuovo padiglione che andrà a sottrarre spazio a laboratori e occupazioni lavorative. Uno degli otto progetti PNRR, ma i lavori procedono a rilento."
+      "keywords": [
+        "Giornalismo investigativo",
+        "inclusione sociale",
+        "prigione",
+        "carcere",
+        "Pnrr"
+      ],
+      "descrizione": "Nella casa circondariale di Ferrara è prevista la costruzione di un nuovo padiglione che andrà a sottrarre spazio a laboratori e occupazioni lavorative. Il progetto è uno degli otto previsti dal Pnrr, ma l’avanzamento dei lavori procede a rilento"
     },
     {
-      "id": "torino-ciclabile",
+      "id": "sesso-e-potere-2023",
       "sezione": "inchieste-ricerche",
-      "titolo": "Torino sempre più ciclabile, ma l'auto resta protagonista",
-      "autori": ["Valeria Guardo"],
+      "titolo": "Sesso è Potere 2023",
+      "autori": [
+        "Andrea Borruso",
+        "Davide Del Monte",
+        "Paola Chiara Masuzzo",
+        "Chiara Putaturo",
+        "Guenter Richter",
+        "Gloria Riva"
+      ],
+      "tipo": "inchiesta",
+      "piattaforma": "info.nodes",
+      "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/Sesso_e_potere_2023_rev.pdf",
+      "pdf": "Sesso è Potere 2023.pdf",
+      "anno": 2025,
+      "keywords": [
+        "Giornalismo investigativo",
+        "inclusione sociale",
+        "beni confiscati",
+        "violenza di genere",
+        "femminicidi",
+        "patriarcato",
+        "Pnrr"
+      ],
+      "descrizione": "l report “Sesso è Potere” approfondisce ogni anno le diverse opportunità di accesso ai ruoli di\ncomando per gli uomini e le donne.\nLa questione che ci sta a cuore non è se le donne siano più o meno brave degli uomini a comandare, ma quali siano le reali dinamiche di potere che governano la nostra società.\nCi interessa capire chi il potere lo detiene e chi è in grado di esercitarlo, non il come viene esercitato. La risposta al momento è molto semplice: il potere è stabilmente in mano agli uomini."
+    },
+    {
+      "id": "sesso-e-potere-2025",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Sesso è Potere 2025",
+      "autori": [
+        "Marta Abbà",
+        "Flavia Baldinucci",
+        "Andrea Borruso",
+        "Donata Columbro",
+        "Davide Del Monte",
+        "Paola Chiara Masuzzo",
+        "Andrea Nelson Mauro"
+      ],
+      "tipo": "inchiesta",
+      "piattaforma": "info.nodes",
+      "url": "https://drive.google.com/file/d/15NPjII-W5_yFpBVJLyEVYk1GUsK2v64e/view",
+      "pdf": "Sesso è Potere 2025.pdf",
+      "anno": 2025,
+      "keywords": [
+        "Giornalismo investigativo",
+        "inclusione sociale",
+        "beni confiscati",
+        "violenza di genere",
+        "femminicidi",
+        "patriarcato",
+        "Pnrr"
+      ],
+      "descrizione": "l report “Sesso è Potere” approfondisce ogni anno le diverse opportunità di accesso ai ruoli di\ncomando per gli uomini e le donne.\nLa questione che ci sta a cuore non è se le donne siano più o meno brave degli uomini a comandare, ma quali siano le reali dinamiche di potere che governano la nostra società.\nCi interessa capire chi il potere lo detiene e chi è in grado di esercitarlo, non il come viene esercitato. La risposta al momento è molto semplice: il potere è stabilmente in mano agli uomini."
+    },
+    {
+      "id": "simone",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Simone",
+      "autori": [
+        "Stefano Vergine"
+      ],
+      "tipo": "podcast",
+      "piattaforma": "Spotify",
+      "url": "https://open.spotify.com/show/3zcUG0l8xT8cjSiXoVP79H?si=sUYr5HsfTGqImUIdzmDodg&nd=1&dlsi=84fb11eb3aee4896",
+      "pdf": null,
+      "anno": 2025,
+      "keywords": [
+        "Giornalismo investigativo",
+        "abuso di potere",
+        "violenza si stato",
+        "morte in custodia"
+      ],
+      "descrizione": "Simone\" è un podcast in sei puntate, auto prodotto, realizzato per fare luce sulle cause della morte di un ragazzo di 28 anni. Per la giustizia italiana, Simone Mattarelli si è suicidato sotto effetto di cocaina dopo tre ore di inseguimento con sei macchine dei carabinieri. Grazie ad audio inediti e interviste con i protagonisti della storia, Stefano Vergine ricostruisce la storia di Mattarelli, le sue ultime ore di vita, le indagini giudiziarie e i tanti punti oscuri che restano in questo caso poco conosciuto."
+    },
+    {
+      "id": "torino-sempre-piu-ciclabile-ma-lauto-resta-protagonista",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Torino sempre più ciclabile, ma l’auto resta protagonista",
+      "autori": [
+        "Valeria Guardo"
+      ],
       "tipo": "inchiesta",
       "piattaforma": "Bike Italia",
       "url": "https://www.bikeitalia.it/2025/02/27/torino-sempre-piu-ciclabile-ma-lauto-resta-protagonista-della-mobilita/",
       "pdf": null,
       "anno": 2025,
-      "keywords": ["ambiente", "rigenerazione urbana", "automobile", "ciclabilità", "mobilità", "Torino", "PNRR", "trasporti"],
-      "descrizione": "Torino verso una mobilità ciclabile con i fondi PNRR, ma l'auto è ancora protagonista. Analisi del Biciplan 6 e delle contraddizioni di una città che investe nelle piste ciclabili senza ridurre il traffico veicolare."
+      "keywords": [
+        "Giornalismo scientifico",
+        "ambiente",
+        "rigenerazione urbana",
+        "automobile",
+        "ciclabilità",
+        "mobilità",
+        "Torino",
+        "Pnrr"
+      ],
+      "descrizione": "Torino sempre più ciclabile, ma l’auto resta protagonista della mobilità\nBiciplan 6: Torino verso una mobilità ciclabile con i fondi PNRR per le Regioni, ma l’auto è ancora protagonista"
     },
     {
-      "id": "rifugio-violenza",
+      "id": "un-rifugio-dalla-violenza-del-maschio",
       "sezione": "inchieste-ricerche",
       "titolo": "Un rifugio dalla violenza del maschio",
-      "autori": ["Serena Laezza", "Susanna Rugghia", "Sofia Turati"],
+      "autori": [
+        "Serena Laezza",
+        "Susanna Rugghia",
+        "Sofia Turati"
+      ],
       "tipo": "inchiesta",
       "piattaforma": "L'Espresso",
-      "url": "https://lespresso.it/c/-/2025/2/28/case-rifugio-violenza-abusi-donne-fondi/52986",
+      "url": "https:https://lespresso.it/c/-/2025/2/28/case-rifugio-violenza-abusi-donne-fondi/52986",
       "pdf": null,
       "anno": 2025,
-      "keywords": ["beni confiscati", "violenza di genere", "femminicidi", "patriarcato", "case rifugio", "mafia", "inclusione sociale"],
-      "descrizione": "I beni confiscati alle mafie diventano case per dare protezione alle donne vittime di abusi, da cui possono far ripartire le loro vite. Ma i fondi spesso non bastano."
+      "keywords": [
+        "Giornalismo investigativo",
+        "inclusione sociale",
+        "beni confiscati",
+        "violenza di genere",
+        "femminicidi",
+        "patriarcato",
+        "Pnrr"
+      ],
+      "descrizione": "I beni confiscati alle mafie diventano case per dare protezione alle donne vittime di abusi. Che da qui possono far ripartire le loro vite. Ma i fondi spesso non bastano"
+    },
+    {
+      "id": "colonizzazione-artica",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Colonizzazione artica",
+      "autori": [
+        "Davide Del Monte",
+        "Federica Bonalumi"
+      ],
+      "tipo": "reportage, inchiesta",
+      "piattaforma": "IrpiMedia",
+      "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-colonizzazione/",
+      "pdf": null,
+      "anno": 2024,
+      "keywords": [
+        "Groenlandia",
+        "USA",
+        "Trump",
+        "Danimarca",
+        "EU",
+        "cambiamenti climatici",
+        "neocolonialismo",
+        "estrattivismo",
+        "scioglimento dei ghiacci",
+        "inuit",
+        "geopolitica",
+        "materie prime",
+        "terre rare",
+        "uranio"
+      ],
+      "descrizione": "Industrializzazione imposta. Trasferimenti forzati dai villaggi alle città. Così la cultura inuit è stata marginalizzata in Groenlandia. E i cambiamenti climatici rischiano di scioglierla come i ghiacci dell’isola"
+    },
+    {
+      "id": "cosi-le-aziende-italiane-aggirano-le-sanzioni-contro-il-gas-della-russia",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Così le aziende italiane aggirano le sanzioni contro il gas della Russia",
+      "autori": [
+        "Stefano Vergine"
+      ],
+      "tipo": "inchiesta",
+      "piattaforma": "Domani Editoriale",
+      "url": "https://www.editorialedomani.it/politica/mondo/emirati-cina-turchia-nomi-intermediari-usati-per-aggirare-sanzioni-contro-gas-russia-upogzijn",
+      "pdf": null,
+      "anno": 2024,
+      "keywords": [
+        "Groenlandia",
+        "USA",
+        "Trump",
+        "Danimarca",
+        "EU",
+        "cambiamenti climatici",
+        "neocolonialismo",
+        "estrattivismo",
+        "scioglimento dei ghiacci",
+        "inuit",
+        "geopolitica",
+        "materie prime",
+        "terre rare",
+        "uranio"
+      ],
+      "descrizione": "Nonostante i divieti contro l’impianto per il gas Arctic Lng 2, forniture italiane verso Mosca per 134 milioni di euro. Inviate tramite Emirati e Cina. Le merci da Nuovo Pignone, Tenaris, Marcegaglia e da due aziende di Stato"
+    },
+    {
+      "id": "groenlandia-lisola-dei-tesori",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Groenlandia, l’isola dei tesori",
+      "autori": [
+        "Davide Del Monte",
+        "Federica Bonalumi"
+      ],
+      "tipo": "reportage, inchiesta",
+      "piattaforma": "IrpiMedia",
+      "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-isola-dei-tesori/",
+      "pdf": null,
+      "anno": 2024,
+      "keywords": [
+        "Groenlandia",
+        "cambiamenti climatici",
+        "neocolonialismo",
+        "estrattivismo",
+        "scioglimento dei ghiacci",
+        "inuit",
+        "geopolitica",
+        "materie prime",
+        "terre rare",
+        "uranio"
+      ],
+      "descrizione": "La crisi climatica sta rendendo più semplice accedere a patrimoni di risorse naturali finora nascosti o irraggiungibili. Con conseguenze che la politica groenlandese prova ad anticipare, seguendo il principio che la natura governa tutto"
+    },
+    {
+      "id": "la-groenlandia-al-centro-del-grande-gioco-dellartico",
+      "sezione": "inchieste-ricerche",
+      "titolo": "La Groenlandia al centro del Grande Gioco dell’Artico",
+      "autori": [
+        "Davide Del Monte",
+        "Federica Bonalumi"
+      ],
+      "tipo": "reportage, inchiesta",
+      "piattaforma": "IrpiMedia",
+      "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-contesa-ue-russia-cina-australia/",
+      "pdf": null,
+      "anno": 2024,
+      "keywords": [
+        "Groenlandia",
+        "USA",
+        "Trump",
+        "Russia",
+        "Cina",
+        "EU",
+        "cambiamenti climatici",
+        "neocolonialismo",
+        "estrattivismo",
+        "scioglimento dei ghiacci",
+        "inuit",
+        "geopolitica",
+        "materie prime",
+        "terre rare",
+        "uranio"
+      ],
+      "descrizione": "L'isola è contesa da diverse potenze internazionali per le sue ricchezze minerarie e la sua posizione strategica. Eppure l'attuale governo locale si dice sicuro di non finire vittima del neocolonialismo"
+    },
+    {
+      "id": "man-in-the-loop",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Man in the loop",
+      "autori": [
+        "Davide Del Monte",
+        "Laura Carrer",
+        "Andrea Daniele Signorelli"
+      ],
+      "tipo": "inchiesta e ricerca",
+      "piattaforma": "info.nodes",
+      "url": "https://www.infonodes.org/man-in-the-loop",
+      "pdf": "Man in the loop.pdf",
+      "anno": 2024,
+      "keywords": [
+        "armi autonome",
+        "AI",
+        "intelligenza artificiale",
+        "killer robots",
+        "autonomous weapons",
+        "LEAW"
+      ],
+      "descrizione": "Il settore della difesa mostra crescente interesse nel potenziale offerto dall’utilizzo di sistemi di intelligenza artificiale applicati agli armamenti; ricercatori indipendenti e attivisti sono invece preoccupati per i rischi di uno scenario di guerra dominato da armi autonome e da robot killer.\n“Si tratta di un terreno scivoloso, poiché si corre il rischio di far passare per accettabili armi e tecnologie militari non dotate di intelligenza artificiale, ma pur sempre in grado di portare morte e distruzione.” spiega Davide Del Monte, presidente di info.nodes “La ricerca vuole piuttosto evidenziare i problemi che lo sviluppo e l’utilizzo delle armi autonome possono causare in contesti di guerra o di tensione geopolitica, offrendo allo stesso tempo un quadro generale sulla produzione e l’adozione di questi sistemi d’arma avanzati in Italia”.\nLa ricerca, grazie ad interviste ad esperti e docenti universitari, alle informazioni ottenute dal ministero della Difesa, allo studio di documenti e relazioni di Governo, Esercito e Parlamento, e ai comunicati di aziende del settore e centri di ricerca universitari, tenta di far luce sullo stato dell’arte di investimenti in ricerca e produzioni di sistemi d’arma autonomi in Italia.\nNonostante il ministero della Difesa abbia risposto alle richieste di accesso inviate dai ricercatori affermando di non avere in cantiere progetti di sviluppo di armi autonome, le aziende del settore, diversi centri di ricerca universitari e, soprattutto, l’Esercito italiano appaiono connessi e interessati alle nuove prospettive che le tecnologie di intelligenza artificiale offrono al settore degli armamenti.\nCome spiega Laura Carrer, una delle autrici della ricerca “La direzione degli armamenti terrestri ha risposto alla nostra richiesta FOIA fornendo informazioni in merito ai contratti che ha stipulato per progetti di ricerca all’interno del Piano nazionale di Ricerca Militare, che riguardano sistemi di guida autonoma di veicoli terrestri. Sono quattro e uno di questi è unicamente a fini di studio, mentre i restanti contemplano anche una prototipazione. I più interessanti ai fini di questo studio sono quelli che coinvolgono alcune università, come il Politecnico di Milano e La Sapienza di Roma, e che riguardano applicazioni di tecnologie semi-autonome o autonome su macchine e veicoli già in dotazione alle forze armate”.\n“Anche le più evolute intelligenze artificiali commettono errori e potrebbero quindi non essere in grado di distinguere dei contadini da dei soldati. Inoltre, un operatore umano può decidere di evitare un attacco nel caso in cui, per esempio, gli obiettivi individuati si trovino di fianco a un ospedale o una scuola. Un’intelligenza artificiale farebbe le stesse distinzioni?” si chiede il giornalista e coautore della ricerca Andrea Daniele Signorelli. \nLe incertezze e i rischi legati allo sviluppo di questi armamenti sono molti ed elevati, per questo motivo gli autori si augurano che si arrivi presto a una regolamentazione, o meglio ancora a un divieto, dell'utilizzo di armi autonome."
+    },
+    {
+      "id": "sotto-il-ghiaccio-della-groenlandia-si-nasconde-un-tesoro",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Sotto il ghiaccio della Groenlandia si nasconde un tesoro",
+      "autori": [
+        "Davide Del Monte",
+        "Federica Bonalumi"
+      ],
+      "tipo": "documentario video",
+      "piattaforma": "Internazionale",
+      "url": "https://www.internazionale.it/video/2024/12/18/materie-prima-groenlandia",
+      "pdf": null,
+      "anno": 2024,
+      "keywords": [
+        "Groenlandia",
+        "cambiamenti climatici",
+        "neocolonialismo",
+        "estrattivismo",
+        "scioglimento dei ghiacci",
+        "inuit",
+        "geopolitica",
+        "materie prime",
+        "terre rare",
+        "uranio"
+      ],
+      "descrizione": "Negli ultimi vent’anni la Groenlandia è stata particolarmente colpita dalla crisi climatica. Qui il rapido scioglimento del ghiaccio non sta avendo conseguenze solo sugli ecosistemi, ma sta anche attirando l’interesse delle multinazionali estrattive straniere. Il suolo dell’isola artica, infatti, è ricco di materie prime, come petrolio, terre rare e uranio.\nIl governo locale ha di recente deciso di limitare le attività minerarie, soprattutto al sud, temendo l’impatto economico e sociale di una rapida industrializzazione sulla cultura e sulle tradizioni dei groenlandesi, che sono al 90 per cento inuit."
+    },
+    {
+      "id": "chinese-underworld-italia",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Chinese Underworld (italiano)",
+      "autori": [
+        "Davide Del Monte",
+        "Stefano Vergine",
+        "Manuel Rico"
+      ],
+      "tipo": "inchiesta",
+      "piattaforma": "info.nodes",
+      "url": "https://www.infonodes.org/chinese-underworld",
+      "pdf": null,
+      "anno": 2022,
+      "keywords": [
+        "mafia cinese",
+        "criminalità organizzata",
+        "traffico di droga"
+      ],
+      "descrizione": "VIOLENZA, COLLEGAMENTI POLITICI E AFFARI ILLECITI DELLA PRINCIPALE ORGANIZZAZIONE CRIMINALE CINESE IN EUROPA."
+    },
+    {
+      "id": "chinese-underworld-video",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Chinese Underworld (italiano)",
+      "autori": [
+        "Stefano Vergine",
+        "Daniele Zendroni"
+      ],
+      "tipo": "documentario video",
+      "piattaforma": "YouTube",
+      "url": "https://www.youtube.com/watch?v=LOlex5KRUZY",
+      "pdf": null,
+      "anno": 2022,
+      "keywords": [
+        "mafia cinese",
+        "criminalità organizzata",
+        "traffico di droga"
+      ],
+      "descrizione": "VIOLENZA, COLLEGAMENTI POLITICI E AFFARI ILLECITI DELLA PRINCIPALE ORGANIZZAZIONE CRIMINALE CINESE IN EUROPA."
+    },
+    {
+      "id": "chinese-underworld-spain",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Chinese Underworld (spagnolo)",
+      "autori": [
+        "Davide Del Monte",
+        "Stefano Vergine",
+        "Manuel Rico"
+      ],
+      "tipo": "inchiesta",
+      "piattaforma": "infoLibre",
+      "url": "https://www.infolibre.es/politica/italia-juzga-jefe-principal-mafia-china-pais-contaba-ramificaciones-espana_1_1219011.html",
+      "pdf": null,
+      "anno": 2022,
+      "keywords": [
+        "mafia cinese",
+        "criminalità organizzata",
+        "traffico di droga"
+      ],
+      "descrizione": "VIOLENZA, COLLEGAMENTI POLITICI E AFFARI ILLECITI DELLA PRINCIPALE ORGANIZZAZIONE CRIMINALE CINESE IN EUROPA."
+    },
+    {
+      "id": "le-citta-invivibili",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Le città invivibili",
+      "autori": [
+        "Davide Del Monte",
+        "Luca Rinaldi",
+        "Giuseppe Imbrogno",
+        "Giorgia Zoe Righini",
+        "Elisabetta Castellari",
+        "Laura Carrer",
+        "Luca Quagliato",
+        "Stefano Vergine",
+        "Davide Monteleone",
+        "Irene Doda",
+        "Marco Armiero",
+        "Anita No"
+      ],
+      "tipo": "inchiesta e reportage",
+      "piattaforma": "info.nodes",
+      "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/marla-06-22-web-low.pdf",
+      "pdf": "Le città invivibili.pdf",
+      "anno": 2022,
+      "keywords": [
+        "rigenerazione urbana",
+        "periferie",
+        "città",
+        "cambiamenti climatici",
+        "solitudine",
+        "Milano",
+        "Azerbaijan",
+        "Corea del Nord",
+        "Pyongyang"
+      ],
+      "descrizione": "Contenuti del libro:\n\nLe città invivibili\ndi Davide Del Monte\nUna breve riflessione sulle trasformazioni che le città, in particolare Milano, hanno vissuto negli ultimi anni. Passando da Castoriadis a Ballard fino al mai troppo compianto Hakim Bey, l'autore si chiede se le strade delle città del futuro saranno solo un lungo susseguirsi di macchine di pendolari arrabbiati, in coda assieme a turisti dei centri commerciali,. O se, forse, esiste un'alternativa percorribile che ancora non riusciamo a vedere all'orizzonte.\n\nCittà senza cittadinanza\ndi Luca Rinaldi\nLe città sono gli abitanti che le vivono. Se gli abitanti smettono di viverle, le città diventano come dei libri con le pagine bianche, senza nulla da dire, costringendo tutti all'invisibilità.\n\nCartoline da Pyongyang\nfotografie e testo di Giorgia Zoe Righini\nL'autrice e fotografa racconta attraverso una serie di scatti il suo viaggio a Pyongyang, la capitale dello Stato più chiuso del mondo, in cui nulla è lasciato al caso o al libero arbitrio, ma dove al contrario ogni cosa è decisa e preordinata dall'alto.\n\nLa città vive di depressione\ndi Giuseppe Imbrogno\nLa città occidentale non è più soggetto produttivo da un bel pezzo, un processo lento ma inesorabile ha portato l’industria, le fabbriche, le botteghe artigiane sempre più ai margini del tessuto urbano, fuori città, in un altrove sempre più distante e indefinito, il cosiddetto “hinterland. I pochi che resistono al moto centrifugo dell'espulsione si ritrovano sempre più soli, poveri e depressi.\n\nhome-less design\nfotografie e testo di Elisabetta Castellari\nElisabetta gira per la città fotografando e annotando le soluzioni abitative più originali costruite da alcuni senza tetto. Chi non ha nulla se non qualche coperta, poche scatole e un materasso dimostra che la capacità di arrangiarsi e la volontà di voler vivere nel bello non ha bisogno per forza di un salone del design per mostrarsi in tutta la sua potenza.\n\nFare il bagno nel petrolio in Azerbaijan\nfotografie di Davide Monteleone, testo di Stefano Vergine\nUn viaggio nell'unica città al mondo in cui il petrolio sgorga naturalmente dal terreno, Naftlan in Azerbaijan. Il racconto di questo luogo irreale e dei suoi abitanti si snoda a partire dai ricordi del giornalista Stefano Vergine e le fotografie di Davide Monteleone, che lo hanno visitato per un reportage.\n\nLa città dei numeri uno (una volta)\nfotografie di Luca Quagliato, testo di Laura Carrer\nLe parole di Laura e le fotografie di Luca ci portano in un altro luogo irreale, ma questa volta molto più vicino: Milano Due. La cittadella nella città, voluta e costruita da Silvio Berlusconi negli anni '70, è oggi il luogo perfetto per un esercizio di archeologia sociale.\n\nLe economie informali e il diritto alla città\ndi Irene Doda\nDi nuovo in giro per il mondo, grazie al racconto di Irene su come le cosiddette economie informali, spesso erroneamente accostate all'economia sommersa e all'illegalità, siano invece capaci di generare socialità. Anche in periodi cupi come quelli della pandemia globale.\n\nLa città nell'era del Wasteocene\ndi Marco Armiero\nTratto dal suo saggio \"L' era degli scarti\" il professore Marco Armiero ci accompagna nel Wastocene, la nuova era segnata dalla continua produzione di persone, comunità e luoghi di scarto. Una discarica globale che dobbiamo smantellare.\n\nArtwork e collage\ndi Anita Nø\nIl volume è arricchito da alcune opere del progetto artistico @NPPRGL (no paper glue) di Anita Nø, artista di collage residente a Milano."
+    },
+    {
+      "id": "sesso-e-potere-2022",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Sesso è Potere 2022",
+      "autori": [
+        "Valentina Bazzarin",
+        "Irene Doda",
+        "Michela Gnaldi",
+        "Antonella Napolitano"
+      ],
+      "tipo": "inchiesta",
+      "piattaforma": "info.nodes",
+      "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/SESSO_E_POTERE_-_rev.pdf",
+      "pdf": "Sesso è Potere 2022.pdf",
+      "anno": 2022,
+      "keywords": [
+        "Giornalismo investigativo",
+        "giustizia sociale",
+        "violenza di genere",
+        "femminicidi",
+        "patriarcato"
+      ],
+      "descrizione": "l report “Sesso è Potere” approfondisce ogni anno le diverse opportunità di accesso ai ruoli di\ncomando per gli uomini e le donne.\nLa questione che ci sta a cuore non è se le donne siano più o meno brave degli uomini a comandare, ma quali siano le reali dinamiche di potere che governano la nostra società.\nCi interessa capire chi il potere lo detiene e chi è in grado di esercitarlo, non il come viene esercitato. La risposta al momento è molto semplice: il potere è stabilmente in mano agli uomini."
+    },
+    {
+      "id": "murder-drugs-and-extortion-in-tuscanys-chinese-underworld",
+      "sezione": "inchieste-ricerche",
+      "titolo": "Murder, Drugs and Extortion in Tuscany’s Chinese Underworld",
+      "autori": [
+        "Davide Del Monte",
+        "Stefano Vergine",
+        "Gloria Riva"
+      ],
+      "tipo": "inchiesta",
+      "piattaforma": "OCCRP",
+      "url": "https://www.occrp.org/en/investigation/murder-drugs-and-extortion-in-tuscanys-chinese-underworld",
+      "pdf": null,
+      "anno": 2020,
+      "keywords": [
+        "mafia cinese",
+        "criminalità organizzata",
+        "traffico di droga"
+      ],
+      "descrizione": "A Chinese gang is using guns, threats, and fear to corner the market for transporting Chinese-made goods in Europe. \nVIOLENZA, COLLEGAMENTI POLITICI E AFFARI ILLECITI DELLA PRINCIPALE ORGANIZZAZIONE CRIMINALE CINESE IN EUROPA."
     }
   ]
 }
