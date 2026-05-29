@@ -43,5 +43,6 @@ jobs:
           git add search-index.json kb.json
           git diff --cached --quiet && echo "Nessuna modifica." || (
             git commit -m "Auto: aggiorna indice e knowledge base [skip ci]" &&
+            git pull --rebase &&
             git push
           )
