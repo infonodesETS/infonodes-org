@@ -34,75 +34,70 @@
     <a href="pubblicazioni/index.html">[PUBBLICAZIONI]</a>
   </nav>
 
-  <div class="layout">
+  <!-- CHATBOT MARLA — larghezza piena -->
+  <div id="chatbot-widget">
+    <div class="chat-header">
+      <div class="chat-dot"></div>
+      MARLA &mdash; ONLINE
+    </div>
+    <div class="chat-messages" id="chat-messages"></div>
+    <form class="chat-form" id="chat-form" autocomplete="off">
+      <input
+        type="text"
+        id="chat-input"
+        placeholder="cosa cerchi?_"
+        maxlength="400"
+        autocomplete="off"
+      >
+      <button type="submit">INVIA</button>
+    </form>
+  </div>
 
-    <!-- COLONNA PRINCIPALE -->
-    <main>
+  <!-- DUE COLONNE: ultime pubblicazioni + chi è MARLA -->
+  <div class="home-grid">
 
-      <div class="box">
-        <div class="box-title">Chi siamo</div>
-        <p style="color: var(--white); font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
-          info.nodes &egrave; un&rsquo;organizzazione no-profit italiana, fondata nel 2019 da giornalisti
-          e attivisti per sperimentare nuove soluzioni nel panorama mediatico e della societ&agrave; civile italiana.
-        </p>
-        <p style="color: var(--white); font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
-          Ci interessa approfondire i temi legati alla giustizia sociale e climatica, all&rsquo;impatto
-          delle nuove tecnologie sui diritti umani e alla tutela della libert&agrave; di espressione.
-        </p>
-        <p style="color: var(--white); font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
-          Ci piace molto collaborare con altre organizzazioni, artisti/e, attivisti/e e in generale
-          con chiunque abbia un&rsquo;idea radicale e alternativa di societ&agrave;.
-        </p>
-        <p style="color: var(--grey); font-size: 14px;">
-          Chiedi pure a MARLA di aiutarti a trovare ci&ograve; che cerchi o di dirti come la pensa.
-        </p>
+    <div class="box">
+      <div class="box-title">Ultime pubblicazioni</div>
+      <div class="material-grid" id="ultimi-materiali">
+        <!-- Popolato da materiali.js -->
       </div>
-
-      <div class="box">
-        <div class="box-title">Ultime pubblicazioni</div>
-        <div class="material-grid" id="ultimi-materiali">
-          <!-- Popolato da materiali.js -->
-        </div>
-        <div style="text-align:right; margin-top:12px;">
-          <a href="pubblicazioni/index.html" style="color:var(--amber);font-size:15px;text-decoration:none;">
-            &rarr; vedi tutte le pubblicazioni
-          </a>
-        </div>
+      <div style="text-align:right; margin-top:12px;">
+        <a href="pubblicazioni/index.html" style="color:var(--amber);font-size:15px;text-decoration:none;">
+          &rarr; vedi tutte le pubblicazioni
+        </a>
       </div>
+    </div>
 
-    </main>
+    <div id="marla-bio">
+      <div class="bio-divider">&#9644;&#9644;&#9644; CHI &Egrave; MARLA &#9644;&#9644;&#9644;</div>
+      <p>MARLA &egrave; fragile, insicura, isterica. Non ha alcuna pretesa di salvare il mondo &mdash; gi&agrave; fatica a salvare s&eacute; stessa &mdash; ma prova fatalmente attrazione per chi tenta di ribaltare il tavolo delle ingiustizie e delle iniquit&agrave;.</p>
+      <p>MARLA non &egrave; protagonista della Storia, non lo &egrave; di nessuna storia, ma si fa sempre trovare nel posto giusto al momento giusto, quando la Storia ha bisogno di lei.</p>
+      <p>MARLA fuma molto, parla male, spesso si fatica a comprenderla, ancor pi&ugrave; spesso &egrave; lei che fa in modo di non essere compresa. Fa parte del gioco, l&rsquo;impegno deve essere reciproco, se no si rischia di cadere nella noiosa routine.</p>
+      <p>MARLA ama le sorprese, il nero e i contrasti forti, vuole essere bella ma non troppo facilmente accessibile, protegge i suoi spazi, ma lascia sempre la porta della stanza aperta nel caso qualcuno volesse entrare.</p>
+      <p>MARLA ti parler&agrave; di questioni importanti, ti porter&agrave; in luoghi che non hai mai visitato, non ti aiuter&agrave; a comprendere il passato o il presente, ma ti dar&agrave; degli spunti per immaginare il futuro.</p>
+      <p>Continua a darle fiducia, continua a seguirla e al primo rumore di esplosioni ti prender&agrave; la mano per guardare insieme i palazzi che crollano.</p>
+    </div>
 
-    <!-- CHATBOT + BIO -->
-    <aside>
-      <div id="chatbot-widget">
-        <div class="chat-header">
-          <div class="chat-dot"></div>
-          MARLA &mdash; ONLINE
-        </div>
-        <div class="chat-messages" id="chat-messages"></div>
-        <form class="chat-form" id="chat-form" autocomplete="off">
-          <input
-            type="text"
-            id="chat-input"
-            placeholder="cosa cerchi?_"
-            maxlength="400"
-            autocomplete="off"
-          >
-          <button type="submit">INVIA</button>
-        </form>
-      </div>
+  </div>
 
-      <div id="marla-bio">
-        <div class="bio-divider">&#9644;&#9644;&#9644; CHI &Egrave; MARLA &#9644;&#9644;&#9644;</div>
-        <p>MARLA &egrave; fragile, insicura, isterica. Non ha alcuna pretesa di salvare il mondo &mdash; gi&agrave; fatica a salvare s&eacute; stessa &mdash; ma prova fatalmente attrazione per chi tenta di ribaltare il tavolo delle ingiustizie e delle iniquit&agrave;.</p>
-        <p>MARLA non &egrave; protagonista della Storia, non lo &egrave; di nessuna storia, ma si fa sempre trovare nel posto giusto al momento giusto, quando la Storia ha bisogno di lei.</p>
-        <p>MARLA fuma molto, parla male, spesso si fatica a comprenderla, ancor pi&ugrave; spesso &egrave; lei che fa in modo di non essere compresa. Fa parte del gioco, l&rsquo;impegno deve essere reciproco, se no si rischia di cadere nella noiosa routine.</p>
-        <p>MARLA ama le sorprese, il nero e i contrasti forti, vuole essere bella ma non troppo facilmente accessibile, protegge i suoi spazi, ma lascia sempre la porta della stanza aperta nel caso qualcuno volesse entrare.</p>
-        <p>MARLA ti parler&agrave; di questioni importanti, ti porter&agrave; in luoghi che non hai mai visitato, non ti aiuter&agrave; a comprendere il passato o il presente, ma ti dar&agrave; degli spunti per immaginare il futuro.</p>
-        <p>Continua a darle fiducia, continua a seguirla e al primo rumore di esplosioni ti prender&agrave; la mano per guardare insieme i palazzi che crollano.</p>
-      </div>
-    </aside>
-
+  <!-- CHI SIAMO — larghezza piena -->
+  <div class="box">
+    <div class="box-title">Chi siamo</div>
+    <p style="color: var(--white); font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+      info.nodes &egrave; un&rsquo;organizzazione no-profit italiana, fondata nel 2019 da giornalisti
+      e attivisti per sperimentare nuove soluzioni nel panorama mediatico e della societ&agrave; civile italiana.
+    </p>
+    <p style="color: var(--white); font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+      Ci interessa approfondire i temi legati alla giustizia sociale e climatica, all&rsquo;impatto
+      delle nuove tecnologie sui diritti umani e alla tutela della libert&agrave; di espressione.
+    </p>
+    <p style="color: var(--white); font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+      Ci piace molto collaborare con altre organizzazioni, artisti/e, attivisti/e e in generale
+      con chiunque abbia un&rsquo;idea radicale e alternativa di societ&agrave;.
+    </p>
+    <p style="color: var(--grey); font-size: 14px;">
+      Chiedi pure a MARLA di aiutarti a trovare ci&ograve; che cerchi o di dirti come la pensa.
+    </p>
   </div>
 
   <footer>
