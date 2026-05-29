@@ -439,7 +439,7 @@ nav .nav-label {
   grid-template-columns: 1fr 1fr;
   gap: 16px;
   margin-bottom: 16px;
-  align-items: start;
+  align-items: stretch;
 }
 
 @media (max-width: 700px) {
@@ -450,7 +450,31 @@ nav .nav-label {
 #marla-bio {
   border: 1px solid #3a2a00;
   background: #0c0800;
-  padding: 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.marla-portrait {
+  width: 100%;
+  display: block;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  border-bottom: 1px solid #3a2a00;
+}
+
+#marla-bio .bio-divider,
+#marla-bio p {
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+#marla-bio .bio-divider {
+  padding-top: 16px;
+}
+
+#marla-bio p:last-child {
+  padding-bottom: 16px;
 }
 
 .bio-divider {
