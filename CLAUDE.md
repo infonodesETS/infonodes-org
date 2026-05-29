@@ -1,85 +1,95 @@
-# Infonodes — Sito Archivio
+# Infonodes — Sito Archivio con chatbot MARLA
 
 ## Cos'è questo progetto
-Sito web di Infonodes ETS che sostituisce (o affianca) l'attuale sito su Register.it.
-Estetica anni '90 / terminale retro. Ospita un archivio di materiali divisi in tre sezioni
-e un chatbot che aiuta gli utenti a trovare i materiali che cercano.
+Sito web di info.nodes ETS. Estetica retro terminale anni '90 (verde su nero, font VT323).
+Ospita un archivio di materiali e il chatbot MARLA alimentato da Claude API.
 
-**Repository:** https://github.com/infonodesETS/infonodes-org  
-**Sito live:** https://infonodesets.github.io/infonodes-org/  
+**Repository pubblico:** https://github.com/infonodesETS/infonodes-org
+**Sito live:** https://infonodesets.github.io/infonodes-org/
 **Dominio attuale:** https://www.infonodes.org/ (su Register.it — ancora attivo, non toccare)
+**Chatbot backend:** https://infonodes-org.vercel.app/api/chat
 
 ## Utente
 - Non programmatore, lavora da Windows 11
 - Username GitHub: infonodesETS
-- Budget disponibile: ~€1500 per infrastruttura e API
+- Budget API: ~€1500
 
 ## Struttura del progetto
 ```
 infonodes-website/
-├── index.html                    # Homepage con chatbot
-├── inchieste-ricerche/
-│   └── index.html                # Sezione ricerche
-├── formazione-incontri/
-│   └── index.html                # Sezione formazione
-├── campagne-progetti/
-│   └── index.html                # Sezione campagne
-├── css/
-│   └── style.css                 # Tutto il CSS (tema retro terminale verde su nero)
+├── index.html                    # Homepage
+├── pubblicazioni/
+│   └── index.html                # Pagina sezione pubblicazioni
+├── css/style.css                 # CSS tema retro terminale
 ├── js/
-│   └── chatbot.js                # Frontend chatbot (chiama /api/chat)
-└── materiali/                    # Cartella di appoggio (non usata ancora)
+│   ├── chatbot.js                # Frontend chatbot MARLA
+│   └── materiali.js              # Rendering dinamico schede materiali
+├── api/
+│   └── chat.js                   # Funzione serverless Vercel (Claude API)
+├── scripts/
+│   ├── genera_indice.py          # Genera search-index.json
+│   ├── costruisci_kb.py          # Genera kb.json (memoria MARLA)
+│   └── requirements.txt          # Dipendenze Python
+├── .github/workflows/
+│   └── genera-indice.yml         # GitHub Action: rigenera indice e kb
+├── MARLA/                        # Newsletter MARLA (HTML Substack + PDF)
+├── pubblicazioni/                # Materiali pubblicati (PDF + .txt metadati)
+├── archivio/                     # Materiali interni (PDF + .txt metadati)
+├── IMG/                          # Immagini del sito
+├── search-index.json             # Auto-generato dall'Action
+├── kb.json                       # Auto-generato dall'Action (769 KB)
+├── package.json                  # @anthropic-ai/sdk
+└── vercel.json                   # Configurazione Vercel
 ```
 
-## Convenzione materiali
-Ogni materiale nella propria sezione segue questa regola:
-- File reale (PDF, immagine): caricato direttamente nella cartella della sezione
-- File descrizione: `.txt` con lo stesso nome del file, contenente:
-  ```
-  Titolo: ...
-  Anno: ...
-  Parole chiave: ...
-  Descrizione: ...
-  ```
-- Materiali esterni (podcast Spotify, video su Internazionale, ecc.): solo `.txt` con campo aggiuntivo:
-  ```
-  Tipo: podcast | video | articolo
-  Piattaforma: Spotify | Internazionale | ...
-  URL: https://...
-  ```
+## Architettura chatbot MARLA
 
-## Cosa è già fatto
-- [x] Sito statico HTML/CSS con tema retro terminale (verde su nero, font VT323)
-- [x] Homepage con tre sezioni, ticker animato, chatbot UI
-- [x] Pagine per le tre sezioni (inchieste, formazione, campagne)
-- [x] Repository GitHub creato e pubblicato
-- [x] GitHub Pages attivato
+### Knowledge base (kb.json)
+- Generata da `scripts/costruisci_kb.py` su ogni push a MARLA/**, pubblicazioni/**, archivio/**, scripts/**
+- Tre fonti: newsletter MARLA (HTML Substack + PDF), pubblicazioni, archivio
+- Chunk da 400 parole con overlap di 50
+- Ogni chunk ha: id, fonte, titolo, tipo, url, fonte_nome, testo
+- PDF scansionati: fallback OCR con pytesseract (tesseract-ocr-ita installato nell'Action)
+- HTML Substack: titolo estratto da og:title / h1 / title tag
+- File .txt compagno: URL e fonte_nome salvati in ogni chunk del documento
 
-## Cosa manca — da fare in ordine
-1. **Indicizzazione materiali**: script Python che legge tutti i `.txt` e i PDF
-   dalla cartella del repo e costruisce un file `search-index.json`
-2. **Backend chatbot**: funzione serverless su Vercel che riceve la domanda,
-   cerca nel search-index, passa i risultati rilevanti a Claude API e restituisce la risposta
-3. **Aggiornamento pagine sezione**: le pagine delle sezioni devono leggere
-   il search-index e mostrare le schede dei materiali dinamicamente
-4. **Dominio personalizzato**: configurare infonodes.org su GitHub Pages
-   (DNS su Register.it + CNAME nel repo) — opzionale, solo quando si è pronti
+### Backend (Vercel serverless)
+- Modello: claude-haiku-4-5
+- MAX_CHUNK_CONTESTO = 6, MAX_TOKENS_RISPOSTA = 600
+- Cache kb.json in memoria: 10 minuti
+- Ricerca keyword: tokenizzazione italiana con stopwords, score per match esatto/parziale
+- MARLA istruita a citare sempre fonte e URL originale quando disponibile
 
-## Decisioni tecniche prese
-- Hosting: GitHub Pages (gratuito, statico)
-- Backend chatbot: Vercel serverless functions (gratuito per uso leggero)
-- LLM: Claude API (Anthropic) — modello da scegliere al momento dell'implementazione
-- Ricerca: RAG semplice su JSON index (sufficiente per ~100 documenti)
-- No framework JS, no build step: HTML/CSS/JS puri per semplicità
+### Frontend
+- chatbot.js: POST a https://infonodes-org.vercel.app/api/chat con { messages: [...] }
+- Label: [ MARLA ] per bot, [ TU ] per utente
 
-## Design
-- Font: VT323 (testo), Press Start 2P (titoli) — Google Fonts
-- Colori: sfondo #0a0a1a, testo #00ff41 (verde), accenti #ffb000 (ambra), #00e5ff (cyan)
-- Effetto scanline CSS overlay su tutto il sito
-- Chatbot sidebar sticky a destra su desktop, sotto su mobile
+## Layout homepage
+1. Header + ticker + nav
+2. Chatbot MARLA — larghezza piena (500px altezza)
+3. Due colonne uguali: "Ultime pubblicazioni" | "Chi è MARLA" (bio)
+4. "Chi siamo" — larghezza piena
+5. Footer
+
+## Convenzione file materiali (.txt)
+```
+Titolo: ...
+Autori: ...
+Piattaforma: Nome testata          ← usato come fonte_nome
+URL: https://...                   ← citato da MARLA nelle risposte
+Anno: ...
+Parole chiave: ...
+Descrizione: (testo libero, tutto indicizzato)
+```
+- I .txt con PDF compagno vengono usati solo come metadati (non creano chunk separati)
+- I .txt senza PDF compagno vengono indicizzati come chunk propri
+
+## Variabili d'ambiente Vercel
+- ANTHROPIC_API_KEY — chiave API Anthropic
 
 ## Note importanti
-- Il branch principale si chiama `master` (non `main`)
-- I materiali vengono caricati direttamente su GitHub.com via browser drag-and-drop
-- NON modificare il sito su Register.it — rimane invariato fino alla decisione finale
-- Il file `search-index.json` andrà rigenerato ogni volta che si aggiungono materiali
+- Branch principale: **master** (non main)
+- GitHub Pages richiede repo pubblico → kb.json è pubblico
+- Eliminare un file da archivio/ triggera l'Action e MARLA dimentica il contenuto in ~12 min (10 min cache Vercel)
+- Il modello claude-3-5-haiku-20241022 è deprecato → usare claude-haiku-4-5
+- git pull --rebase prima di ogni push per evitare conflitti con l'Action
