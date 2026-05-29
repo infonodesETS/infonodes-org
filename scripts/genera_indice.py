@@ -10,9 +10,7 @@ import re
 from datetime import date
 
 SEZIONI = [
-    'inchieste-ricerche',
-    'formazione-incontri',
-    'campagne-progetti',
+    'pubblicazioni',
 ]
 
 # Chiavi riconosciute nel formato .txt

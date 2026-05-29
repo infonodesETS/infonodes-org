@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Campagne &amp; Progetti — INFONODES.ORG</title>
+  <title>Pubblicazioni — INFONODES.ORG</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
@@ -16,35 +16,29 @@
   <nav>
     <span class="nav-label">NAVIGA:</span>
     <a href="../index.html">[HOME]</a>
-    <a href="../inchieste-ricerche/index.html">[INCHIESTE&nbsp;&amp;&nbsp;RICERCHE]</a>
-    <a href="../formazione-incontri/index.html">[FORMAZIONE&nbsp;&amp;&nbsp;INCONTRI]</a>
-    <a href="index.html" class="active">[CAMPAGNE&nbsp;&amp;&nbsp;PROGETTI]</a>
+    <a href="index.html" class="active">[PUBBLICAZIONI]</a>
   </nav>
 
   <div class="breadcrumb">
-    <a href="../index.html">HOME</a> &gt; <span>CAMPAGNE &amp; PROGETTI</span>
+    <a href="../index.html">HOME</a> &gt; <span>PUBBLICAZIONI</span>
   </div>
 
   <div class="layout">
 
     <main>
       <div class="section-hero">
-        <div class="hero-icon">&#128227;</div>
+        <div class="hero-icon">&#128270;</div>
         <div>
-          <h1>CAMPAGNE &amp; PROGETTI</h1>
-          <p>Comunicati, petizioni, materiali delle campagne e dei progetti in corso e passati.</p>
+          <h1>PUBBLICAZIONI</h1>
+          <p>Inchieste, ricerche, reportage, podcast e video prodotti o promossi da Infonodes.</p>
         </div>
       </div>
 
       <div class="box">
-        <div class="box-title">Materiali disponibili</div>
+        <div class="box-title">Tutti i materiali</div>
+        <div id="filtri-tipo"></div>
         <div class="material-grid" id="material-grid">
-
-          <div style="color: var(--grey); font-size: 15px; padding: 20px 0; text-align: center;">
-            [ Nessun materiale ancora caricato ]<br>
-            <span style="font-size: 13px;">Carica i file nella cartella <code style="color: var(--amber);">campagne-progetti/</code> del repository</span>
-          </div>
-
+          <!-- Popolato da materiali.js -->
         </div>
       </div>
     </main>
@@ -71,6 +65,10 @@
     <div style="font-size: 12px; margin-top: 8px; color: #444;">Best viewed at 800&times;600 &bull; Netscape Navigator 4.0</div>
   </footer>
 
+  <script src="../js/materiali.js"></script>
+  <script>
+    caricaMateriali('pubblicazioni', 'material-grid', '../pubblicazioni');
+  </script>
   <script src="../js/chatbot.js"></script>
 </body>
 </html>

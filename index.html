@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Infonodes — ricerche, formazione e campagne per i diritti digitali e la pace">
+  <meta name="description" content="Infonodes — archivio di inchieste, ricerche e pubblicazioni su tecnologia critica e diritti digitali">
   <title>INFONODES.ORG</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
@@ -19,9 +19,9 @@
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       *** BENVENUTO SU INFONODES.ORG ***
       &nbsp;&nbsp;&bull;&nbsp;&nbsp;
-      Ricerche, formazione e campagne per i diritti digitali e la pace
+      Archivio di inchieste, ricerche e pubblicazioni su tecnologia critica e diritti digitali
       &nbsp;&nbsp;&bull;&nbsp;&nbsp;
-      Esplora l'archivio o chiedi al chatbot
+      Esplora le pubblicazioni o chiedi al chatbot
       &nbsp;&nbsp;&bull;&nbsp;&nbsp;
       *** NUOVI MATERIALI DISPONIBILI ***
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -31,9 +31,7 @@
   <nav>
     <span class="nav-label">NAVIGA:</span>
     <a href="index.html" class="active">[HOME]</a>
-    <a href="inchieste-ricerche/index.html">[INCHIESTE&nbsp;&amp;&nbsp;RICERCHE]</a>
-    <a href="formazione-incontri/index.html">[FORMAZIONE&nbsp;&amp;&nbsp;INCONTRI]</a>
-    <a href="campagne-progetti/index.html">[CAMPAGNE&nbsp;&amp;&nbsp;PROGETTI]</a>
+    <a href="pubblicazioni/index.html">[PUBBLICAZIONI]</a>
   </nav>
 
   <div class="layout">
@@ -46,55 +44,24 @@
         <p style="color: var(--white); font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
           Infonodes è un'associazione indipendente che si occupa di tecnologia critica,
           sorveglianza digitale, armi autonome e diritti nella società dell'informazione.
-          Questo archivio raccoglie anni di ricerche, materiali formativi e documentazione
-          delle nostre campagne.
+          Questo archivio raccoglie inchieste, ricerche, reportage, podcast e video
+          prodotti o promossi da Infonodes nel corso degli anni.
         </p>
         <p style="color: var(--grey); font-size: 14px;">
-          Usa il chatbot a destra per trovare ciò che cerchi, oppure naviga nelle sezioni.
+          Usa il chatbot a destra per trovare ciò che cerchi, oppure sfoglia le pubblicazioni.
         </p>
-      </div>
-
-      <div class="category-grid">
-
-        <a href="inchieste-ricerche/index.html" class="category-card">
-          <span class="cat-icon">&#128270;</span>
-          <span class="cat-name">INCHIESTE &amp;<br>RICERCHE</span>
-          <span class="cat-desc">Analisi, rapporti e indagini su sorveglianza, armi autonome, tecnologie di controllo.</span>
-        </a>
-
-        <a href="formazione-incontri/index.html" class="category-card">
-          <span class="cat-icon">&#127979;</span>
-          <span class="cat-name">FORMAZIONE &amp;<br>INCONTRI</span>
-          <span class="cat-desc">Materiali didattici, presentazioni, slide e documentazione degli eventi formativi.</span>
-        </a>
-
-        <a href="campagne-progetti/index.html" class="category-card">
-          <span class="cat-icon">&#128227;</span>
-          <span class="cat-name">CAMPAGNE &amp;<br>PROGETTI</span>
-          <span class="cat-desc">Comunicati, petizioni, materiali delle campagne e dei progetti in corso.</span>
-        </a>
-
       </div>
 
       <div class="box">
-        <div class="box-title">Ultimi aggiornamenti</div>
-        <ul class="file-list">
-          <li>
-            <span class="file-icon">&#128196;</span>
-            <a href="#">Rapporto armi autonome 2024</a>
-            <span class="file-meta">PDF &mdash; dic 2024</span>
-          </li>
-          <li>
-            <span class="file-icon">&#128247;</span>
-            <a href="#">Materiali seminario sorveglianza</a>
-            <span class="file-meta">ZIP &mdash; nov 2024</span>
-          </li>
-          <li>
-            <span class="file-icon">&#128196;</span>
-            <a href="#">Campagna Stop LAWS &mdash; documentazione</a>
-            <span class="file-meta">PDF &mdash; ott 2024</span>
-          </li>
-        </ul>
+        <div class="box-title">Ultime pubblicazioni</div>
+        <div class="material-grid" id="ultimi-materiali">
+          <!-- Popolato da materiali.js -->
+        </div>
+        <div style="text-align:right; margin-top:12px;">
+          <a href="pubblicazioni/index.html" style="color:var(--amber);font-size:15px;text-decoration:none;">
+            &rarr; vedi tutte le pubblicazioni
+          </a>
+        </div>
       </div>
 
     </main>
@@ -134,6 +101,17 @@
     </div>
   </footer>
 
+  <script src="js/materiali.js"></script>
+  <script>
+    // Mostra solo le 5 pubblicazioni più recenti in homepage
+    (async () => {
+      const res  = await fetch('search-index.json');
+      const data = await res.json();
+      const top5 = data.materiali.slice(0, 5);
+      const el   = document.getElementById('ultimi-materiali');
+      if (el) el.innerHTML = top5.map(m => buildCard(m, 'pubblicazioni')).join('');
+    })();
+  </script>
   <script src="js/chatbot.js"></script>
 </body>
 </html>

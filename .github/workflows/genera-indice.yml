@@ -5,9 +5,7 @@ on:
   push:
     branches: [master]
     paths:
-      - 'inchieste-ricerche/**'
-      - 'formazione-incontri/**'
-      - 'campagne-progetti/**'
+      - 'pubblicazioni/**'
       - 'scripts/genera_indice.py'
 
 jobs:
