@@ -65,7 +65,7 @@ header {
 }
 
 header::before {
-  content: '[ INFONODES.ORG ]';
+  content: '[ INFO.NODES ]';
   position: absolute;
   top: -12px;
   left: 50%;
