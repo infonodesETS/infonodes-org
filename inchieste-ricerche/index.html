@@ -32,20 +32,14 @@
         <div class="hero-icon">&#128270;</div>
         <div>
           <h1>INCHIESTE &amp; RICERCHE</h1>
-          <p>Analisi, rapporti e indagini su sorveglianza, armi autonome e tecnologie di controllo.</p>
+          <p>Analisi, rapporti e inchieste su armi autonome, sorveglianza, ambiente, giustizia sociale e criminalità organizzata.</p>
         </div>
       </div>
 
       <div class="box">
-        <div class="box-title">Materiali disponibili</div>
+        <div class="box-title">Tutti i materiali</div>
         <div class="material-grid" id="material-grid">
-
-          <!-- I materiali reali verranno aggiunti qui -->
-          <div style="color: var(--grey); font-size: 15px; padding: 20px 0; text-align: center;">
-            [ Nessun materiale ancora caricato ]<br>
-            <span style="font-size: 13px;">Carica i file PDF nella cartella <code style="color: var(--amber);">inchieste-ricerche/</code> del repository</span>
-          </div>
-
+          <!-- Popolato da materiali.js -->
         </div>
       </div>
     </main>
@@ -72,6 +66,10 @@
     <div style="font-size: 12px; margin-top: 8px; color: #444;">Best viewed at 800&times;600 &bull; Netscape Navigator 4.0</div>
   </footer>
 
+  <script src="../js/materiali.js"></script>
+  <script>
+    caricaMateriali('inchieste-ricerche', 'material-grid', '../inchieste-ricerche');
+  </script>
   <script src="../js/chatbot.js"></script>
 </body>
 </html>
