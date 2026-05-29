@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Infonodes — archivio di inchieste, ricerche e pubblicazioni su tecnologia critica e diritti digitali">
-  <title>INFONODES.ORG</title>
+  <meta name="description" content="info.nodes — archivio di inchieste, ricerche e reportage. Vogliamo libertà, giustizia e uguaglianza per tutti e tutte.">
+  <title>INFO.NODES</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <header>
-    <div class="site-title">INFONODES<span class="blink">_</span></div>
-    <div class="site-subtitle">rete per la tecnologia critica &bull; dal 1999</div>
+    <div class="site-title">INFO.NODES<span class="blink">_</span></div>
+    <div class="site-subtitle">Vogliamo libert&agrave;, giustizia e uguaglianza per tutti e tutte</div>
   </header>
 
   <div class="ticker-wrap">
     <div class="ticker-inner">
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      *** BENVENUTO SU INFONODES.ORG ***
+      *** BENVENUTI IN INFO.NODES ***
       &nbsp;&nbsp;&bull;&nbsp;&nbsp;
-      Archivio di inchieste, ricerche e pubblicazioni su tecnologia critica e diritti digitali
+      Archivio delle nostre inchieste, ricerche, reportage
       &nbsp;&nbsp;&bull;&nbsp;&nbsp;
-      Esplora le pubblicazioni o chiedi al chatbot
+      Se hai dei dubbi, chiedi a MARLA
       &nbsp;&nbsp;&bull;&nbsp;&nbsp;
-      *** NUOVI MATERIALI DISPONIBILI ***
+      *** BENVENUTI IN INFO.NODES ***
       &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     </div>
   </div>
@@ -42,13 +42,19 @@
       <div class="box">
         <div class="box-title">Chi siamo</div>
         <p style="color: var(--white); font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
-          Infonodes è un'associazione indipendente che si occupa di tecnologia critica,
-          sorveglianza digitale, armi autonome e diritti nella società dell'informazione.
-          Questo archivio raccoglie inchieste, ricerche, reportage, podcast e video
-          prodotti o promossi da Infonodes nel corso degli anni.
+          info.nodes &egrave; un&rsquo;organizzazione no-profit italiana, fondata nel 2019 da giornalisti
+          e attivisti per sperimentare nuove soluzioni nel panorama mediatico e della societ&agrave; civile italiana.
+        </p>
+        <p style="color: var(--white); font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          Ci interessa approfondire i temi legati alla giustizia sociale e climatica, all&rsquo;impatto
+          delle nuove tecnologie sui diritti umani e alla tutela della libert&agrave; di espressione.
+        </p>
+        <p style="color: var(--white); font-size: 16px; line-height: 1.7; margin-bottom: 12px;">
+          Ci piace molto collaborare con altre organizzazioni, artisti/e, attivisti/e e in generale
+          con chiunque abbia un&rsquo;idea radicale e alternativa di societ&agrave;.
         </p>
         <p style="color: var(--grey); font-size: 14px;">
-          Usa il chatbot a destra per trovare ciò che cerchi, oppure sfoglia le pubblicazioni.
+          Chiedi pure a MARLA di aiutarti a trovare ci&ograve; che cerchi o di dirti come la pensa.
         </p>
       </div>
 
@@ -103,13 +109,13 @@
 
   <script src="js/materiali.js"></script>
   <script>
-    // Mostra solo le 5 pubblicazioni più recenti in homepage
+    // Mostra solo le 3 pubblicazioni più recenti in homepage
     (async () => {
       const res  = await fetch('search-index.json');
       const data = await res.json();
-      const top5 = data.materiali.slice(0, 5);
+      const top3 = data.materiali.slice(0, 3);
       const el   = document.getElementById('ultimi-materiali');
-      if (el) el.innerHTML = top5.map(m => buildCard(m, 'pubblicazioni')).join('');
+      if (el) el.innerHTML = top3.map(m => buildCard(m, 'pubblicazioni')).join('');
     })();
   </script>
   <script src="js/chatbot.js"></script>
