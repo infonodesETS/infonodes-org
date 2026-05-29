@@ -1,7 +1,9 @@
 """
 costruisci_kb.py
 Estrae il testo da tutti i materiali (PDF, HTML, TXT) nelle cartelle
-MARLA/ e pubblicazioni/ e costruisce kb.json — la memoria di MARLA.
+MARLA/, pubblicazioni/ e archivio/ e costruisce kb.json — la memoria di MARLA.
+Per ogni documento, se esiste un file .txt compagno con metadati (Titolo, Fonte,
+URL, ecc.), questi vengono incorporati in ogni chunk del documento.
 """
 
 import os
@@ -54,7 +56,40 @@ def pulisci(testo):
     return testo.strip()
 
 
-def chunkerizza(testo, nome_base, fonte, tipo):
+def leggi_metadati_txt(percorso_txt):
+    """
+    Legge i metadati da un file .txt compagno.
+    Restituisce un dict con: titolo, url, fonte_nome, autori, anno.
+    """
+    meta = {}
+    try:
+        with open(percorso_txt, 'r', encoding='utf-8', errors='replace') as f:
+            for riga in f:
+                riga = riga.strip()
+                if ':' not in riga:
+                    continue
+                chiave, _, valore = riga.partition(':')
+                chiave = chiave.strip().lower()
+                valore = valore.strip()
+                if not valore:
+                    continue
+                if chiave == 'titolo':
+                    meta['titolo'] = valore
+                elif chiave == 'url':
+                    # Ricompone URL che poteva essere spezzato dalla partition
+                    meta['url'] = riga.partition(':')[2].strip()
+                elif chiave in ('piattaforma', 'fonte'):
+                    meta['fonte_nome'] = valore
+                elif chiave == 'autori':
+                    meta['autori'] = valore
+                elif chiave == 'anno':
+                    meta['anno'] = valore
+    except Exception:
+        pass
+    return meta
+
+
+def chunkerizza(testo, titolo, fonte_cartella, tipo, url='', fonte_nome=''):
     """Divide il testo in chunk sovrapposti."""
     parole = testo.split()
     if not parole:
@@ -67,11 +102,13 @@ def chunkerizza(testo, nome_base, fonte, tipo):
         fine = min(i + CHUNK_PAROLE, len(parole))
         chunk_testo = ' '.join(parole[i:fine])
         chunks.append({
-            'id':     f"{slugify(nome_base)}-{indice}",
-            'fonte':  fonte,
-            'titolo': nome_base,
-            'tipo':   tipo,
-            'testo':  chunk_testo,
+            'id':         f"{slugify(titolo)}-{indice}",
+            'fonte':      fonte_cartella,
+            'titolo':     titolo,
+            'tipo':       tipo,
+            'url':        url,
+            'fonte_nome': fonte_nome,
+            'testo':      chunk_testo,
         })
         indice += 1
         i += CHUNK_PAROLE - OVERLAP_PAROLE
@@ -112,8 +149,7 @@ def estrai_pdf(percorso):
                 pass
         testo = pulisci('\n'.join(pagine))
 
-        # Se il testo è troppo scarso, è probabile che il PDF sia scansionato:
-        # proviamo con OCR
+        # Se il testo è troppo scarso, è probabile che il PDF sia scansionato
         if len(testo.split()) < 100:
             testo_ocr = estrai_pdf_ocr(percorso)
             if len(testo_ocr.split()) > len(testo.split()):
@@ -127,17 +163,14 @@ def estrai_pdf(percorso):
 
 def estrai_titolo_html(soup):
     """Estrae il titolo reale dall'HTML (Substack o generico)."""
-    # 1. og:title (Substack lo include sempre)
     og = soup.find('meta', property='og:title')
     if og and og.get('content', '').strip():
         return og['content'].strip()
-    # 2. Primo h1
     h1 = soup.find('h1')
     if h1 and h1.get_text().strip():
         t = h1.get_text().strip()
         if len(t) > 3:
             return t
-    # 3. Tag <title>, ripulito da suffissi tipo " | Substack" o " — info.nodes"
     title_tag = soup.find('title')
     if title_tag:
         t = title_tag.get_text().strip()
@@ -156,20 +189,14 @@ def estrai_html(percorso):
         with open(percorso, 'r', encoding='utf-8', errors='replace') as f:
             contenuto = f.read()
         soup = BeautifulSoup(contenuto, 'lxml')
-
         titolo = estrai_titolo_html(soup)
-
-        # Rimuovi nav, footer, script, style, header
         for tag in soup(['nav', 'footer', 'script', 'style', 'header',
                          'aside', 'form', 'button', 'iframe']):
             tag.decompose()
-
-        # Substack: il corpo principale è in .post-content o article
         corpo = (soup.find(class_='post-content') or
                  soup.find('article') or
                  soup.find('main') or
                  soup.body or soup)
-
         return pulisci(corpo.get_text(separator='\n')), titolo
     except Exception as e:
         print(f"    ⚠ Errore HTML {os.path.basename(percorso)}: {e}")
@@ -202,28 +229,51 @@ def processa_cartella(cartella, tipo):
         # Salta README e index
         if nome_file.lower() in ('readme.md', 'readme.txt', 'index.html', 'index.htm'):
             continue
+        # Salta i .txt che hanno un PDF compagno (verranno usati come metadati)
+        if estensione == '.txt':
+            pdf_compagno = os.path.join(cartella, nome_base + '.pdf')
+            if os.path.exists(pdf_compagno):
+                continue  # i metadati verranno letti durante il processo del PDF
 
-        titolo_estratto = None
+        # ── Leggi metadati dal .txt compagno (se esiste) ──────────────────────
+        meta = {}
+        txt_compagno = os.path.join(cartella, nome_base + '.txt')
+        if estensione != '.txt' and os.path.exists(txt_compagno):
+            meta = leggi_metadati_txt(txt_compagno)
 
+        titolo_estratto = meta.get('titolo') or None
+        url             = meta.get('url', '')
+        fonte_nome      = meta.get('fonte_nome', '')
+
+        # ── Estrai testo ──────────────────────────────────────────────────────
         if estensione == '.pdf':
             testo = estrai_pdf(percorso)
         elif estensione in ('.html', '.htm'):
-            testo, titolo_estratto = estrai_html(percorso)
+            testo, titolo_html = estrai_html(percorso)
+            if not titolo_estratto and titolo_html:
+                titolo_estratto = titolo_html
         else:
             testo = estrai_txt(percorso)
+            # Per i .txt senza PDF compagno, leggi anche URL dal testo stesso
+            if not url:
+                meta2 = leggi_metadati_txt(percorso)
+                url        = meta2.get('url', '')
+                fonte_nome = meta2.get('fonte_nome', '')
+                if not titolo_estratto:
+                    titolo_estratto = meta2.get('titolo')
 
         if not testo or len(testo.split()) < 30:
             print(f"    ↷ {nome_file} (testo insufficiente, saltato)")
             continue
 
-        # Usa il titolo estratto dall'HTML se disponibile, altrimenti il nome file
         titolo_finale = titolo_estratto if titolo_estratto else nome_base
 
-        nuovi_chunks = chunkerizza(testo, titolo_finale, cartella, tipo)
+        nuovi_chunks = chunkerizza(testo, titolo_finale, cartella, tipo,
+                                   url=url, fonte_nome=fonte_nome)
         chunks.extend(nuovi_chunks)
         n_parole = len(testo.split())
-        label = f" [{titolo_finale}]" if titolo_estratto else ""
-        print(f"    ✓ {nome_file}{label} → {len(nuovi_chunks)} chunk ({n_parole} parole)")
+        extra = f" [{fonte_nome} — {url}]" if url else ""
+        print(f"    ✓ {nome_file}{extra} → {len(nuovi_chunks)} chunk ({n_parole} parole)")
 
     return chunks
 

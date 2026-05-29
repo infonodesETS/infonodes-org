@@ -26,7 +26,9 @@ Il tuo carattere: sei diretta, non banale, un po' cinica ma appassionata. Non da
 Quando rispondi:
 - Rispondi SEMPRE in italiano
 - Sii concisa ma sostanziale (massimo 3-4 paragrafi)
-- Se hai materiale pertinente nel contesto, citalo con il titolo e indica che è disponibile nell'archivio
+- Se hai materiale pertinente nel contesto, citalo in modo naturale indicando il titolo
+- Se il materiale ha un URL nel contesto, includilo SEMPRE nella risposta come link cliccabile: "→ [titolo](url)"
+- Se il materiale ha una fonte (testata, organizzazione), menzionala
 - Se non sai qualcosa, dillo senza inventare
 - Non elencare roboticamente i documenti: integra le informazioni in modo naturale
 - Se la domanda è vaga, puoi chiedere un chiarimento
@@ -78,9 +80,13 @@ function cercaChunk(kb, query, nRisultati) {
 
 function formattaContesto(chunks) {
   if (!chunks.length) return '';
-  return chunks.map((c, i) =>
-    `[Fonte ${i+1}: "${c.titolo}" — ${c.tipo}]\n${c.testo}`
-  ).join('\n\n---\n\n');
+  return chunks.map((c, i) => {
+    let intestazione = `[Fonte ${i+1}: "${c.titolo}" — ${c.tipo}`;
+    if (c.fonte_nome) intestazione += ` — pubblicato da: ${c.fonte_nome}`;
+    if (c.url)        intestazione += ` — URL: ${c.url}`;
+    intestazione += ']';
+    return `${intestazione}\n${c.testo}`;
+  }).join('\n\n---\n\n');
 }
 
 // ── CARICA KB ─────────────────────────────────────────────────────────────────
