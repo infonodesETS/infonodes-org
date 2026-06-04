@@ -1,0 +1,9 @@
+Titolo: SAMIZDAT presentazione
+Autori: Anonimo
+Tipo: Samizdat
+Piattaforma: info.nodes
+PDF: samizdat_pres
+URL: https://www.infonodes.org/samizdat
+Anno: 2020
+Parole chiave: generazioni, disagio giovanile, movimenti sociali, rabbia, conflitto, disuguaglianze, lotta, potere, contropotere
+Descrizione: presentazione dei samizdat fatti circolare anonimamente da info.nodes
