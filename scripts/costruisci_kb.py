@@ -203,6 +203,17 @@ def estrai_html(percorso):
         return '', None
 
 
+def estrai_docx(percorso):
+    try:
+        from docx import Document
+        doc = Document(percorso)
+        paragrafi = [p.text for p in doc.paragraphs if p.text.strip()]
+        return pulisci('\n'.join(paragrafi))
+    except Exception as e:
+        print(f"    ⚠ Errore DOCX {os.path.basename(percorso)}: {e}")
+        return ''
+
+
 def estrai_txt(percorso):
     try:
         with open(percorso, 'r', encoding='utf-8', errors='replace') as f:
@@ -224,21 +235,25 @@ def processa_cartella(cartella, tipo):
         nome_base = os.path.splitext(nome_file)[0]
 
         # Salta file non di testo
-        if estensione not in ('.pdf', '.html', '.htm', '.txt', '.md'):
+        if estensione not in ('.pdf', '.html', '.htm', '.txt', '.md', '.docx'):
             continue
         # Salta README e index
         if nome_file.lower() in ('readme.md', 'readme.txt', 'index.html', 'index.htm'):
             continue
-        # Salta i .txt che hanno un PDF compagno (verranno usati come metadati)
+        # Salta i .txt che hanno un PDF o DOCX compagno (verranno usati come metadati)
         if estensione == '.txt':
-            pdf_compagno = os.path.join(cartella, nome_base + '.pdf')
-            if os.path.exists(pdf_compagno):
-                continue  # i metadati verranno letti durante il processo del PDF
+            for ext_doc in ('.pdf', '.docx'):
+                if os.path.exists(os.path.join(cartella, nome_base + ext_doc)):
+                    break
+            else:
+                ext_doc = None
+            if ext_doc:
+                continue  # i metadati verranno letti durante il processo del documento
 
         # ── Leggi metadati dal .txt compagno (se esiste) ──────────────────────
         meta = {}
         txt_compagno = os.path.join(cartella, nome_base + '.txt')
-        if estensione != '.txt' and os.path.exists(txt_compagno):
+        if estensione not in ('.txt', '.md') and os.path.exists(txt_compagno):
             meta = leggi_metadati_txt(txt_compagno)
 
         titolo_estratto = meta.get('titolo') or None
@@ -252,6 +267,8 @@ def processa_cartella(cartella, tipo):
             testo, titolo_html = estrai_html(percorso)
             if not titolo_estratto and titolo_html:
                 titolo_estratto = titolo_html
+        elif estensione == '.docx':
+            testo = estrai_docx(percorso)
         else:
             testo = estrai_txt(percorso)
             # Per i .txt senza PDF compagno, leggi anche URL dal testo stesso
