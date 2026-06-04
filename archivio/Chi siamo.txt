@@ -1,0 +1,9 @@
+Titolo: Chi siamo
+Autori: Anonimo
+Tipo: informativo
+Piattaforma: info.nodes
+PDF: chi siamo
+URL: https://www.infonodes.org
+Anno: 2020
+Parole chiave: chi siamo
+Descrizione: breve descrizione di info.nodes
