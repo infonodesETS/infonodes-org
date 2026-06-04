@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-05-29",
-  "totale": 24,
+  "lastUpdated": "2026-06-04",
+  "totale": 29,
   "materiali": [
     {
       "id": "calvairate",
@@ -478,6 +478,30 @@
       "descrizione": "Il settore della difesa mostra crescente interesse nel potenziale offerto dall’utilizzo di sistemi di intelligenza artificiale applicati agli armamenti; ricercatori indipendenti e attivisti sono invece preoccupati per i rischi di uno scenario di guerra dominato da armi autonome e da robot killer.\n“Si tratta di un terreno scivoloso, poiché si corre il rischio di far passare per accettabili armi e tecnologie militari non dotate di intelligenza artificiale, ma pur sempre in grado di portare morte e distruzione.” spiega Davide Del Monte, presidente di info.nodes “La ricerca vuole piuttosto evidenziare i problemi che lo sviluppo e l’utilizzo delle armi autonome possono causare in contesti di guerra o di tensione geopolitica, offrendo allo stesso tempo un quadro generale sulla produzione e l’adozione di questi sistemi d’arma avanzati in Italia”.\nLa ricerca, grazie ad interviste ad esperti e docenti universitari, alle informazioni ottenute dal ministero della Difesa, allo studio di documenti e relazioni di Governo, Esercito e Parlamento, e ai comunicati di aziende del settore e centri di ricerca universitari, tenta di far luce sullo stato dell’arte di investimenti in ricerca e produzioni di sistemi d’arma autonomi in Italia.\nNonostante il ministero della Difesa abbia risposto alle richieste di accesso inviate dai ricercatori affermando di non avere in cantiere progetti di sviluppo di armi autonome, le aziende del settore, diversi centri di ricerca universitari e, soprattutto, l’Esercito italiano appaiono connessi e interessati alle nuove prospettive che le tecnologie di intelligenza artificiale offrono al settore degli armamenti.\nCome spiega Laura Carrer, una delle autrici della ricerca “La direzione degli armamenti terrestri ha risposto alla nostra richiesta FOIA fornendo informazioni in merito ai contratti che ha stipulato per progetti di ricerca all’interno del Piano nazionale di Ricerca Militare, che riguardano sistemi di guida autonoma di veicoli terrestri. Sono quattro e uno di questi è unicamente a fini di studio, mentre i restanti contemplano anche una prototipazione. I più interessanti ai fini di questo studio sono quelli che coinvolgono alcune università, come il Politecnico di Milano e La Sapienza di Roma, e che riguardano applicazioni di tecnologie semi-autonome o autonome su macchine e veicoli già in dotazione alle forze armate”.\n“Anche le più evolute intelligenze artificiali commettono errori e potrebbero quindi non essere in grado di distinguere dei contadini da dei soldati. Inoltre, un operatore umano può decidere di evitare un attacco nel caso in cui, per esempio, gli obiettivi individuati si trovino di fianco a un ospedale o una scuola. Un’intelligenza artificiale farebbe le stesse distinzioni?” si chiede il giornalista e coautore della ricerca Andrea Daniele Signorelli. \nLe incertezze e i rischi legati allo sviluppo di questi armamenti sono molti ed elevati, per questo motivo gli autori si augurano che si arrivi presto a una regolamentazione, o meglio ancora a un divieto, dell'utilizzo di armi autonome."
     },
     {
+      "id": "samizdat-4",
+      "sezione": "pubblicazioni",
+      "titolo": "SAMIZDAT 4 - I due labirinti e i due inneschi dell’attivismo giovanile",
+      "autori": [
+        "At.Tempto"
+      ],
+      "tipi": [
+        "altro"
+      ],
+      "piattaforma": "info.nodes",
+      "url": "https://www.infonodes.org/samizdat4",
+      "pdf": null,
+      "anno": 2024,
+      "keywords": [
+        "generazioni",
+        "disagio giovanile",
+        "movimenti sociali",
+        "rabbia",
+        "conflitto",
+        "disuguaglianze"
+      ],
+      "descrizione": "riflessione sulle ingiustizie che le generazioni più giovani devono subire, senza avere i mezzi per rispondere o riprendersi gli spazi"
+    },
+    {
       "id": "sotto-il-ghiaccio-della-groenlandia-si-nasconde-un-tesoro",
       "sezione": "pubblicazioni",
       "titolo": "Sotto il ghiaccio della Groenlandia si nasconde un tesoro",
@@ -640,6 +664,75 @@
       "descrizione": "l report “Sesso è Potere” approfondisce ogni anno le diverse opportunità di accesso ai ruoli di\ncomando per gli uomini e le donne.\nLa questione che ci sta a cuore non è se le donne siano più o meno brave degli uomini a comandare, ma quali siano le reali dinamiche di potere che governano la nostra società.\nCi interessa capire chi il potere lo detiene e chi è in grado di esercitarlo, non il come viene esercitato. La risposta al momento è molto semplice: il potere è stabilmente in mano agli uomini."
     },
     {
+      "id": "samizdat-1",
+      "sezione": "pubblicazioni",
+      "titolo": "SAMIZDAT 1 - L'ELEFANTE NELLA STANZA aka PERCHE’ A TUTTA QUESTA DISUGUAGLIANZA CORRISPONDE ZERO CONFLITTO SOCIALE?",
+      "autori": [
+        "Anonimo"
+      ],
+      "tipi": [
+        "altro"
+      ],
+      "piattaforma": "info.nodes",
+      "url": "https://www.infonodes.org/samizdat1",
+      "pdf": null,
+      "anno": 2021,
+      "keywords": [
+        "disuguaglianza economica",
+        "conflitto sociale",
+        "repressione",
+        "potere",
+        "contropotere"
+      ],
+      "descrizione": "riflessione sulle disuguaglianze, le ingiustizie e la necessità di nuove lotte e conflitti sociali"
+    },
+    {
+      "id": "samizdat-2",
+      "sezione": "pubblicazioni",
+      "titolo": "SAMIZDAT 2 - I 5 LIVELLI DELLA MODERAZIONE ONLINE aka QUANTI LIVELLI SOPRA DI TE?",
+      "autori": [
+        "Anonimo"
+      ],
+      "tipi": [
+        "altro"
+      ],
+      "piattaforma": "info.nodes",
+      "url": "https://www.infonodes.org/samizdat2",
+      "pdf": null,
+      "anno": 2021,
+      "keywords": [
+        "social network",
+        "disinformazione",
+        "fake news",
+        "moderazione"
+      ],
+      "descrizione": "riflessione sulle distorsioni create dalle piattaforme social e sulla mancanza di trasparenza e accountability di Big Tech"
+    },
+    {
+      "id": "samizdat-3",
+      "sezione": "pubblicazioni",
+      "titolo": "SAMIZDAT 3 - UN FRIDAY MOLTO BLACK aka IL BUSINESS MODEL DELLE PIATTAFORME? ELUDERE LE TASSE",
+      "autori": [
+        "Anonimo"
+      ],
+      "tipi": [
+        "altro"
+      ],
+      "piattaforma": "info.nodes",
+      "url": "https://www.infonodes.org/samizdat3",
+      "pdf": null,
+      "anno": 2021,
+      "keywords": [
+        "tasse",
+        "evasione",
+        "disuguaglianze",
+        "gig economy",
+        "ingiustizia sociale",
+        "Amazon"
+      ],
+      "descrizione": "riflessione sulle distorsioni create dalle piattaforme di vendita online, in grado di guadagnare miliardi senza pagare tasse e creando enormi danni ambientali e sociali"
+    },
+    {
       "id": "murder-drugs-and-extortion-in-tuscanys-chinese-underworld",
       "sezione": "pubblicazioni",
       "titolo": "Murder, Drugs and Extortion in Tuscany’s Chinese Underworld",
@@ -661,6 +754,33 @@
         "traffico di droga"
       ],
       "descrizione": "A Chinese gang is using guns, threats, and fear to corner the market for transporting Chinese-made goods in Europe. \nVIOLENZA, COLLEGAMENTI POLITICI E AFFARI ILLECITI DELLA PRINCIPALE ORGANIZZAZIONE CRIMINALE CINESE IN EUROPA."
+    },
+    {
+      "id": "samizdatpres",
+      "sezione": "pubblicazioni",
+      "titolo": "SAMIZDAT presentazione",
+      "autori": [
+        "Anonimo"
+      ],
+      "tipi": [
+        "altro"
+      ],
+      "piattaforma": "info.nodes",
+      "url": "https://www.infonodes.org/samizdat",
+      "pdf": null,
+      "anno": 2020,
+      "keywords": [
+        "generazioni",
+        "disagio giovanile",
+        "movimenti sociali",
+        "rabbia",
+        "conflitto",
+        "disuguaglianze",
+        "lotta",
+        "potere",
+        "contropotere"
+      ],
+      "descrizione": "presentazione dei samizdat fatti circolare anonimamente da info.nodes"
     }
   ]
 }

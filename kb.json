@@ -1,6 +1,6 @@
 {
-  "lastUpdated": "2026-05-29",
-  "totaleChunk": 383,
+  "lastUpdated": "2026-06-04",
+  "totaleChunk": 388,
   "chunks": [
     {
       "id": "intro-0",
@@ -2845,6 +2845,51 @@
       "url": "https://www.editorialedomani.it/fatti/carcere-ferrara-nuovo-padiglione-detenuti-progetto-pnrr-awhzgqqu",
       "fonte_nome": "Domani Editoriale",
       "testo": "Titolo: Più celle e meno spazio per le attività il carcere di Ferrara non è un buon modello Autori: Francesca Polizzi, Elisa Rossi Tipo: Inchiesta Piattaforma: Domani Editoriale URL: https://www.editorialedomani.it/fatti/carcere-ferrara-nuovo-padiglione-detenuti-progetto-pnrr-awhzgqqu Anno: 2025 Parole chiave: Giornalismo investigativo, inclusione sociale, prigione, carcere, Pnrr Descrizione: Nella casa circondariale di Ferrara è prevista la costruzione di un nuovo padiglione che andrà a sottrarre spazio a laboratori e occupazioni lavorative. Il progetto è uno degli otto previsti dal Pnrr, ma l’avanzamento dei lavori procede a rilento"
+    },
+    {
+      "id": "samizdat-1-lelefante-nella-stanza-aka-perche-a-tutta-questa--0",
+      "fonte": "pubblicazioni",
+      "titolo": "SAMIZDAT 1 - L'ELEFANTE NELLA STANZA aka PERCHE’ A TUTTA QUESTA DISUGUAGLIANZA CORRISPONDE ZERO CONFLITTO SOCIALE?",
+      "tipo": "pubblicazione",
+      "url": "https://www.infonodes.org/samizdat1",
+      "fonte_nome": "info.nodes",
+      "testo": "Titolo: SAMIZDAT 1 - L'ELEFANTE NELLA STANZA aka PERCHE’ A TUTTA QUESTA DISUGUAGLIANZA CORRISPONDE ZERO CONFLITTO SOCIALE? Autori: Anonimo Tipo: Samizdat Piattaforma: info.nodes PDF: SAMIZDAT 1 URL: https://www.infonodes.org/samizdat1 Anno: 2021 Parole chiave: disuguaglianza economica, conflitto sociale, repressione, potere, contropotere Descrizione: riflessione sulle disuguaglianze, le ingiustizie e la necessità di nuove lotte e conflitti sociali"
+    },
+    {
+      "id": "samizdat-2-i-5-livelli-della-moderazione-online-aka-quanti-l-0",
+      "fonte": "pubblicazioni",
+      "titolo": "SAMIZDAT 2 - I 5 LIVELLI DELLA MODERAZIONE ONLINE aka QUANTI LIVELLI SOPRA DI TE?",
+      "tipo": "pubblicazione",
+      "url": "https://www.infonodes.org/samizdat2",
+      "fonte_nome": "info.nodes",
+      "testo": "Titolo: SAMIZDAT 2 - I 5 LIVELLI DELLA MODERAZIONE ONLINE aka QUANTI LIVELLI SOPRA DI TE? Autori: Anonimo Tipo: Samizdat Piattaforma: info.nodes PDF: SAMIZDAT 2 URL: https://www.infonodes.org/samizdat2 Anno: 2021 Parole chiave: social network, disinformazione, fake news, moderazione Descrizione: riflessione sulle distorsioni create dalle piattaforme social e sulla mancanza di trasparenza e accountability di Big Tech"
+    },
+    {
+      "id": "samizdat-3-un-friday-molto-black-aka-il-business-model-delle-0",
+      "fonte": "pubblicazioni",
+      "titolo": "SAMIZDAT 3 - UN FRIDAY MOLTO BLACK aka IL BUSINESS MODEL DELLE PIATTAFORME? ELUDERE LE TASSE",
+      "tipo": "pubblicazione",
+      "url": "https://www.infonodes.org/samizdat3",
+      "fonte_nome": "info.nodes",
+      "testo": "Titolo: SAMIZDAT 3 - UN FRIDAY MOLTO BLACK aka IL BUSINESS MODEL DELLE PIATTAFORME? ELUDERE LE TASSE Autori: Anonimo Tipo: Samizdat Piattaforma: info.nodes PDF: SAMIZDAT 3 URL: https://www.infonodes.org/samizdat3 Anno: 2021 Parole chiave: tasse, evasione, disuguaglianze, gig economy, ingiustizia sociale , Amazon Descrizione: riflessione sulle distorsioni create dalle piattaforme di vendita online, in grado di guadagnare miliardi senza pagare tasse e creando enormi danni ambientali e sociali"
+    },
+    {
+      "id": "samizdat-4-i-due-labirinti-e-i-due-inneschi-dellattivismo-gi-0",
+      "fonte": "pubblicazioni",
+      "titolo": "SAMIZDAT 4 - I due labirinti e i due inneschi dell’attivismo giovanile",
+      "tipo": "pubblicazione",
+      "url": "https://www.infonodes.org/samizdat4",
+      "fonte_nome": "info.nodes",
+      "testo": "Titolo: SAMIZDAT 4 - I due labirinti e i due inneschi dell’attivismo giovanile Autori: At.Tempto Tipo: Samizdat Piattaforma: info.nodes PDF: SAMIZDAT 4 URL: https://www.infonodes.org/samizdat4 Anno: 2024 Parole chiave: generazioni, disagio giovanile, movimenti sociali, rabbia, conflitto, disuguaglianze Descrizione: riflessione sulle ingiustizie che le generazioni più giovani devono subire, senza avere i mezzi per rispondere o riprendersi gli spazi"
+    },
+    {
+      "id": "samizdat-presentazione-0",
+      "fonte": "pubblicazioni",
+      "titolo": "SAMIZDAT presentazione",
+      "tipo": "pubblicazione",
+      "url": "https://www.infonodes.org/samizdat",
+      "fonte_nome": "info.nodes",
+      "testo": "Titolo: SAMIZDAT presentazione Autori: Anonimo Tipo: Samizdat Piattaforma: info.nodes PDF: samizdat_pres URL: https://www.infonodes.org/samizdat Anno: 2020 Parole chiave: generazioni, disagio giovanile, movimenti sociali, rabbia, conflitto, disuguaglianze, lotta, potere, contropotere Descrizione: presentazione dei samizdat fatti circolare anonimamente da info.nodes"
     },
     {
       "id": "sesso-e-potere-2022-0",
