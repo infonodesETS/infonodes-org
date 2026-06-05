@@ -87,7 +87,7 @@ header::before {
 }
 
 .site-subtitle {
-  color: var(--amber);
+  color: var(--green);
   font-size: 16px;
   letter-spacing: 2px;
 }
