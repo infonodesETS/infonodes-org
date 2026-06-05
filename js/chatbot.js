@@ -71,7 +71,7 @@ class InfonodesChat {
     this.showTyping();
 
     try {
-      const res = await fetch('https://marla.vercel.app/api/chat', {
+      const res = await fetch('https://marlamag.vercel.app/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: this.messages })

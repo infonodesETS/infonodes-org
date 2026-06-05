@@ -7,7 +7,7 @@ Ospita un archivio di materiali e il chatbot MARLA alimentato da Claude API.
 **Repository pubblico:** https://github.com/infonodesETS/infonodes-org
 **Sito live:** https://infonodesets.github.io/infonodes-org/
 **Dominio attuale:** https://www.infonodes.org/ (su Register.it — ancora attivo, non toccare)
-**Chatbot backend:** https://marla.vercel.app/api/chat
+**Chatbot backend:** https://marlamag.vercel.app/api/chat
 
 ## Utente
 - Non programmatore, lavora da Windows 11
@@ -61,7 +61,7 @@ infonodes-website/
 - MARLA istruita a citare sempre fonte e URL originale quando disponibile
 
 ### Frontend
-- chatbot.js: POST a https://marla.vercel.app/api/chat con { messages: [...] }
+- chatbot.js: POST a https://marlamag.vercel.app/api/chat con { messages: [...] }
 - Label: [ MARLA ] per bot, [ TU ] per utente
 
 ## Layout homepage
