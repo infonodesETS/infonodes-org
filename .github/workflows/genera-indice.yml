@@ -14,6 +14,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Scarica il repository
@@ -25,7 +27,9 @@ jobs:
           python-version: '3.11'
 
       - name: Installa dipendenze sistema (OCR)
-        run: sudo apt-get install -y tesseract-ocr tesseract-ocr-ita poppler-utils
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y tesseract-ocr tesseract-ocr-ita poppler-utils
 
       - name: Installa dipendenze Python
         run: pip install -r scripts/requirements.txt
