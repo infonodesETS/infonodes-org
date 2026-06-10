@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-06-10",
-  "totale": 30,
+  "totale": 31,
   "materiali": [
     {
       "id": "calvairate",
@@ -18,6 +18,7 @@
       "url": "https://irpimedia.irpi.eu/senzasegnaledue-calvairate/",
       "pdf": null,
       "anno": 2026,
+      "data": "",
       "keywords": [
         "periferie",
         "gentrificazione",
@@ -41,6 +42,7 @@
       "url": "https://7amleh.org/post/meta-suppression-of-palestinian-content-en",
       "pdf": null,
       "anno": 2026,
+      "data": "",
       "keywords": [
         "genocide",
         "social network",
@@ -49,6 +51,27 @@
         "big tech"
       ],
       "descrizione": "A Data-Based Analysis of Meta’s Policy Application, Moderation Enforcement, and Communication,” documenting patterns of censorship and suppression affecting Palestinian content across Meta’s platforms over a five-year period."
+    },
+    {
+      "id": "resisting-the-rule-of-the-rich",
+      "sezione": "letture",
+      "titolo": "Resisting the Rule of the Rich\nOrganizzazione: Oxfam",
+      "autori": [],
+      "tipi": [
+        "ricerca"
+      ],
+      "piattaforma": "",
+      "url": "https://www.oxfam.org/en/research/resisting-rule-rich",
+      "pdf": null,
+      "anno": 2026,
+      "data": "",
+      "keywords": [
+        "economic injustice",
+        "social injustice",
+        "Freedom",
+        "inequalities"
+      ],
+      "descrizione": "Billionaire fortunes have grown at a rate three times faster than the previous five years since the election of Donald Trump in November 2024. While US billionaires have seen the sharpest growth in their fortunes, billionaires in the rest of the world have also seen double digit increases. \n\nThe number of billionaires has surpassed 3,000 for the first time, and the level of billionaire wealth is now higher than at any time in history. Meanwhile, one in four people globally face hunger. \n\nIt is one thing for a billionaire to buy an enormous yacht or many luxury homes around the world. This excessive consumption can be rightly criticized in a deeply unequal world where the majority of people have very little and our planet is suffocating from relentless carbon emissions and waste. But many would reject this criticism, describing it as the politics on envy.\n\nYet far fewer people would disagree that when a billionaire uses their wealth to buy a politician, to influence a government, to own a newspaper or a social media platform, or to out-lawyer any opposition to ensure they are above the law, that these actions undermine progress and fairness. Such power gives billionaires control over all our futures, undermining political freedom and the rights of the rest of us."
     },
     {
       "id": "casa-del-marinaio-di-san-ferdinando",
@@ -66,6 +89,7 @@
       "url": "https://scomodo.org/a-san-ferdinando-in-calabria-si-cerca-di-recuperare-un-centro-di-accoglienza-che-non-ha-mai-accolto-nessuno/",
       "pdf": null,
       "anno": 2025,
+      "data": "",
       "keywords": [
         "accoglienza",
         "Calabria",
@@ -94,6 +118,7 @@
       "url": "https://lespresso.it/c/politica/2025/2/7/confiscati-e-in-balia-dei-vandali/52744",
       "pdf": null,
       "anno": 2025,
+      "data": "",
       "keywords": [
         "Giornalismo investigativo",
         "inclusione sociale",
@@ -119,6 +144,7 @@
       "url": "https://irpimedia.irpi.eu/cittainaffitto-piazza-angilberto-milano-beautification-urbanistica-tattica/",
       "pdf": null,
       "anno": 2025,
+      "data": "",
       "keywords": [
         "periferie",
         "gentrificazione",
@@ -144,6 +170,7 @@
       "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/Report_aware.pdf",
       "pdf": null,
       "anno": 2025,
+      "data": "",
       "keywords": [
         "Giornalismo scientifico",
         "ambiente",
@@ -169,6 +196,7 @@
       "url": "https://www.voiceoverfoundation.org/it/miccia-mag/politica-del-mare-taranto-farina-gianfranceschi-scannavacca",
       "pdf": null,
       "anno": 2025,
+      "data": "",
       "keywords": [
         "Giornalismo scientifico",
         "ambiente",
@@ -194,6 +222,7 @@
       "url": "https://www.editorialedomani.it/fatti/carcere-ferrara-nuovo-padiglione-detenuti-progetto-pnrr-awhzgqqu",
       "pdf": null,
       "anno": 2025,
+      "data": "",
       "keywords": [
         "Giornalismo investigativo",
         "inclusione sociale",
@@ -222,6 +251,7 @@
       "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/Sesso_e_potere_2023_rev.pdf",
       "pdf": "Sesso è Potere 2023.pdf",
       "anno": 2025,
+      "data": "",
       "keywords": [
         "Giornalismo investigativo",
         "inclusione sociale",
@@ -253,6 +283,7 @@
       "url": "https://drive.google.com/file/d/15NPjII-W5_yFpBVJLyEVYk1GUsK2v64e/view",
       "pdf": "Sesso è Potere 2025.pdf",
       "anno": 2025,
+      "data": "",
       "keywords": [
         "Giornalismo investigativo",
         "inclusione sociale",
@@ -279,6 +310,7 @@
       "url": "https://open.spotify.com/show/3zcUG0l8xT8cjSiXoVP79H?si=sUYr5HsfTGqImUIdzmDodg&nd=1&dlsi=84fb11eb3aee4896",
       "pdf": null,
       "anno": 2025,
+      "data": "",
       "keywords": [
         "Giornalismo investigativo",
         "abuso di potere",
@@ -301,6 +333,7 @@
       "url": "https://www.bikeitalia.it/2025/02/27/torino-sempre-piu-ciclabile-ma-lauto-resta-protagonista-della-mobilita/",
       "pdf": null,
       "anno": 2025,
+      "data": "",
       "keywords": [
         "Giornalismo scientifico",
         "ambiente",
@@ -329,6 +362,7 @@
       "url": "https:https://lespresso.it/c/-/2025/2/28/case-rifugio-violenza-abusi-donne-fondi/52986",
       "pdf": null,
       "anno": 2025,
+      "data": "",
       "keywords": [
         "Giornalismo investigativo",
         "inclusione sociale",
@@ -356,6 +390,7 @@
       "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-colonizzazione/",
       "pdf": null,
       "anno": 2024,
+      "data": "",
       "keywords": [
         "Groenlandia",
         "USA",
@@ -388,6 +423,7 @@
       "url": "https://www.editorialedomani.it/politica/mondo/emirati-cina-turchia-nomi-intermediari-usati-per-aggirare-sanzioni-contro-gas-russia-upogzijn",
       "pdf": null,
       "anno": 2024,
+      "data": "",
       "keywords": [
         "Groenlandia",
         "USA",
@@ -422,6 +458,7 @@
       "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-isola-dei-tesori/",
       "pdf": null,
       "anno": 2024,
+      "data": "",
       "keywords": [
         "Groenlandia",
         "cambiamenti climatici",
@@ -452,6 +489,7 @@
       "url": "https://irpimedia.irpi.eu/sottoighiacci-groenlandia-contesa-ue-russia-cina-australia/",
       "pdf": null,
       "anno": 2024,
+      "data": "",
       "keywords": [
         "Groenlandia",
         "USA",
@@ -488,6 +526,7 @@
       "url": "https://www.infonodes.org/man-in-the-loop",
       "pdf": "Man in the loop.pdf",
       "anno": 2024,
+      "data": "",
       "keywords": [
         "armi autonome",
         "AI",
@@ -512,6 +551,7 @@
       "url": "https://www.infonodes.org/samizdat4",
       "pdf": null,
       "anno": 2024,
+      "data": "",
       "keywords": [
         "generazioni",
         "disagio giovanile",
@@ -537,6 +577,7 @@
       "url": "https://www.internazionale.it/video/2024/12/18/materie-prima-groenlandia",
       "pdf": null,
       "anno": 2024,
+      "data": "",
       "keywords": [
         "Groenlandia",
         "cambiamenti climatici",
@@ -567,6 +608,7 @@
       "url": "https://www.infonodes.org/chinese-underworld",
       "pdf": null,
       "anno": 2022,
+      "data": "",
       "keywords": [
         "mafia cinese",
         "criminalità organizzata",
@@ -589,6 +631,7 @@
       "url": "https://www.youtube.com/watch?v=LOlex5KRUZY",
       "pdf": null,
       "anno": 2022,
+      "data": "",
       "keywords": [
         "mafia cinese",
         "criminalità organizzata",
@@ -612,6 +655,7 @@
       "url": "https://www.infolibre.es/politica/italia-juzga-jefe-principal-mafia-china-pais-contaba-ramificaciones-espana_1_1219011.html",
       "pdf": null,
       "anno": 2022,
+      "data": "",
       "keywords": [
         "mafia cinese",
         "criminalità organizzata",
@@ -645,6 +689,7 @@
       "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/marla-06-22-web-low.pdf",
       "pdf": "Le città invivibili.pdf",
       "anno": 2022,
+      "data": "",
       "keywords": [
         "rigenerazione urbana",
         "periferie",
@@ -675,6 +720,7 @@
       "url": "https://irp.cdn-website.com/6c73ff89/files/uploaded/SESSO_E_POTERE_-_rev.pdf",
       "pdf": "Sesso è Potere 2022.pdf",
       "anno": 2022,
+      "data": "",
       "keywords": [
         "Giornalismo investigativo",
         "giustizia sociale",
@@ -698,6 +744,7 @@
       "url": "https://www.infonodes.org/samizdat1",
       "pdf": null,
       "anno": 2021,
+      "data": "",
       "keywords": [
         "disuguaglianza economica",
         "conflitto sociale",
@@ -721,6 +768,7 @@
       "url": "https://www.infonodes.org/samizdat2",
       "pdf": null,
       "anno": 2021,
+      "data": "",
       "keywords": [
         "social network",
         "disinformazione",
@@ -743,6 +791,7 @@
       "url": "https://www.infonodes.org/samizdat3",
       "pdf": null,
       "anno": 2021,
+      "data": "",
       "keywords": [
         "tasse",
         "evasione",
@@ -769,6 +818,7 @@
       "url": "https://www.occrp.org/en/investigation/murder-drugs-and-extortion-in-tuscanys-chinese-underworld",
       "pdf": null,
       "anno": 2020,
+      "data": "",
       "keywords": [
         "mafia cinese",
         "criminalità organizzata",
@@ -790,6 +840,7 @@
       "url": "https://www.infonodes.org/samizdat",
       "pdf": "samizdat_pres.pdf",
       "anno": 2020,
+      "data": "",
       "keywords": [
         "generazioni",
         "disagio giovanile",
