@@ -8,6 +8,7 @@ on:
       - 'pubblicazioni/**'
       - 'MARLA/**'
       - 'archivio/**'
+      - 'letture/**'
       - 'scripts/**'
       - '.github/workflows/genera-indice.yml'
 

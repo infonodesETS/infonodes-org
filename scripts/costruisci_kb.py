@@ -31,6 +31,7 @@ CARTELLE = {
     'MARLA':        'newsletter',
     'pubblicazioni': 'pubblicazione',
     'archivio':     'archivio',        # materiali interni non pubblicati
+    'letture':      'lettura',         # report di altre organizzazioni
 }
 
 CHUNK_PAROLE = 400      # lunghezza massima di ogni chunk (in parole)

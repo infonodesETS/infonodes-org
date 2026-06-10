@@ -11,6 +11,7 @@ from datetime import date
 
 SEZIONI = [
     'pubblicazioni',
+    'letture',
 ]
 
 # Chiavi riconosciute nel formato .txt
@@ -46,6 +47,7 @@ def normalizza_tipi(tipo_raw):
         'formazione':  'formazione',
         'documento':   'documento',
         'campagna':    'campagna',
+        'report':      'ricerca',
     }
 
     risultato = []
@@ -130,12 +132,14 @@ def processa_file(cartella, nome_file, sezione):
     nome_base = nome_file[:-4]  # rimuove .txt
 
     # Cerca il PDF nella stessa cartella
+    # Per le letture il link va SEMPRE alla fonte originale, mai al PDF locale
     pdf_file = None
-    campo_pdf = dati.get('pdf', '').strip()
-    if campo_pdf:
-        nome_pdf = campo_pdf if campo_pdf.lower().endswith('.pdf') else campo_pdf + '.pdf'
-        if os.path.exists(os.path.join(cartella, nome_pdf)):
-            pdf_file = nome_pdf
+    if sezione != 'letture':
+        campo_pdf = dati.get('pdf', '').strip()
+        if campo_pdf:
+            nome_pdf = campo_pdf if campo_pdf.lower().endswith('.pdf') else campo_pdf + '.pdf'
+            if os.path.exists(os.path.join(cartella, nome_pdf)):
+                pdf_file = nome_pdf
 
     # Autori
     autori_raw = dati.get('autori', '')

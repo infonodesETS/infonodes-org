@@ -55,7 +55,7 @@
       </div>
       <div style="text-align:right; margin-top:12px;">
         <a href="pubblicazioni/index.html" style="color:var(--amber);font-size:15px;text-decoration:none;">
-          &rarr; vedi tutte le cose che ho letto
+          &rarr; le pubblicazioni di info.nodes
         </a>
       </div>
     </div>
@@ -106,13 +106,18 @@
 
   <script src="js/materiali.js"></script>
   <script>
-    // Mostra solo le 3 pubblicazioni più recenti in homepage
+    // Mostra le letture più recenti in homepage (max 4)
     (async () => {
+      const el = document.getElementById('ultimi-materiali');
+      if (!el) return;
       const res  = await fetch('search-index.json');
       const data = await res.json();
-      const top3 = data.materiali.slice(0, 3);
-      const el   = document.getElementById('ultimi-materiali');
-      if (el) el.innerHTML = top3.map(m => buildCard(m, 'pubblicazioni')).join('');
+      const letture = data.materiali.filter(m => m.sezione === 'letture').slice(0, 4);
+      if (letture.length === 0) {
+        el.innerHTML = '<div class="mat-loading">[ Nessuna lettura ancora caricata ]</div>';
+        return;
+      }
+      el.innerHTML = letture.map(m => buildCard(m, 'letture')).join('');
     })();
   </script>
   <script src="js/chatbot.js"></script>
