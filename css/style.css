@@ -14,6 +14,7 @@
   --grey:       #888;
   --border:     #00ff4166;
   --red:        #ff4444;
+  --fucsia:     #ff00ff;
 }
 
 * {
@@ -87,8 +88,8 @@ header::before {
 }
 
 .site-subtitle {
-  color: var(--green);
-  font-size: 16px;
+  color: var(--fucsia);
+  font-size: 18px;
   letter-spacing: 2px;
 }
 
@@ -454,8 +455,8 @@ nav .nav-label {
 }
 
 .bio-divider {
-  color: var(--amber);
-  font-size: 13.5px;
+  color: var(--fucsia);
+  font-size: 15.5px;
   letter-spacing: 2px;
   text-align: center;
   margin-bottom: 14px;
@@ -463,8 +464,8 @@ nav .nav-label {
 }
 
 #marla-bio p {
-  color: #9a8060;
-  font-size: 16.5px;
+  color: var(--fucsia);
+  font-size: 18.5px;
   line-height: 1.7;
   margin-bottom: 12px;
   font-family: 'VT323', monospace;
@@ -472,7 +473,7 @@ nav .nav-label {
 
 #marla-bio p:last-child {
   margin-bottom: 0;
-  color: var(--amber);
+  color: var(--fucsia);
   opacity: 0.85;
 }
 
