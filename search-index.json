@@ -1,6 +1,6 @@
 {
   "lastUpdated": "2026-06-10",
-  "totale": 29,
+  "totale": 30,
   "materiali": [
     {
       "id": "calvairate",
@@ -28,6 +28,27 @@
         "speculazione edilizia"
       ],
       "descrizione": "Reportage fotografico, con inserti video, sul quartiere di Calvairate a Milano e in particolare il complesso di case popolari \"Ettore Ponti\", in via del Turchino. Il reportage racconta le trasformazioni del quartiere attraverso le parobele di vita e le parole di quattro abitanti delle case popolari."
+    },
+    {
+      "id": "platformicide-of-palestine",
+      "sezione": "letture",
+      "titolo": "Platformicide of Palestine\nOrganizzazione: 7amleh",
+      "autori": [],
+      "tipi": [
+        "ricerca"
+      ],
+      "piattaforma": "",
+      "url": "https://7amleh.org/post/meta-suppression-of-palestinian-content-en",
+      "pdf": null,
+      "anno": 2026,
+      "keywords": [
+        "genocide",
+        "social network",
+        "censorship",
+        "palestine",
+        "big tech"
+      ],
+      "descrizione": "A Data-Based Analysis of Meta’s Policy Application, Moderation Enforcement, and Communication,” documenting patterns of censorship and suppression affecting Palestinian content across Meta’s platforms over a five-year period."
     },
     {
       "id": "casa-del-marinaio-di-san-ferdinando",
