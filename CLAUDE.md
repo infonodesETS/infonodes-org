@@ -33,9 +33,10 @@ infonodes-website/
 ├── .github/workflows/
 │   └── genera-indice.yml         # GitHub Action: rigenera indice e kb
 ├── MARLA/                        # Newsletter MARLA (HTML Substack + PDF)
-├── pubblicazioni/                # Materiali pubblicati (PDF + .txt metadati)
+├── pubblicazioni/                # Pubblicazioni info.nodes (PDF + .txt metadati)
 ├── archivio/                     # Materiali interni (PDF + .txt metadati)
-├── IMG/                          # Immagini del sito
+├── letture/                      # Report di altre org (PDF + .txt con URL fonte)
+│   └── index.html                # Pagina elenco letture
 ├── search-index.json             # Auto-generato dall'Action
 ├── kb.json                       # Auto-generato dall'Action (769 KB)
 ├── package.json                  # @anthropic-ai/sdk
@@ -45,8 +46,8 @@ infonodes-website/
 ## Architettura chatbot MARLA
 
 ### Knowledge base (kb.json)
-- Generata da `scripts/costruisci_kb.py` su ogni push a MARLA/**, pubblicazioni/**, archivio/**, scripts/**
-- Tre fonti: newsletter MARLA (HTML Substack + PDF), pubblicazioni, archivio
+- Generata da `scripts/costruisci_kb.py` su ogni push a MARLA/**, pubblicazioni/**, archivio/**, letture/**, scripts/**
+- Quattro fonti: newsletter MARLA (HTML Substack + PDF), pubblicazioni, archivio, letture
 - Chunk da 400 parole con overlap di 50
 - Ogni chunk ha: id, fonte, titolo, tipo, url, fonte_nome, testo
 - PDF scansionati: fallback OCR con pytesseract (tesseract-ocr-ita installato nell'Action)
@@ -65,24 +66,27 @@ infonodes-website/
 - Label: [ MARLA ] per bot, [ TU ] per utente
 
 ## Layout homepage
-1. Header + ticker + nav
+1. Header (titolo MARLA, claim fucsia) + ticker fucsia + nav ([HOME] [PUBBLICAZIONI] [LETTURE])
 2. Chatbot MARLA — larghezza piena (500px altezza)
-3. Due colonne uguali: "Ultime pubblicazioni" | "Chi è MARLA" (bio)
+3. Due colonne uguali: "Letture interessanti che ti suggerisco" (3 letture
+   più recenti, link alla fonte originale) | "Chi è MARLA" (bio, verde)
 4. "Chi siamo" — larghezza piena
-5. Footer
+5. Footer ("MARLA loves you" fucsia)
 
 ## Convenzione file materiali (.txt)
 ```
 Titolo: ...
 Autori: ...
-Piattaforma: Nome testata          ← usato come fonte_nome
+Piattaforma: Nome testata          ← anche "Organizzazione:" o "Fonte:" ok
 URL: https://...                   ← citato da MARLA nelle risposte
 Anno: ...
+Data: 2026-06-10                   ← o GG/MM/AAAA; ordina le letture; ok anche nel campo Anno
 Parole chiave: ...
 Descrizione: (testo libero, tutto indicizzato)
 ```
-- I .txt con PDF compagno vengono usati solo come metadati (non creano chunk separati)
+- I .txt con PDF/DOCX compagno vengono usati solo come metadati (non creano chunk separati)
 - I .txt senza PDF compagno vengono indicizzati come chunk propri
+- Le card delle letture linkano SEMPRE all'URL originale, mai al PDF locale
 
 ## Variabili d'ambiente Vercel
 - ANTHROPIC_API_KEY — chiave API Anthropic
