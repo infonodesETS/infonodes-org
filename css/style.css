@@ -455,7 +455,7 @@ nav .nav-label {
 }
 
 .bio-divider {
-  color: var(--fucsia);
+  color: var(--green);
   font-size: 15.5px;
   letter-spacing: 2px;
   text-align: center;
@@ -464,7 +464,7 @@ nav .nav-label {
 }
 
 #marla-bio p {
-  color: var(--fucsia);
+  color: var(--green);
   font-size: 18.5px;
   line-height: 1.7;
   margin-bottom: 12px;
@@ -473,7 +473,7 @@ nav .nav-label {
 
 #marla-bio p:last-child {
   margin-bottom: 0;
-  color: var(--fucsia);
+  color: var(--green);
   opacity: 0.85;
 }
 
@@ -496,7 +496,7 @@ footer a:hover { color: var(--green); }
   border: 1px solid var(--border);
   padding: 4px 12px;
   margin: 8px 0;
-  color: var(--amber);
+  color: var(--fucsia);
   letter-spacing: 3px;
   font-size: 14.5px;
 }
