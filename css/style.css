@@ -109,8 +109,9 @@ header::before {
   padding: 4px 0;
   margin-bottom: 20px;
   overflow: hidden;
-  color: var(--cyan);
-  font-size: 16.5px;
+  color: var(--fucsia);
+  font-size: 18px;
+  letter-spacing: 2px;
 }
 
 .ticker-inner {
