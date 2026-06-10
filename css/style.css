@@ -115,14 +115,18 @@ header::before {
 }
 
 .ticker-inner {
-  display: inline-block;
+  display: inline-flex;
   white-space: nowrap;
-  animation: ticker 30s linear infinite;
+  animation: ticker 22s linear infinite;
+}
+
+.ticker-item {
+  white-space: nowrap;
 }
 
 @keyframes ticker {
-  from { transform: translateX(100vw); }
-  to   { transform: translateX(-100%); }
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 /* ===== NAV ===== */
