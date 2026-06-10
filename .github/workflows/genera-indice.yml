@@ -1,6 +1,7 @@
 name: Genera indice e knowledge base
 
 on:
+  workflow_dispatch:
   push:
     branches: [master]
     paths:
@@ -8,6 +9,7 @@ on:
       - 'MARLA/**'
       - 'archivio/**'
       - 'scripts/**'
+      - '.github/workflows/genera-indice.yml'
 
 jobs:
   build:
