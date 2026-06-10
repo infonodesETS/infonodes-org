@@ -79,7 +79,7 @@ def leggi_metadati_txt(percorso_txt):
                 elif chiave == 'url':
                     # Ricompone URL che poteva essere spezzato dalla partition
                     meta['url'] = riga.partition(':')[2].strip()
-                elif chiave in ('piattaforma', 'fonte'):
+                elif chiave in ('piattaforma', 'fonte', 'organizzazione'):
                     meta['fonte_nome'] = valore
                 elif chiave == 'autori':
                     meta['autori'] = valore

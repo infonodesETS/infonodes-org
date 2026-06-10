@@ -16,7 +16,7 @@ SEZIONI = [
 
 # Chiavi riconosciute nel formato .txt
 CHIAVI = [
-    'titolo', 'autori', 'tipo', 'piattaforma',
+    'titolo', 'autori', 'tipo', 'piattaforma', 'organizzazione', 'fonte',
     'url', 'pdf', 'anno', 'data', 'parole chiave', 'descrizione'
 ]
 
@@ -168,7 +168,8 @@ def processa_file(cartella, nome_file, sezione):
     keywords = [k.strip() for k in kw_raw.split(',') if k.strip()]
 
     # Data di pubblicazione (per ordinamento)
-    data_pub = parse_data(dati.get('data', ''))
+    # Se non c'è il campo Data, prova a leggere una data completa dal campo Anno
+    data_pub = parse_data(dati.get('data', '')) or parse_data(dati.get('anno', ''))
 
     # Anno
     anno_raw = dati.get('anno', '')
@@ -184,7 +185,8 @@ def processa_file(cartella, nome_file, sezione):
         'titolo':      dati.get('titolo', nome_base).strip(),
         'autori':      autori,
         'tipi':        normalizza_tipi(dati.get('tipo', '')),
-        'piattaforma': dati.get('piattaforma', '').strip(),
+        'piattaforma': (dati.get('piattaforma') or dati.get('organizzazione')
+                        or dati.get('fonte') or '').strip(),
         'url':         dati.get('url', '').strip(),
         'pdf':         pdf_file,
         'anno':        anno,
