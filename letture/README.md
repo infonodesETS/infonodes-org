@@ -12,6 +12,7 @@ Tipo: Report
 Piattaforma: Nome dell'organizzazione che lo ha pubblicato
 URL: https://link-alla-fonte-originale
 Anno: 2026
+Data: 2026-06-10        (o 10/06/2026 — usata per ordinare le letture)
 Parole chiave: parola1, parola2, parola3
 Descrizione: Breve descrizione del contenuto.
 ```

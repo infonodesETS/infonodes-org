@@ -24,6 +24,7 @@
     <span class="nav-label">NAVIGA:</span>
     <a href="index.html" class="active">[HOME]</a>
     <a href="pubblicazioni/index.html">[PUBBLICAZIONI]</a>
+    <a href="letture/index.html">[LETTURE]</a>
   </nav>
 
   <!-- CHATBOT MARLA — larghezza piena -->
@@ -49,13 +50,13 @@
   <div class="home-grid">
 
     <div class="box">
-      <div class="box-title">Ultime cose che ho letto</div>
+      <div class="box-title">Letture interessanti che ti suggerisco</div>
       <div class="material-grid" id="ultimi-materiali">
         <!-- Popolato da materiali.js -->
       </div>
-      <div style="text-align:right; margin-top:12px;">
-        <a href="pubblicazioni/index.html" style="color:var(--amber);font-size:15px;text-decoration:none;">
-          &rarr; le pubblicazioni di info.nodes
+      <div style="margin-top:12px;">
+        <a href="letture/index.html" style="color:var(--amber);font-size:15.5px;text-decoration:none;">
+          Cerca di ampliare i tuoi orizzonti, tesoro. Qui trovi l&rsquo;elenco di tutte le cose belle che ti suggerisco di leggere &rarr;
         </a>
       </div>
     </div>
@@ -106,13 +107,16 @@
 
   <script src="js/materiali.js"></script>
   <script>
-    // Mostra le letture più recenti in homepage (max 4)
+    // Mostra le 3 letture più recenti in homepage (ordinate per data di pubblicazione)
     (async () => {
       const el = document.getElementById('ultimi-materiali');
       if (!el) return;
       const res  = await fetch('search-index.json');
       const data = await res.json();
-      const letture = data.materiali.filter(m => m.sezione === 'letture').slice(0, 4);
+      const letture = data.materiali
+        .filter(m => m.sezione === 'letture')
+        .sort((a, b) => (b.data || '').localeCompare(a.data || '') || (b.anno - a.anno))
+        .slice(0, 3);
       if (letture.length === 0) {
         el.innerHTML = '<div class="mat-loading">[ Nessuna lettura ancora caricata ]</div>';
         return;

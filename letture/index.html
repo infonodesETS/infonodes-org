@@ -3,40 +3,40 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Pubblicazioni di info.nodes — INFONODES.ORG</title>
+  <title>Letture — INFONODES.ORG</title>
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
   <header>
-    <div class="site-title">INFO.NODES<span class="blink">_</span></div>
-    <div class="site-subtitle">Libert&agrave;, giustizia e uguaglianza per tutti e tutte</div>
+    <div class="site-title">MARLA<span class="blink">_</span></div>
+    <div class="site-subtitle">It might have been too much</div>
   </header>
 
   <nav>
     <span class="nav-label">NAVIGA:</span>
     <a href="../index.html">[HOME]</a>
-    <a href="index.html" class="active">[PUBBLICAZIONI]</a>
-    <a href="../letture/index.html">[LETTURE]</a>
+    <a href="../pubblicazioni/index.html">[PUBBLICAZIONI]</a>
+    <a href="index.html" class="active">[LETTURE]</a>
   </nav>
 
   <div class="breadcrumb">
-    <a href="../index.html">HOME</a> &gt; <span>PUBBLICAZIONI</span>
+    <a href="../index.html">HOME</a> &gt; <span>LETTURE</span>
   </div>
 
   <div class="layout">
 
     <main>
       <div class="section-hero">
-        <div class="hero-icon">&#128270;</div>
+        <div class="hero-icon">&#128214;</div>
         <div>
-          <h1>PUBBLICAZIONI DI INFO.NODES</h1>
-          <p>Inchieste, ricerche, reportage, podcast e video prodotti o promossi da info.nodes.</p>
+          <h1>LETTURE</h1>
+          <p>Tutte le cose belle che ti suggerisco di leggere. Ogni scheda rimanda alla fonte originale.</p>
         </div>
       </div>
 
       <div class="box">
-        <div class="box-title">Tutti i materiali</div>
+        <div class="box-title">Tutte le letture</div>
         <div id="filtri-tipo"></div>
         <div class="material-grid" id="material-grid">
           <!-- Popolato da materiali.js -->
@@ -56,7 +56,6 @@
           <button type="submit">INVIA</button>
         </form>
       </div>
-
     </aside>
 
   </div>
@@ -75,7 +74,7 @@
 
   <script src="../js/materiali.js"></script>
   <script>
-    caricaMateriali('pubblicazioni', 'material-grid', '../pubblicazioni');
+    caricaMateriali('letture', 'material-grid', '../letture');
   </script>
   <script src="../js/chatbot.js"></script>
 </body>

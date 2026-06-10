@@ -146,7 +146,7 @@ async function caricaMateriali(sezione, containerId, basePath) {
     const data = await res.json();
 
     const lista = data.materiali.filter(m => m.sezione === sezione);
-    lista.sort((a, b) => b.anno - a.anno);
+    lista.sort((a, b) => (b.data || '').localeCompare(a.data || '') || (b.anno - a.anno));
 
     if (lista.length === 0) {
       container.innerHTML = '<div class="mat-loading">[ Nessun materiale ancora caricato ]</div>';

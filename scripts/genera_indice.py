@@ -17,8 +17,26 @@ SEZIONI = [
 # Chiavi riconosciute nel formato .txt
 CHIAVI = [
     'titolo', 'autori', 'tipo', 'piattaforma',
-    'url', 'pdf', 'anno', 'parole chiave', 'descrizione'
+    'url', 'pdf', 'anno', 'data', 'parole chiave', 'descrizione'
 ]
+
+
+def parse_data(raw):
+    """
+    Converte una data in formato ISO (AAAA-MM-GG) per l'ordinamento.
+    Accetta: 2026-06-10, 10/06/2026, 10-06-2026, 10.06.2026
+    Restituisce '' se non riconosciuta.
+    """
+    raw = (raw or '').strip()
+    if not raw:
+        return ''
+    m = re.search(r'(\d{4})-(\d{1,2})-(\d{1,2})', raw)
+    if m:
+        return f"{m.group(1)}-{int(m.group(2)):02d}-{int(m.group(3)):02d}"
+    m = re.search(r'(\d{1,2})[/\-.](\d{1,2})[/\-.](\d{4})', raw)
+    if m:
+        return f"{m.group(3)}-{int(m.group(2)):02d}-{int(m.group(1)):02d}"
+    return ''
 
 
 def normalizza_tipi(tipo_raw):
@@ -149,12 +167,16 @@ def processa_file(cartella, nome_file, sezione):
     kw_raw = dati.get('parole chiave', '')
     keywords = [k.strip() for k in kw_raw.split(',') if k.strip()]
 
+    # Data di pubblicazione (per ordinamento)
+    data_pub = parse_data(dati.get('data', ''))
+
     # Anno
     anno_raw = dati.get('anno', '')
     try:
         anno = int(re.search(r'\d{4}', anno_raw).group())
     except Exception:
-        anno = date.today().year
+        # Se manca l'anno, prova a ricavarlo dalla data
+        anno = int(data_pub[:4]) if data_pub else date.today().year
 
     return {
         'id':          slugify(nome_base),
@@ -166,6 +188,7 @@ def processa_file(cartella, nome_file, sezione):
         'url':         dati.get('url', '').strip(),
         'pdf':         pdf_file,
         'anno':        anno,
+        'data':        data_pub,
         'keywords':    keywords,
         'descrizione': dati.get('descrizione', '').strip(),
     }
