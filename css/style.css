@@ -508,6 +508,16 @@ footer a:hover { color: var(--green); }
   letter-spacing: 0;
 }
 
+.footer-privacy {
+  font-size: 15px;
+  margin-top: 6px;
+  color: var(--grey);
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.5;
+}
+
 /* ===== SECTION PAGES ===== */
 .breadcrumb {
   color: var(--grey);

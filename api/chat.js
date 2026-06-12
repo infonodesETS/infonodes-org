@@ -103,6 +103,53 @@ function formattaContesto(chunks) {
   }).join('\n\n---\n\n');
 }
 
+// ── STATISTICHE ANONIME ──────────────────────────────────────────────────────
+// Conta solo: conversazioni avviate, messaggi totali, lingua di ogni messaggio.
+// Nessun testo, nessun IP, nessun dato personale viene salvato.
+
+function rilevaLingua(testo) {
+  const t = ' ' + testo.toLowerCase().replace(/[^\wàèéìòùáíóúüñçâêîôû\s']/g, ' ') + ' ';
+  const SPIE = {
+    it: [' il ', ' che ', ' di ', ' non ', ' sono ', ' cosa ', ' perché ', ' come ',
+         ' della ', ' è ', ' ciao ', ' qual ', ' quali ', ' dei ', ' mi ', ' parlami '],
+    en: [' the ', ' is ', ' are ', ' what ', ' how ', ' why ', ' you ', ' of ',
+         ' and ', ' to ', ' do ', ' hello ', ' hi ', ' about ', ' tell '],
+    fr: [' le ', ' les ', ' est ', ' pourquoi ', ' comment ', ' vous ', ' je ',
+         ' des ', ' et ', ' bonjour ', ' quoi ', ' parle ', ' une ', " c'est "],
+    es: [' el ', ' es ', ' por ', ' cómo ', ' qué ', ' los ', ' las ', ' y ',
+         ' hola ', ' usted ', ' háblame ', ' cuáles ', ' sobre ', ' me '],
+  };
+  let migliore = 'altro';
+  let max = 0;
+  for (const [lingua, spie] of Object.entries(SPIE)) {
+    const punteggio = spie.filter(s => t.includes(s)).length;
+    if (punteggio > max) { max = punteggio; migliore = lingua; }
+  }
+  return migliore;
+}
+
+async function registraStatistica(messages, ultimaDomanda) {
+  const url   = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+  if (!url || !token) return; // statistiche non configurate: MARLA non conta
+
+  const comandi = [['INCR', 'stats:messaggi']];
+  const nMessaggiUtente = messages.filter(m => m.role === 'user').length;
+  if (nMessaggiUtente === 1) comandi.push(['INCR', 'stats:conversazioni']);
+  comandi.push(['INCR', `stats:lingua:${rilevaLingua(ultimaDomanda)}`]);
+
+  try {
+    await fetch(`${url}/pipeline`, {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(comandi),
+    });
+  } catch (e) {
+    // Se il conteggio fallisce, pazienza: la risposta all'utente ha la priorità
+    console.warn('Statistiche non registrate:', e.message);
+  }
+}
+
 // ── CARICA KB ─────────────────────────────────────────────────────────────────
 
 async function caricaKb() {
@@ -164,6 +211,10 @@ module.exports = async function handler(req, res) {
     });
 
     const testo = risposta.content?.[0]?.text || '(nessuna risposta)';
+
+    // Conteggio anonimo (non blocca la risposta in caso di errore)
+    await registraStatistica(messages, ultimaDomanda);
+
     return res.status(200).json({ reply: testo });
 
   } catch (err) {
