@@ -8,10 +8,6 @@ fatto, aggiungere ciò che emerge.
       di riferimento, esempi di voce). Sessione dedicata.
 - [ ] **Dominio personalizzato** — collegare infonodes.org o un sottodominio
       (es. marla.infonodes.org) a GitHub Pages: DNS su Register.it + file CNAME.
-- [ ] **Attivare le statistiche anonime** — creare il database Upstash Redis
-      su Vercel (Storage → Upstash for Redis, piano gratuito) e collegarlo al
-      progetto marlamag. Il codice è già pronto; i numeri si leggono su
-      https://marlamag.vercel.app/api/stats
 
 ## Da valutare
 - [ ] Pagina/nota legale (licenza CC BY-SA citata nel footer, privacy policy minima)
@@ -19,6 +15,7 @@ fatto, aggiungere ciò che emerge.
 - [ ] Limite di spesa mensile impostato sulla console Anthropic (verificare)
 
 ## Fatto
+- [x] Statistiche anonime attive: https://marlamag.vercel.app/api/stats (12/06/2026)
 - [x] Riga privacy nel footer di tutte le pagine (12/06/2026)
 - [x] Sito retro + chatbot MARLA funzionante (giugno 2026)
 - [x] Sezioni: pubblicazioni, archivio, letture, MARLA newsletter
