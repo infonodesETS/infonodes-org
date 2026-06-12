@@ -4,8 +4,8 @@
 Sito web di info.nodes ETS. Estetica retro terminale anni '90 (verde su nero, font VT323).
 Ospita un archivio di materiali e il chatbot MARLA alimentato da Claude API.
 
-**Repository pubblico:** https://github.com/infonodesETS/infonodes-org
-**Sito live:** https://infonodesets.github.io/infonodes-org/
+**Repository pubblico:** https://github.com/infonodesETS/MARLA
+**Sito live:** https://infonodesets.github.io/MARLA/
 **Dominio attuale:** https://www.infonodes.org/ (su Register.it — ancora attivo, non toccare)
 **Chatbot backend:** https://marlamag.vercel.app/api/chat
 

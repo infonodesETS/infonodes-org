@@ -5,7 +5,7 @@
 
 const Anthropic = require('@anthropic-ai/sdk');
 
-const KB_URL = 'https://infonodesets.github.io/infonodes-org/kb.json';
+const KB_URL = 'https://infonodesets.github.io/MARLA/kb.json';
 const MODELLO = 'claude-haiku-4-5';
 const MAX_CHUNK_CONTESTO = 6;   // quanti chunk passare a Claude
 const MAX_TOKENS_RISPOSTA = 600;
