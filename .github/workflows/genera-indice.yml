@@ -6,7 +6,7 @@ on:
     branches: [master]
     paths:
       - 'pubblicazioni/**'
-      - 'MARLA/**'
+      - 'MARLA newsletter/**'
       - 'archivio/**'
       - 'letture/**'
       - 'scripts/**'

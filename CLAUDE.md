@@ -32,7 +32,7 @@ infonodes-website/
 │   └── requirements.txt          # Dipendenze Python
 ├── .github/workflows/
 │   └── genera-indice.yml         # GitHub Action: rigenera indice e kb
-├── MARLA/                        # Newsletter MARLA (HTML Substack + PDF)
+├── MARLA newsletter/             # Newsletter MARLA (HTML Substack + PDF)
 ├── pubblicazioni/                # Pubblicazioni info.nodes (PDF + .txt metadati)
 ├── archivio/                     # Materiali interni (PDF + .txt metadati)
 ├── letture/                      # Report di altre org (PDF + .txt con URL fonte)
@@ -46,7 +46,7 @@ infonodes-website/
 ## Architettura chatbot MARLA
 
 ### Knowledge base (kb.json)
-- Generata da `scripts/costruisci_kb.py` su ogni push a MARLA/**, pubblicazioni/**, archivio/**, letture/**, scripts/**
+- Generata da `scripts/costruisci_kb.py` su ogni push a "MARLA newsletter/**", pubblicazioni/**, archivio/**, letture/**, scripts/**
 - Quattro fonti: newsletter MARLA (HTML Substack + PDF), pubblicazioni, archivio, letture
 - Chunk da 400 parole con overlap di 50
 - Ogni chunk ha: id, fonte, titolo, tipo, url, fonte_nome, testo
