@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Le fonti da cui MARLA attinge: pubblicazioni di info.nodes, database dell'organizzazione, materiali di altre organizzazioni.">
+  <title>LE MIE FONTI — MARLA</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Le schede dei database non sono materiali da leggere ma strumenti da
+       interrogare: hanno una forma propria, più larga e con lo stato. */
+    .db-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px; }
+    .db-card {
+      border: 1px solid var(--border); padding: 14px 16px; background: #060612;
+      display: flex; flex-direction: column; gap: 7px;
+    }
+    .db-card h3 { margin: 0; font-size: 19px; color: var(--green); }
+    .db-card p { margin: 0; color: var(--white); font-size: 16px; line-height: 1.5; }
+    .db-meta { color: var(--grey); font-size: 14.5px; }
+    .db-stato { font-size: 13.5px; text-transform: uppercase; letter-spacing: 1px; }
+    .db-stato.attivo { color: var(--green-dim); }
+    .db-stato.previsto { color: var(--amber); }
+    .db-card a { color: var(--cyan); }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="site-title">MARLA<span class="blink">_</span></div>
+    <div class="site-subtitle">It might have been too much</div>
+  </header>
+
+  <nav>
+    <span class="nav-label">NAVIGA:</span>
+    <a href="../index.html">[HOME]</a>
+    <a href="index.html" class="active">[LE MIE FONTI]</a>
+  </nav>
+
+  <div class="layout">
+
+    <main>
+      <div class="section-hero">
+        <div class="hero-icon">&#128218;</div>
+        <div>
+          <h1>LE MIE FONTI</h1>
+          <p>Tutto quello su cui posso rispondere: quello che abbiamo scritto, quello che abbiamo
+             raccolto in banche dati e quello che abbiamo letto. Se una cosa non è qui, non la so.</p>
+        </div>
+      </div>
+
+      <!-- ── 1. Pubblicazioni di info.nodes ── -->
+      <div class="box">
+        <div class="box-title">Pubblicazioni di info.nodes</div>
+        <p class="db-meta" style="margin-bottom: 12px;">
+          Inchieste, ricerche, reportage, podcast e video prodotti o promossi da info.nodes.
+        </p>
+        <div id="filtri-pubblicazioni"></div>
+        <div class="material-grid" id="grid-pubblicazioni"></div>
+      </div>
+
+      <!-- ── 2. Database di info.nodes ── -->
+      <div class="box">
+        <div class="box-title">Database di info.nodes</div>
+        <p class="db-meta" style="margin-bottom: 12px;">
+          Banche dati che abbiamo costruito. A differenza dei testi, qui posso contare, filtrare
+          e incrociare: le risposte sono esatte e verificabili.
+        </p>
+        <div class="db-grid">
+
+          <div class="db-card">
+            <h3>Man in the Loop</h3>
+            <div class="db-stato attivo">&#9679; interrogabile</div>
+            <p>Chi finanzia lo sviluppo delle armi autonome: aziende, università, investitori,
+               progetti finanziati dall'Unione Europea e partecipazioni societarie.</p>
+            <div class="db-meta">2.226 soggetti &middot; 84 progetti EDF &middot; 2.990 relazioni</div>
+            <a href="https://infonodesets.github.io/manintheloop/" target="_blank" rel="noopener">apri la piattaforma &rarr;</a>
+          </div>
+
+          <div class="db-card">
+            <h3>FOIA Tracker</h3>
+            <div class="db-stato previsto">&#9675; da collegare</div>
+            <p>Le richieste di accesso agli atti inviate dal team: a quale ente, con quale esito,
+               e i documenti ottenuti in risposta.</p>
+            <div class="db-meta">Dati interni &mdash; non escono da questa interfaccia</div>
+            <a href="https://foia-nodes.vercel.app" target="_blank" rel="noopener">apri lo strumento &rarr;</a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ── 3. Fonti esterne ── -->
+      <div class="box">
+        <div class="box-title">Fonti esterne</div>
+        <p class="db-meta" style="margin-bottom: 12px;">
+          Report, ricerche e inchieste di altre organizzazioni che abbiamo letto e archiviato.
+        </p>
+        <div id="filtri-letture"></div>
+        <div class="material-grid" id="grid-letture"></div>
+      </div>
+    </main>
+
+    <aside>
+      <div id="chatbot-widget">
+        <div class="chat-header">
+          <div class="chat-dot"></div>
+          MARLA &mdash; ONLINE
+        </div>
+        <div class="chat-messages" id="chat-messages"></div>
+        <form class="chat-form" id="chat-form" autocomplete="off">
+          <input type="text" id="chat-input" placeholder="cosa cerchi?_" maxlength="400" autocomplete="off">
+          <button type="submit">INVIA</button>
+        </form>
+      </div>
+    </aside>
+
+  </div>
+
+  <footer>
+    <div>
+      info.nodes &mdash; chaos and revolution since 2020 &mdash;
+      <a href="mailto:comunicazione@infonodes.org">comunicazione@infonodes.org</a>
+      &mdash; <a href="#">licenza CC BY-SA 4.0</a>
+    </div>
+    <div class="footer-counter">MARLA loves you <span class="pixel-heart">&#9829;</span></div>
+  </footer>
+
+  <script src="../js/materiali.js"></script>
+  <script>
+    // Le due sezioni testuali vengono dallo stesso indice del sito: qui sono
+    // affiancate invece che su due pagine separate.
+    caricaMateriali('pubblicazioni', 'grid-pubblicazioni', '../pubblicazioni', 'filtri-pubblicazioni');
+    caricaMateriali('letture', 'grid-letture', '../letture', 'filtri-letture');
+  </script>
+  <script src="../js/chatbot.js"></script>
+</body>
+</html>

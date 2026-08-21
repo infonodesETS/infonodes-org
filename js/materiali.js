@@ -83,7 +83,9 @@ function buildCard(m, basePath) {
 
 // ----- FILTRI -----
 
-function buildFiltri(materiali, containerId) {
+// `filtriId` serve alle pagine che mostrano più sezioni insieme (fonti/): con
+// un id fisso i due gruppi di filtri finirebbero nello stesso contenitore.
+function buildFiltri(materiali, containerId, filtriId) {
   // Raccoglie tutti i tipi presenti
   const tuttiTipi = new Set();
   materiali.forEach(m => {
@@ -91,7 +93,7 @@ function buildFiltri(materiali, containerId) {
     tipi.forEach(t => tuttiTipi.add(t));
   });
 
-  const filtriEl = document.getElementById('filtri-tipo');
+  const filtriEl = document.getElementById(filtriId || 'filtri-tipo');
   if (!filtriEl || tuttiTipi.size === 0) return;
 
   const ordine = ['inchiesta','ricerca','reportage','video','podcast','formazione','documento','campagna','altro'];
@@ -133,7 +135,7 @@ function buildFiltri(materiali, containerId) {
 
 // ----- CARICAMENTO -----
 
-async function caricaMateriali(sezione, containerId, basePath) {
+async function caricaMateriali(sezione, containerId, basePath, filtriId) {
   const container = document.getElementById(containerId);
   if (!container) return;
 
@@ -154,7 +156,7 @@ async function caricaMateriali(sezione, containerId, basePath) {
     }
 
     // Prima costruisci i filtri (servono i dati), poi le card
-    buildFiltri(lista, containerId);
+    buildFiltri(lista, containerId, filtriId);
     container.innerHTML = lista.map(m => buildCard(m, basePath)).join('');
 
   } catch (e) {

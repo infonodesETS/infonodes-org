@@ -23,8 +23,7 @@
   <nav>
     <span class="nav-label">NAVIGA:</span>
     <a href="index.html" class="active">[HOME]</a>
-    <a href="pubblicazioni/index.html">[PUBBLICAZIONI DI INFO.NODES]</a>
-    <a href="letture/index.html">[ALTRE LETTURE]</a>
+    <a href="fonti/index.html">[LE MIE FONTI]</a>
   </nav>
 
   <!-- CHATBOT MARLA — larghezza piena -->
@@ -46,48 +45,6 @@
     </form>
   </div>
 
-  <!-- DUE COLONNE: ultime pubblicazioni + chi è MARLA -->
-  <div class="home-grid">
-
-    <div class="box">
-      <div class="box-title">Ultime cose che ho letto e mi sono piaciute</div>
-      <div class="material-grid" id="ultimi-materiali">
-        <!-- Popolato da materiali.js -->
-      </div>
-    </div>
-
-    <div id="marla-bio">
-      <div class="bio-divider">&#9644;&#9644;&#9644; CHI &Egrave; MARLA &#9644;&#9644;&#9644;</div>
-      <p>MARLA &egrave; fragile, insicura, isterica. Non ha alcuna pretesa di salvare il mondo &mdash; gi&agrave; fatica a salvare s&eacute; stessa &mdash; ma prova fatalmente attrazione per chi tenta di ribaltare il tavolo delle ingiustizie e delle iniquit&agrave;.</p>
-      <p>MARLA non &egrave; protagonista della Storia, non lo &egrave; di nessuna storia, ma si fa sempre trovare nel posto giusto al momento giusto, quando la Storia ha bisogno di lei.</p>
-      <p>MARLA fuma molto, parla male, spesso si fatica a comprenderla, ancor pi&ugrave; spesso &egrave; lei che fa in modo di non essere compresa. Fa parte del gioco, l&rsquo;impegno deve essere reciproco, se no si rischia di cadere nella noiosa routine.</p>
-      <p>MARLA ama le sorprese, il nero e i contrasti forti, vuole essere bella ma non troppo facilmente accessibile, protegge i suoi spazi, ma lascia sempre la porta della stanza aperta nel caso qualcuno volesse entrare.</p>
-      <p>MARLA ti parler&agrave; di questioni importanti, ti porter&agrave; in luoghi che non hai mai visitato, non ti aiuter&agrave; a comprendere il passato o il presente, ma ti dar&agrave; degli spunti per immaginare il futuro.</p>
-      <p>Continua a darle fiducia, continua a seguirla e al primo rumore di esplosioni ti prender&agrave; la mano per guardare insieme i palazzi che crollano.</p>
-    </div>
-
-  </div>
-
-  <!-- CHI SIAMO — larghezza piena -->
-  <div class="box">
-    <div class="box-title">Chi siamo</div>
-    <p style="color: var(--white); font-size: 17.5px; line-height: 1.7; margin-bottom: 12px;">
-      info.nodes &egrave; un&rsquo;organizzazione no-profit italiana, fondata nel 2019 da giornalisti
-      e attivisti per sperimentare nuove soluzioni nel panorama mediatico e della societ&agrave; civile italiana.
-    </p>
-    <p style="color: var(--white); font-size: 17.5px; line-height: 1.7; margin-bottom: 12px;">
-      Ci interessa approfondire i temi legati alla giustizia sociale e climatica, all&rsquo;impatto
-      delle nuove tecnologie sui diritti umani e alla tutela della libert&agrave; di espressione.
-    </p>
-    <p style="color: var(--white); font-size: 17.5px; line-height: 1.7; margin-bottom: 12px;">
-      Ci piace molto collaborare con altre organizzazioni, artisti/e, attivisti/e e in generale
-      con chiunque abbia un&rsquo;idea radicale e alternativa di societ&agrave;.
-    </p>
-    <p style="color: var(--grey); font-size: 15.5px;">
-      Chiedi pure a MARLA di aiutarti a trovare ci&ograve; che cerchi o di dirti come la pensa.
-    </p>
-  </div>
-
   <footer>
     <div>
       info.nodes &mdash; chaos and revolution since 2020 &mdash;
@@ -104,27 +61,6 @@
     </div>
   </footer>
 
-  <script src="js/materiali.js"></script>
-  <script>
-    // Mostra le 3 cose più recenti tra pubblicazioni info.nodes e altre letture,
-    // ordinate per data di pubblicazione (se manca la data, conta l'anno)
-    (async () => {
-      const el = document.getElementById('ultimi-materiali');
-      if (!el) return;
-      const res  = await fetch('search-index.json');
-      const data = await res.json();
-      const chiaveData = m => m.data || (m.anno + '-00-00');
-      const recenti = data.materiali
-        .filter(m => m.sezione === 'letture' || m.sezione === 'pubblicazioni')
-        .sort((a, b) => chiaveData(b).localeCompare(chiaveData(a)))
-        .slice(0, 3);
-      if (recenti.length === 0) {
-        el.innerHTML = '<div class="mat-loading">[ Nessun materiale ancora caricato ]</div>';
-        return;
-      }
-      el.innerHTML = recenti.map(m => buildCard(m, m.sezione)).join('');
-    })();
-  </script>
   <script src="js/chatbot.js"></script>
 </body>
 </html>
