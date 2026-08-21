@@ -187,6 +187,11 @@ async function conversa(client, messages, consentiti, traccia, diag) {
           content: JSON.stringify({ record: esito.record, nota: esito.nota }),
         });
       } catch (e) {
+        // L'errore va anche nella diagnostica: al modello serve per non
+        // inventare, a chi usa MARLA serve per capire cosa aggiustare. Senza,
+        // arriva solo un generico "problema tecnico".
+        console.error(`Strumento ${c.name} fallito:`, e);
+        if (diag) (diag.errori = diag.errori || []).push(`${c.name}: ${e.message}`);
         esiti.push({
           type: 'tool_result', tool_use_id: c.id, is_error: true,
           content: `Strumento fallito: ${e.message}`,

@@ -25,6 +25,20 @@
 
 const crypto = require('crypto');
 
+// Google spiega sempre perché rifiuta — "invalid_grant" per una chiave malformata,
+// "The caller does not have permission" se il foglio non è condiviso col service
+// account, "Unable to parse range" se il nome del foglio è sbagliato. Buttare via
+// quel testo e tenere solo il codice HTTP costringe a indovinare.
+async function motivo(res) {
+  try {
+    const t = await res.text();
+    const j = JSON.parse(t);
+    return j.error_description || j.error?.message || j.error || t.slice(0, 200);
+  } catch (e) {
+    return `HTTP ${res.status}`;
+  }
+}
+
 const ID_FONTE   = 'foia';
 const NOME_FONTE = 'FOIA Tracker';
 const APP_URL    = 'https://foia-nodes.vercel.app';
@@ -43,7 +57,10 @@ function base64url(buf) {
 async function tokenAccesso() {
   const email = process.env.GOOGLE_CLIENT_EMAIL;
   const chiave = (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
-  if (!email || !chiave) throw new Error('credenziali Google non configurate');
+  if (!email) throw new Error('GOOGLE_CLIENT_EMAIL non configurata su Vercel');
+  if (!chiave) throw new Error('GOOGLE_PRIVATE_KEY non configurata su Vercel');
+  if (!/BEGIN PRIVATE KEY/.test(chiave))
+    throw new Error('GOOGLE_PRIVATE_KEY non sembra una chiave: manca la riga BEGIN PRIVATE KEY, probabilmente è stata incollata a metà');
 
   const ora = Math.floor(Date.now() / 1000);
   const intestazione = base64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
@@ -66,7 +83,7 @@ async function tokenAccesso() {
       assertion: `${intestazione}.${corpo}.${firma}`,
     }),
   });
-  if (!res.ok) throw new Error(`autenticazione Google fallita: ${res.status}`);
+  if (!res.ok) throw new Error(`autenticazione Google rifiutata — ${await motivo(res)}`);
   return (await res.json()).access_token;
 }
 
@@ -93,7 +110,7 @@ async function risolviNomeFoglio(id, token) {
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${id}` +
               `?fields=sheets.properties.title`;
   const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-  if (!res.ok) throw new Error(`documento non leggibile: ${res.status}`);
+  if (!res.ok) throw new Error(`documento non leggibile — ${await motivo(res)}`);
   const primo = ((await res.json()).sheets || [])[0]?.properties?.title;
   if (!primo) throw new Error('nessun foglio trovato nel documento');
 
@@ -106,14 +123,14 @@ async function caricaRichieste() {
   if (cache && (adesso - cacheTime) < TTL_MS) return cache;
 
   const id = process.env.GOOGLE_SPREADSHEET_ID;
-  if (!id) throw new Error('GOOGLE_SPREADSHEET_ID non configurato');
+  if (!id) throw new Error('GOOGLE_SPREADSHEET_ID non configurato su Vercel');
 
   const token = await tokenAccesso();
   const foglio = await risolviNomeFoglio(id, token);
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${id}/values/` +
               `${encodeURIComponent(foglio + '!A:V')}`;
   const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-  if (!res.ok) throw new Error(`foglio non leggibile: ${res.status}`);
+  if (!res.ok) throw new Error(`foglio "${foglio}" non leggibile — ${await motivo(res)}`);
 
   const righe = (await res.json()).values || [];
   const dati = righe.slice(1)   // la prima riga sono le intestazioni

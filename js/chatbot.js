@@ -198,6 +198,7 @@ class InfonodesChat {
       const note = [
         (data.strumenti || []).length ? `consultato: ${[...new Set(data.strumenti)].join(', ')}` : null,
         d.stop_reason && d.stop_reason !== 'end_turn' ? `interrotta: ${d.stop_reason}` : null,
+        (d.errori || []).length ? `errori — ${[...new Set(d.errori)].join(' | ')}` : null,
       ].filter(Boolean).join(' · ');
 
       this.addMessage('bot', reply, note || null);
