@@ -10,29 +10,36 @@ materiali dell'archivio sia con i dati di Man in the Loop e dei database futuri,
 dichiarando sempre da quale fonte viene ogni affermazione.
 Vedi `docs/CONTRATTO-FONTI.md` e la sezione "MARLA sui dati" in `CLAUDE.md`.
 
-Stato: le due fonti esistono e rispettano il contratto, ma **non sono ancora
-unite**: `api/mitl.js` ha nel registro solo `manintheloop`.
+Stato al 21/08/2026: **le due fonti sono unite e funzionanti** su
+`marlamag.vercel.app/dati/`. Restano da fare la pagina pubblica e i tetti di spesa.
 
-- [ ] **Sistemare i titoli della kb** — 14 documenti su 83 hanno titoli inutilizzabili
-      (`INTRO`, `INDICE`, `152521782.sesso-e-potere-2025`, `marla222`): sono nomi di file
-      Substack. Il nuovo approccio fa scegliere al modello **dai titoli del catalogo**,
-      quindi un titolo muto rende il documento quasi invisibile. Da correggere in
-      `scripts/costruisci_kb.py`, estraendo il titolo dal contenuto invece che dal nome
-      del file. **Farlo PRIMA di misurare la qualità delle risposte incrociate**,
-      altrimenti non si distingue una risposta debole per il metodo da una debole per
-      i titoli. Migliora anche la MARLA attuale.
-- [ ] **Aggiungere `archivio` al registro delle fonti** in `api/mitl.js` (una riga).
+- [x] **Titoli della kb corretti** (21/08/2026) — non era un problema estetico: gli
+      export Substack contengono solo il corpo, quindi lo script ripiegava sul primo
+      `<h1>`, che è la rubrica ricorrente del numero. Undici newsletter diverse si
+      chiamavano tutte "FACTS ARE FACTS. FICTION IS FICTION" e, siccome l'id era
+      ricavato dal titolo, **si fondevano in un unico documento**: tredici newsletter
+      irraggiungibili e citazioni attribuite al pezzo sbagliato. Ora il titolo viene dal
+      nome del file e gli id sono unici a prescindere. **Da 83 a 99 documenti.**
+- [x] **`archivio` aggiunto al registro delle fonti** (21/08/2026).
 - [ ] **Spostare la pagina pubblica sul nuovo endpoint** — il widget in `index.html`
       chiama `/api/chat`; va portato su `/api/mitl`, che vede entrambe le fonti.
       Accesso deciso: pagina raggiungibile ma non pubblicizzata, link con codice
       condiviso con 4-5 soci. Un solo livello, tutte le fonti.
 - [ ] **Tetti di spesa prima di aprire** — il tool use costa molto più della singola
-      chiamata di oggi: più giri, modello più capace. Serve limite per IP, tetto ai
-      giri, e misurare il costo reale su qualche decina di domande vere. Valutare
-      Haiku per la porta pubblica.
+      chiamata di oggi: più giri, modello più capace, e `MAX_TOKENS` ora è a 8000.
+      Serve limite per IP, tetto ai giri, e misurare il costo reale su qualche decina
+      di domande vere. Valutare Haiku per la porta pubblica. **Da fare prima di
+      spostare la pagina pubblica, non dopo.**
 - [ ] **`/api/chat` non ha alcun limite di chiamate** e ha CORS aperto, in un repo
       pubblico che ne documenta l'indirizzo. Esposizione che esiste già oggi,
       indipendente dalla fusione: mettere un tetto a prescindere.
+
+Se il chatbot si blocca: sotto ogni risposta c'è una riga con giri di strumenti e
+motivo dell'interruzione. `interrotta: max_tokens` significa che il tetto per
+singola chiamata è troppo basso — vale per **ogni** chiamata, non per la risposta
+finale, e il modello spesso ragiona a lungo prima di invocare uno strumento: se il
+tetto scatta lì, la chiamata resta troncata e il giro si perde in silenzio. È stata
+la causa del blocco del 21/08: 3000 non bastavano.
 
 Limiti noti, da tenere presenti e dichiarare nelle risposte:
 - 41 documenti su 83 non hanno un link: si citano per titolo (il contratto lo prevede).
