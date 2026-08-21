@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>MARLA · dati — info.nodes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a1a; --bg2: #0f0f2e; --green: #00ff41; --green-dim: #00aa2a;
+    --amber: #ffb000; --cyan: #00e5ff; --white: #e8e8e8; --grey: #888;
+    --border: #00ff4166; --red: #ff4444;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--white);
+    font-family: 'VT323', 'Courier New', monospace; font-size: 20px;
+    display: flex; flex-direction: column; height: 100vh;
+  }
+  header {
+    border-bottom: 1px solid var(--border); padding: 14px 18px;
+    display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+  }
+  h1 { font-family: 'Press Start 2P', monospace; font-size: 13px; color: var(--green); margin: 0; }
+  .sub { color: var(--grey); font-size: 18px; }
+  .privato { color: var(--amber); border: 1px solid var(--amber); border-radius: 3px; padding: 0 7px; font-size: 15px; }
+
+  #conversazione { flex: 1; overflow-y: auto; padding: 18px; }
+  .msg { max-width: 860px; margin: 0 auto 20px; line-height: 1.45; }
+  .etichetta { font-family: 'Press Start 2P', monospace; font-size: 9px; letter-spacing: 1px; margin-bottom: 7px; }
+  .io .etichetta { color: var(--cyan); }
+  .marla .etichetta { color: var(--green); }
+  .sistema { color: var(--grey); font-size: 18px; border-left: 2px solid var(--border); padding-left: 12px; }
+  .errore { color: var(--red); }
+  .msg a { color: var(--cyan); }
+  .msg a:hover { color: var(--green); }
+  .attrezzi { color: var(--grey); font-size: 15px; margin-top: 8px; }
+
+  footer { border-top: 1px solid var(--border); padding: 14px 18px; }
+  .riga { max-width: 860px; margin: 0 auto; display: flex; gap: 10px; }
+  input, textarea, button {
+    font-family: 'VT323', monospace; font-size: 20px;
+    background: var(--bg2); color: var(--white);
+    border: 1px solid var(--border); border-radius: 3px; padding: 8px 11px;
+  }
+  textarea { flex: 1; resize: none; height: 46px; }
+  input:focus, textarea:focus { outline: none; border-color: var(--green); }
+  button { color: var(--green); cursor: pointer; white-space: nowrap; }
+  button:hover:not(:disabled) { background: var(--green); color: var(--bg); }
+  button:disabled { color: var(--grey); cursor: default; }
+
+  #accesso { max-width: 560px; margin: 12vh auto; padding: 0 18px; }
+  #accesso p { color: var(--grey); line-height: 1.5; }
+  #accesso .riga { margin-top: 16px; }
+  .nascosto { display: none !important; }
+  .esempi { max-width: 860px; margin: 0 auto; color: var(--grey); }
+  .esempi button {
+    display: block; width: 100%; text-align: left; margin-bottom: 8px;
+    color: var(--grey); border-color: #ffffff22; font-size: 19px;
+  }
+  .esempi button:hover { color: var(--green); background: none; border-color: var(--border); }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>MARLA · DATI</h1>
+  <span class="sub">interroga i database di info.nodes</span>
+  <span class="privato">privato</span>
+</header>
+
+<!-- ── Cancello ── -->
+<div id="accesso">
+  <p>Questa pagina interroga il database <strong>Man in the Loop</strong> e non è pubblica.
+     Serve il codice di accesso.</p>
+  <div class="riga">
+    <input id="codice" type="password" placeholder="codice di accesso" autocomplete="current-password" style="flex:1">
+    <button id="entra">entra</button>
+  </div>
+  <p id="esito-accesso" class="errore"></p>
+</div>
+
+<!-- ── Conversazione ── -->
+<div id="conversazione" class="nascosto">
+  <div class="msg marla">
+    <div class="etichetta">MARLA</div>
+    Allora, cosa vuoi sapere. Ho davanti il database Man in the Loop: soggetti, investimenti,
+    progetti EDF. Rispondo solo con quello che ci trovo dentro, e ti dico da dove viene ogni cosa.
+    Se il dato non c'è, te lo dico e basta.
+  </div>
+  <div class="esempi" id="esempi">
+    <button data-q="Ci sono progetti EDF che sviluppano tecnologie per il controllo delle frontiere?">Ci sono progetti EDF che sviluppano tecnologie per il controllo delle frontiere?</button>
+    <button data-q="La società KoBold Metals ha ricevuto investimenti da soggetti con sede in Cile?">La società KoBold Metals ha ricevuto investimenti da soggetti con sede in Cile?</button>
+    <button data-q="Quali sono i cinque progetti EDF con il contributo europeo più alto, e chi vi partecipa?">Quali sono i cinque progetti EDF con il contributo europeo più alto, e chi vi partecipa?</button>
+  </div>
+</div>
+
+<footer id="pieno" class="nascosto">
+  <div class="riga">
+    <textarea id="domanda" placeholder="scrivi la domanda…"></textarea>
+    <button id="invia">invia</button>
+  </div>
+</footer>
+
+<script>
+// Il codice arriva dal frammento dell'indirizzo (#codice=…) così non finisce
+// nei log del server, oppure viene digitato a mano. Resta solo in questa scheda.
+const ENDPOINT = 'https://marlamag.vercel.app/api/mitl';
+
+let codice = null;
+let storico = [];
+let inCorso = false;
+
+const $ = id => document.getElementById(id);
+
+function daFrammento() {
+  const m = location.hash.match(/(?:^#|&)codice=([^&]+)/);
+  return m ? decodeURIComponent(m[1]) : null;
+}
+
+function entra(valore) {
+  if (!valore) { $('esito-accesso').textContent = 'Serve il codice.'; return; }
+  codice = valore;
+  $('accesso').classList.add('nascosto');
+  $('conversazione').classList.remove('nascosto');
+  $('pieno').classList.remove('nascosto');
+  $('domanda').focus();
+}
+
+$('entra').onclick = () => entra($('codice').value.trim());
+$('codice').addEventListener('keydown', e => { if (e.key === 'Enter') $('entra').click(); });
+
+// Markdown minimo: grassetto e link. Tutto il resto viene escapato.
+function rendi(testo) {
+  const esc = testo.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  return esc
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+             '<a href="$2" target="_blank" rel="noopener">$1</a>')
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/_([^_]+)_/g, '<em>$1</em>')
+    .replace(/\n/g, '<br>');
+}
+
+function aggiungi(classe, etichetta, html) {
+  const div = document.createElement('div');
+  div.className = 'msg ' + classe;
+  div.innerHTML = `<div class="etichetta">${etichetta}</div>${html}`;
+  $('conversazione').appendChild(div);
+  $('conversazione').scrollTop = $('conversazione').scrollHeight;
+  return div;
+}
+
+async function chiedi(testo) {
+  if (inCorso || !testo.trim()) return;
+  inCorso = true;
+  $('invia').disabled = true;
+  $('esempi')?.remove();
+
+  aggiungi('io', 'TU', rendi(testo));
+  storico.push({ role: 'user', content: testo });
+  const attesa = aggiungi('marla sistema', 'MARLA', 'sto guardando nei dati…');
+
+  try {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ messages: storico, token: codice }),
+    });
+    const dati = await res.json();
+    attesa.remove();
+
+    if (!res.ok) {
+      const spiega = res.status === 401 ? 'Codice di accesso rifiutato.'
+                   : res.status === 429 ? 'Troppe domande in un\'ora.'
+                   : res.status === 503 ? 'Accesso non ancora configurato sul server.'
+                   : (dati.error || 'Errore');
+      aggiungi('marla errore', 'ERRORE', rendi(spiega));
+    } else {
+      const attrezzi = (dati.strumenti || []).length
+        ? `<div class="attrezzi">consultato: ${[...new Set(dati.strumenti)].join(', ')}</div>` : '';
+      aggiungi('marla', 'MARLA', rendi(dati.reply) + attrezzi);
+      storico.push({ role: 'assistant', content: dati.reply });
+    }
+  } catch (e) {
+    attesa.remove();
+    aggiungi('marla errore', 'ERRORE', rendi('Non riesco a raggiungere il server: ' + e.message));
+  } finally {
+    inCorso = false;
+    $('invia').disabled = false;
+    $('domanda').focus();
+  }
+}
+
+$('invia').onclick = () => { const t = $('domanda').value; $('domanda').value = ''; chiedi(t); };
+$('domanda').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); $('invia').click(); }
+});
+document.addEventListener('click', e => {
+  const b = e.target.closest('.esempi button');
+  if (b) chiedi(b.dataset.q);
+});
+
+const dalLink = daFrammento();
+if (dalLink) { history.replaceState(null, '', location.pathname); entra(dalLink); }
+</script>
+</body>
+</html>
