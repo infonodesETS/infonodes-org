@@ -55,12 +55,24 @@ function base64url(buf) {
 }
 
 async function tokenAccesso() {
-  const email = process.env.GOOGLE_CLIENT_EMAIL;
-  const chiave = (process.env.GOOGLE_PRIVATE_KEY || '').replace(/\\n/g, '\n');
+  const email = (process.env.GOOGLE_CLIENT_EMAIL || '').trim();
+  // La chiave si copia da service-account.json, e ci si porta dietro con
+  // facilità le virgolette che la racchiudono nel JSON. Le togliamo invece di
+  // fallire con un messaggio incomprensibile. Le sequenze \n del file vanno
+  // invece riconvertite in interruzioni di riga vere: sono la struttura del
+  // PEM, non decorazione.
+  const chiave = (process.env.GOOGLE_PRIVATE_KEY || '')
+    .trim()
+    .replace(/^["']|["']$/g, '')
+    .replace(/\\n/g, '\n');
   if (!email) throw new Error('GOOGLE_CLIENT_EMAIL non configurata su Vercel');
   if (!chiave) throw new Error('GOOGLE_PRIVATE_KEY non configurata su Vercel');
-  if (!/BEGIN PRIVATE KEY/.test(chiave))
-    throw new Error('GOOGLE_PRIVATE_KEY non sembra una chiave: manca la riga BEGIN PRIVATE KEY, probabilmente è stata incollata a metà');
+  if (!/BEGIN PRIVATE KEY/.test(chiave) || !/END PRIVATE KEY/.test(chiave))
+    throw new Error(
+      `GOOGLE_PRIVATE_KEY incompleta (${chiave.length} caratteri). Va copiata tutta, ` +
+      'dalla riga -----BEGIN PRIVATE KEY----- fino a -----END PRIVATE KEY-----, ' +
+      'senza le virgolette che la racchiudono nel file e senza togliere le sequenze \\n. ' +
+      'Dovrebbe essere sui 1700 caratteri.');
 
   const ora = Math.floor(Date.now() / 1000);
   const intestazione = base64url(JSON.stringify({ alg: 'RS256', typ: 'JWT' }));
