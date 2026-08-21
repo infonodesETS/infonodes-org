@@ -66,12 +66,19 @@ infonodes-website/
 - Label: [ MARLA ] per bot, [ TU ] per utente
 
 ## Layout homepage
-1. Header (titolo MARLA, claim fucsia) + ticker fucsia + nav ([HOME] [PUBBLICAZIONI] [LETTURE])
-2. Chatbot MARLA — larghezza piena (500px altezza)
-3. Due colonne uguali: "Letture interessanti che ti suggerisco" (3 letture
-   più recenti, link alla fonte originale) | "Chi è MARLA" (bio, verde)
-4. "Chi siamo" — larghezza piena
-5. Footer ("MARLA loves you" fucsia)
+MARLA è uno strumento di ricerca, non una pagina di presentazione: la home è la
+chat e basta. La bio "Chi è MARLA", il box "Chi siamo" e la striscia delle ultime
+letture sono stati rimossi (21/08/2026).
+
+1. Header (titolo MARLA, claim fucsia) + ticker fucsia + nav ([HOME] [LE MIE FONTI])
+2. Chatbot MARLA — larghezza piena
+3. Footer ("MARLA loves you" fucsia)
+
+`fonti/index.html` raccoglie tutto ciò a cui MARLA attinge, in tre sezioni:
+pubblicazioni di info.nodes, database di info.nodes (Man in the Loop, FOIA
+Tracker), fonti esterne. Le due sezioni testuali vengono da `search-index.json`
+come prima. `pubblicazioni/` e `letture/` esistono ancora ma non sono più nel
+menu: i link già condivisi continuano a funzionare.
 
 ## Convenzione file materiali (.txt)
 ```
@@ -88,34 +95,61 @@ Descrizione: (testo libero, tutto indicizzato)
 - I .txt senza PDF compagno vengono indicizzati come chunk propri
 - Le card delle letture linkano SEMPRE all'URL originale, mai al PDF locale
 
-## MARLA sui dati — porta privata (`/dati/`)
+## MARLA — un solo chatbot su tutte le fonti
 
-Seconda MARLA, stesso deploy ma endpoint e pagina separati: interroga i database
-dei progetti invece dell'archivio, e non è pubblica.
+C'è **una sola interfaccia**: la home, `marlamag.vercel.app/`. Il widget parla con
+`/api/mitl`, che vede tutte le fonti registrate. `/api/chat` è il vecchio endpoint
+(solo archivio, ricerca per parole chiave): non è più usato dal sito, ma è ancora
+online e senza limiti di chiamate.
 
-- `dati/index.html` — pagina privata, accesso con codice (anche via `#codice=…`)
-- `api/mitl.js` — endpoint. Non usa la ricerca nel kb: il modello ha **strumenti**
-  e decide quali chiamare. Serve perché domande come "questa società ha
-  investitori cileni?" richiedono due passaggi concatenati che nessuna ricerca
-  testuale può fare.
-- `api/fonti/manintheloop.js` — gli strumenti sulla fonte Man in the Loop
+- `js/chatbot.js` — il widget. Rende i link delle citazioni (il vecchio scappava
+  tutto), chiede il codice, e accetta **`/config`**: mostra quali variabili
+  d'ambiente il deploy in esecuzione vede davvero, mai i valori.
+- `api/mitl.js` — l'agente. Il modello ha **strumenti** e decide quali chiamare:
+  serve perché "questa società ha investitori cileni?" richiede due passaggi
+  concatenati che nessuna ricerca testuale può fare.
+- `api/fonti/` — una fonte per file: `manintheloop.js`, `archivio.js`, `foia.js`
 - `api/lib/citazioni.js` — il controllo delle citazioni, con i suoi test
   (`node api/lib/citazioni.test.js`, gira senza npm install)
 - `docs/CONTRATTO-FONTI.md` — **da leggere prima di aggiungere una fonte**
+- `dati/index.html` — reindirizza alla home; era la porta separata, il link girava già
 
-Regola che regge tutto: il modello può citare solo id e URL che gli strumenti
-gli hanno davvero restituito. È verificato dal codice, non chiesto nel prompt.
-Ogni fonte dichiara `pubblico` o `interno`; la porta pubblica carica solo le
-prime, senza filtrarle a posteriori.
+Regola che regge tutto: il modello può citare solo id e URL che gli strumenti gli
+hanno davvero restituito. È verificato dal codice, non chiesto nel prompt.
+
+Ogni fonte dichiara `pubblico` o `interno`. Oggi la porta è una sola e richiede il
+codice, quindi `VISIBILITA_PORTA = 'interno'` e si vedono tutte e tre le fonti (14
+strumenti). Con il codice tolto sarebbero 11: le fonti interne **non verrebbero
+caricate**, non filtrate dopo.
+
+### Se il chatbot si blocca
+
+Sotto ogni risposta c'è una riga con fonti consultate, motivo dell'interruzione ed
+eventuali errori degli strumenti. `interrotta: max_tokens` significa che il tetto
+per singola chiamata è troppo basso: vale per **ogni** chiamata, non per la
+risposta finale, e il modello spesso ragiona a lungo prima di invocare uno
+strumento — se il tetto scatta lì, la chiamata resta troncata e il giro si perde.
 
 ## Variabili d'ambiente Vercel
 - ANTHROPIC_API_KEY — chiave API Anthropic
-- MITL_CHAT_TOKEN — codice d'accesso a `/dati/`. Senza, l'endpoint risponde 503 a chiunque
+- MITL_CHAT_TOKEN — codice d'accesso alla chat. Senza, l'endpoint risponde 503 a
+  chiunque. Si condivide come `marlamag.vercel.app/#codice=…`: chi apre quel link
+  entra senza digitare, e il codice sparisce dalla barra dell'indirizzo
 - MITL_INDEX_URL — dove leggere l'indice Man in the Loop. **Punta al branch
   `eu-funding` finché non viene fatto il merge su `main`**: dopo il merge va
   cambiata in `https://infonodesets.github.io/manintheloop/data/mitl-index.json`,
   altrimenti MARLA continua a rispondere su dati fermi senza dare segnali
 - MITL_MODELLO — facoltativa, default `claude-sonnet-5`
+- GOOGLE_SPREADSHEET_ID, GOOGLE_CLIENT_EMAIL, GOOGLE_PRIVATE_KEY — fonte FOIA,
+  stessi valori del progetto foia.nodes. **GOOGLE_SHEET_NAME va lasciata vuota**:
+  il nome del foglio viene chiesto all'API.
+  La chiave privata si copia da `service-account.json` per intero, da
+  `-----BEGIN PRIVATE KEY-----` a `-----END PRIVATE KEY-----`, lasciando le
+  sequenze di escape a-capo così come sono (nel file appaiono come barra + n):
+  sono le interruzioni di riga, non decorazione. Sono ~1700 caratteri, e
+  `/config` li conta — se sono molti meno, la copia si è fermata a metà.
+  Le variabili nuove valgono **solo per i deploy successivi**: dopo averle
+  aggiunte serve un Redeploy, altrimenti risultano MANCANTI.
 
 ## Note importanti
 - Branch principale: **master** (non main)

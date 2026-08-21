@@ -10,8 +10,9 @@ materiali dell'archivio sia con i dati di Man in the Loop e dei database futuri,
 dichiarando sempre da quale fonte viene ogni affermazione.
 Vedi `docs/CONTRATTO-FONTI.md` e la sezione "MARLA sui dati" in `CLAUDE.md`.
 
-Stato al 21/08/2026: **le due fonti sono unite e funzionanti** su
-`marlamag.vercel.app/dati/`. Restano da fare la pagina pubblica e i tetti di spesa.
+Stato al 21/08/2026: **fatto e funzionante**. Una sola interfaccia,
+`marlamag.vercel.app/`, con tre fonti: archivio, Man in the Loop, FOIA Tracker.
+Restano i tetti di spesa e il contenuto dei documenti FOIA.
 
 - [x] **Titoli della kb corretti** (21/08/2026) — non era un problema estetico: gli
       export Substack contengono solo il corpo, quindi lo script ripiegava sul primo
@@ -21,18 +22,30 @@ Stato al 21/08/2026: **le due fonti sono unite e funzionanti** su
       irraggiungibili e citazioni attribuite al pezzo sbagliato. Ora il titolo viene dal
       nome del file e gli id sono unici a prescindere. **Da 83 a 99 documenti.**
 - [x] **`archivio` aggiunto al registro delle fonti** (21/08/2026).
-- [ ] **Spostare la pagina pubblica sul nuovo endpoint** — il widget in `index.html`
-      chiama `/api/chat`; va portato su `/api/mitl`, che vede entrambe le fonti.
-      Accesso deciso: pagina raggiungibile ma non pubblicizzata, link con codice
-      condiviso con 4-5 soci. Un solo livello, tutte le fonti.
-- [ ] **Tetti di spesa prima di aprire** — il tool use costa molto più della singola
-      chiamata di oggi: più giri, modello più capace, e `MAX_TOKENS` ora è a 8000.
-      Serve limite per IP, tetto ai giri, e misurare il costo reale su qualche decina
-      di domande vere. Valutare Haiku per la porta pubblica. **Da fare prima di
-      spostare la pagina pubblica, non dopo.**
+- [x] **Interfaccia unica** (21/08/2026) — il widget della home parla con `/api/mitl`
+      e vede tutte le fonti. Serviva anche rendere cliccabili i link delle citazioni:
+      il widget scappava tutto e i markdown uscivano come testo grezzo. `/dati/`
+      reindirizza alla home portandosi dietro il codice.
+- [x] **FOIA Tracker collegato** (21/08/2026) — prima fonte `interno`, letta dal vivo
+      dal Google Sheet perché questo repo è pubblico e un indice committato sarebbe
+      leggibile da chiunque. La colonna EMAIL non esce mai. Contiene i **metadati**
+      delle richieste, non il testo delle risposte.
+- [ ] **Tetti di spesa** — il tool use costa molto più della singola chiamata di
+      prima: più giri, modello più capace, `MAX_TOKENS` a 8000. Misurare il costo
+      reale su qualche decina di domande vere. **Da fare prima di allargare l'accesso.**
 - [ ] **`/api/chat` non ha alcun limite di chiamate** e ha CORS aperto, in un repo
-      pubblico che ne documenta l'indirizzo. Esposizione che esiste già oggi,
-      indipendente dalla fusione: mettere un tetto a prescindere.
+      pubblico che ne documenta l'indirizzo. Non è più usato dal sito ma è ancora
+      online: mettere un tetto o spegnerlo.
+- [ ] **Leggere il contenuto delle risposte FOIA** — oggi MARLA sa che una risposta
+      è arrivata e dove sta il documento su Drive, non cosa c'è scritto. Servirebbe
+      scaricare da Drive, estrarre il testo e quasi sempre passare per l'OCR, perché
+      le PA rispondono con scansioni. Lavoro a sé, qualità dipendente dai documenti.
+- [ ] **Titoli dei 19 numeri PDF della newsletter** — restano `MARLA2.22`, `MARLA 5.21`:
+      codici di numero, non contenuti. Nel catalogo l'estratto iniziale compensa, ma
+      si potrebbe fare meglio. Serve sapere la convenzione dei nomi (mese.anno?).
+- [ ] **Un service account dedicato** — oggi MARLA usa lo stesso di foia.nodes e della
+      contabilità: chi ha quella chiave ha accesso a tutto ciò che gli è stato
+      condiviso. Un secondo account con sola lettura sul foglio FOIA restringerebbe.
 
 Se il chatbot si blocca: sotto ogni risposta c'è una riga con giri di strumenti e
 motivo dell'interruzione. `interrotta: max_tokens` significa che il tetto per
@@ -42,13 +55,15 @@ tetto scatta lì, la chiamata resta troncata e il giro si perde in silenzio. È 
 la causa del blocco del 21/08: 3000 non bastavano.
 
 Limiti noti, da tenere presenti e dichiarare nelle risposte:
-- 41 documenti su 83 non hanno un link: si citano per titolo (il contratto lo prevede).
+- 57 documenti su 99 non hanno un link: si citano per titolo (il contratto lo prevede).
 - La ricerca nell'archivio è lessicale. Cercando "frontiere/confini/border" il primo
   risultato è un passaggio sul megaprogetto saudita NEOM dove "superare i confini" è
   figurato — stesso tipo di falso positivo del "cross-border cooperation" nei progetti
   EDF. Il catalogo è il canale principale, la ricerca il secondo.
-- Gli embedding risolverebbero la copertura, ma con 83 documenti il guadagno è modesto
+- Gli embedding risolverebbero la copertura, ma con 99 documenti il guadagno è modesto
   e aggiungono un fornitore e una chiave: da riconsiderare verso le centinaia di documenti.
+- Il FOIA Tracker contiene i metadati delle richieste, non il testo delle risposte:
+  MARLA deve dirlo invece di dedurre il contenuto dall'oggetto della richiesta.
 
 ## Da fare
 - [ ] **Stile e linguaggio di MARLA** — affinare il system prompt (tono, autrici/autori
