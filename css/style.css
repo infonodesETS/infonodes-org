@@ -371,6 +371,19 @@ nav .nav-label {
   letter-spacing: 1px;
 }
 
+/* Le risposte citano le fonti con dei link: devono restare cliccabili e
+   distinguersi dal testo, senza gridare. */
+.msg.bot a { color: var(--cyan); text-decoration: underline; text-underline-offset: 2px; }
+.msg.bot a:hover { color: var(--white); }
+
+/* Riga di servizio sotto la risposta: fonti consultate, ed eventuale motivo
+   per cui MARLA si è fermata prima del dovuto. */
+.msg .msg-note {
+  margin-top: 8px;
+  font-size: 13px;
+  color: var(--grey);
+}
+
 .msg.user .msg-label {
   font-size: 12.5px;
   color: #886600;
