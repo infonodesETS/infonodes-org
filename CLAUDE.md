@@ -88,8 +88,34 @@ Descrizione: (testo libero, tutto indicizzato)
 - I .txt senza PDF compagno vengono indicizzati come chunk propri
 - Le card delle letture linkano SEMPRE all'URL originale, mai al PDF locale
 
+## MARLA sui dati — porta privata (`/dati/`)
+
+Seconda MARLA, stesso deploy ma endpoint e pagina separati: interroga i database
+dei progetti invece dell'archivio, e non è pubblica.
+
+- `dati/index.html` — pagina privata, accesso con codice (anche via `#codice=…`)
+- `api/mitl.js` — endpoint. Non usa la ricerca nel kb: il modello ha **strumenti**
+  e decide quali chiamare. Serve perché domande come "questa società ha
+  investitori cileni?" richiedono due passaggi concatenati che nessuna ricerca
+  testuale può fare.
+- `api/fonti/manintheloop.js` — gli strumenti sulla fonte Man in the Loop
+- `api/lib/citazioni.js` — il controllo delle citazioni, con i suoi test
+  (`node api/lib/citazioni.test.js`, gira senza npm install)
+- `docs/CONTRATTO-FONTI.md` — **da leggere prima di aggiungere una fonte**
+
+Regola che regge tutto: il modello può citare solo id e URL che gli strumenti
+gli hanno davvero restituito. È verificato dal codice, non chiesto nel prompt.
+Ogni fonte dichiara `pubblico` o `interno`; la porta pubblica carica solo le
+prime, senza filtrarle a posteriori.
+
 ## Variabili d'ambiente Vercel
 - ANTHROPIC_API_KEY — chiave API Anthropic
+- MITL_CHAT_TOKEN — codice d'accesso a `/dati/`. Senza, l'endpoint risponde 503 a chiunque
+- MITL_INDEX_URL — dove leggere l'indice Man in the Loop. **Punta al branch
+  `eu-funding` finché non viene fatto il merge su `main`**: dopo il merge va
+  cambiata in `https://infonodesets.github.io/manintheloop/data/mitl-index.json`,
+  altrimenti MARLA continua a rispondere su dati fermi senza dare segnali
+- MITL_MODELLO — facoltativa, default `claude-sonnet-5`
 
 ## Note importanti
 - Branch principale: **master** (non main)
