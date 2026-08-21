@@ -80,15 +80,36 @@ const COLONNE = [
   'allegatoRichiesta', 'allegatoRisposta', 'ultimaModifica', 'tagProgetto', 'notifiche',
 ];
 
+// GOOGLE_SHEET_NAME è di norma vuota, anche su foia.nodes: in quel caso il nome
+// del foglio (la scheda) va chiesto all'API, come fa resolveSheetName() là.
+// Indovinarlo — "Foglio1" — funziona solo se la scheda si chiama davvero così.
+let nomeFoglio = null;
+
+async function risolviNomeFoglio(id, token) {
+  const configurato = (process.env.GOOGLE_SHEET_NAME || '').trim();
+  if (configurato) return configurato;
+  if (nomeFoglio) return nomeFoglio;
+
+  const url = `https://sheets.googleapis.com/v4/spreadsheets/${id}` +
+              `?fields=sheets.properties.title`;
+  const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
+  if (!res.ok) throw new Error(`documento non leggibile: ${res.status}`);
+  const primo = ((await res.json()).sheets || [])[0]?.properties?.title;
+  if (!primo) throw new Error('nessun foglio trovato nel documento');
+
+  nomeFoglio = primo;
+  return primo;
+}
+
 async function caricaRichieste() {
   const adesso = Date.now();
   if (cache && (adesso - cacheTime) < TTL_MS) return cache;
 
-  const foglio = (process.env.GOOGLE_SHEET_NAME || '').trim() || 'Foglio1';
   const id = process.env.GOOGLE_SPREADSHEET_ID;
   if (!id) throw new Error('GOOGLE_SPREADSHEET_ID non configurato');
 
   const token = await tokenAccesso();
+  const foglio = await risolviNomeFoglio(id, token);
   const url = `https://sheets.googleapis.com/v4/spreadsheets/${id}/values/` +
               `${encodeURIComponent(foglio + '!A:V')}`;
   const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
