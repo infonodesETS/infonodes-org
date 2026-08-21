@@ -212,6 +212,30 @@ module.exports = async function handler(req, res) {
 
   const { messages, token } = req.body || {};
   if (token !== atteso) return res.status(401).json({ error: 'Codice di accesso non valido' });
+
+  // Controllo di configurazione: dice QUALI variabili risultano impostate, mai
+  // il loro contenuto. Serve a distinguere "non l'ho messa" da "l'ho messa ma
+  // non ho ridistribuito" senza dover leggere i log di Vercel.
+  // Uso:  POST {"token":"…","controlla":"configurazione"}
+  if (req.body && req.body.controlla === 'configurazione') {
+    const presente = n => {
+      const v = process.env[n];
+      return v && String(v).trim() ? `impostata (${String(v).trim().length} caratteri)` : 'MANCANTE';
+    };
+    return res.status(200).json({
+      ANTHROPIC_API_KEY:      presente('ANTHROPIC_API_KEY'),
+      MITL_CHAT_TOKEN:        presente('MITL_CHAT_TOKEN'),
+      MITL_INDEX_URL:         presente('MITL_INDEX_URL'),
+      GOOGLE_SPREADSHEET_ID:  presente('GOOGLE_SPREADSHEET_ID'),
+      GOOGLE_CLIENT_EMAIL:    presente('GOOGLE_CLIENT_EMAIL'),
+      GOOGLE_PRIVATE_KEY:     presente('GOOGLE_PRIVATE_KEY'),
+      GOOGLE_SHEET_NAME:      presente('GOOGLE_SHEET_NAME') + ' (facoltativa)',
+      nota: 'Se una variabile risulta MANCANTE ma su Vercel la vedi, il deploy in ' +
+            'esecuzione è precedente alla sua aggiunta: serve un Redeploy. ' +
+            'Controlla anche che sia abilitata per l\'ambiente Production.',
+    });
+  }
+
   if (!Array.isArray(messages) || !messages.length) {
     return res.status(400).json({ error: 'messages mancante o vuoto' });
   }
