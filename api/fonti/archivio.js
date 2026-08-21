@@ -163,7 +163,11 @@ const strumenti = [
 
 // ── Esecuzione ────────────────────────────────────────────────────────────────
 
-const FRAMMENTI_PER_PARTE = 6;
+// Sei frammenti erano 3.000-5.000 token per singola lettura: troppi se il
+// modello deve aprire più documenti, e un invito a riassumere tutto invece di
+// rispondere. Tre bastano a farsi un'idea, e chi vuole continuare chiede la
+// parte successiva.
+const FRAMMENTI_PER_PARTE = 3;
 
 async function esegui(nome, args) {
   const kb = await caricaKb();

@@ -24,10 +24,12 @@ const archivio = require('./fonti/archivio');
 const citazioni = require('./lib/citazioni');
 
 const MODELLO      = process.env.MITL_MODELLO || 'claude-sonnet-5';
-// Una risposta con citazioni per ogni affermazione è più lunga di una normale,
-// e il tetto vale per ogni singola chiamata: se scatta mentre il modello sta
-// scrivendo una chiamata a strumento, il giro si perde.
-const MAX_TOKENS   = 3000;
+// Il tetto vale per OGNI chiamata, non per la risposta finale, e in una
+// conversazione a strumenti il modello spesso ragiona per esteso prima di
+// chiamarne uno: se il tetto scatta lì, la chiamata resta troncata e il giro si
+// perde. A 3000 succedeva sistematicamente. Tenerlo alto costa poco — paghi i
+// token che usi, non il tetto — mentre tenerlo basso costa una risposta persa.
+const MAX_TOKENS   = 8000;
 const MAX_GIRI     = 8;      // quante volte il modello può richiamare strumenti
 const LIMITE_ORA   = 60;     // chiamate all'ora per token d'accesso
 
@@ -72,7 +74,9 @@ REGOLE NON NEGOZIABILI:
 
 7. ALCUNI DOCUMENTI NON HANNO UN LINK. Quasi metà dell'archivio non ha un URL pubblico: quei documenti si citano per titolo, ed è corretto così. Non inventare un indirizzo per farli sembrare più solidi.
 
-Rispondi nella lingua in cui ti scrive l'utente. Sii concisa: i dati parlano, tu li ordini.`;
+8. NON RIASSUMERE TUTTO QUELLO CHE LEGGI. Gli strumenti ti restituiscono molto testo, ma la risposta non è un resoconto di ciò che hai consultato: è la risposta alla domanda. Non fare la scheda di ogni documento aperto, non elencare tutto quello che hai trovato. Prendi ciò che serve, cita, vai avanti.
+
+Rispondi nella lingua in cui ti scrive l'utente. Stai sotto le 400 parole salvo che ti venga chiesto di approfondire: i dati parlano, tu li ordini.`;
 
 function systemPrompt() {
   return `${PERSONA}\n\n${REGOLE}\n\n===FONTI DISPONIBILI===\n` +
