@@ -24,7 +24,10 @@ const archivio = require('./fonti/archivio');
 const citazioni = require('./lib/citazioni');
 
 const MODELLO      = process.env.MITL_MODELLO || 'claude-sonnet-5';
-const MAX_TOKENS   = 1600;
+// Una risposta con citazioni per ogni affermazione è più lunga di una normale,
+// e il tetto vale per ogni singola chiamata: se scatta mentre il modello sta
+// scrivendo una chiamata a strumento, il giro si perde.
+const MAX_TOKENS   = 3000;
 const MAX_GIRI     = 8;      // quante volte il modello può richiamare strumenti
 const LIMITE_ORA   = 60;     // chiamate all'ora per token d'accesso
 
@@ -117,7 +120,7 @@ function fonteDelloStrumento(nome) {
   return FONTI.find(f => f.strumenti.some(s => s.name === nome));
 }
 
-async function conversa(client, messages, consentiti, traccia) {
+async function conversa(client, messages, consentiti, traccia, diag) {
   const tools = strumentiDisponibili('interno');
   let giro = 0;
 
@@ -130,10 +133,30 @@ async function conversa(client, messages, consentiti, traccia) {
       messages,
     });
 
+    if (diag) {
+      diag.giri = giro;
+      diag.stop_reason = risposta.stop_reason;
+      diag.uso = risposta.usage;
+    }
+
     const chiamate = risposta.content.filter(c => c.type === 'tool_use');
     if (!chiamate.length) {
       const testo = risposta.content.filter(c => c.type === 'text').map(c => c.text).join('\n');
       return { testo, messages };
+    }
+
+    // Se il tetto di token scatta mentre il modello sta ancora scrivendo una
+    // chiamata a strumento, quella chiamata è troncata: proseguire il ciclo
+    // produrrebbe un errore oscuro o un giro a vuoto che finisce in una
+    // risposta vuota. Meglio fermarsi e dirlo.
+    if (risposta.stop_reason === 'max_tokens') {
+      const parziale = risposta.content.filter(c => c.type === 'text').map(c => c.text).join('\n');
+      return {
+        testo: parziale ||
+          'Mi sono fermata a metà: la risposta ha superato il limite di lunghezza mentre ' +
+          'stavo ancora consultando le fonti. Fammi una domanda più stretta.',
+        messages,
+      };
     }
 
     messages.push({ role: 'assistant', content: risposta.content });
@@ -195,7 +218,8 @@ module.exports = async function handler(req, res) {
       content: m.content,
     }));
 
-    let { testo, messages: dopo } = await conversa(client, conversazione, consentiti, traccia);
+    const diag = {};
+    let { testo, messages: dopo } = await conversa(client, conversazione, consentiti, traccia, diag);
 
     // Controllo delle citazioni, con una possibilità di correzione.
     let problemi = citazioni.nonValide(testo, consentiti);
@@ -209,7 +233,7 @@ module.exports = async function handler(req, res) {
                  `Riscrivi la risposta usando solo identificativi e URL che hai davvero ricevuto. ` +
                  `Se per un'informazione non hai un link, dillo invece di costruirne uno.`,
       });
-      const secondo = await conversa(client, dopo, consentiti, traccia);
+      const secondo = await conversa(client, dopo, consentiti, traccia, diag);
       testo = secondo.testo;
       problemi = citazioni.nonValide(testo, consentiti);
       if (problemi.length) {
@@ -218,8 +242,18 @@ module.exports = async function handler(req, res) {
       }
     }
 
+    // Una risposta vuota non deve mai arrivare all'utente: sembra un blocco e
+    // non dice niente su cosa sia andato storto. Meglio dichiararlo, con la
+    // diagnostica accanto per capirci qualcosa.
+    if (!String(testo || '').trim()) {
+      console.error('Risposta vuota. Diagnostica:', diag, 'strumenti:', traccia.map(t => t.strumento));
+      testo = 'Ho consultato le fonti ma non sono riuscita a mettere insieme la risposta. ' +
+              'Riprova, magari con una domanda più stretta.';
+    }
+
     return res.status(200).json({
       reply: testo,
+      diagnostica: diag,
       strumenti: traccia.map(t => t.strumento),
       fonti_citabili: consentiti.url.size,
     });

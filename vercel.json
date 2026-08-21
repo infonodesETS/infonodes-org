@@ -3,6 +3,9 @@
   "functions": {
     "api/chat.js": {
       "maxDuration": 30
+    },
+    "api/mitl.js": {
+      "maxDuration": 60
     }
   },
   "headers": [

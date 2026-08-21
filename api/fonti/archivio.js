@@ -179,13 +179,16 @@ async function esegui(nome, args) {
         elenco = elenco.filter(d => senzaAccenti(d.tipo).includes(t) || senzaAccenti(d.raccolta).includes(t));
       }
       const senzaLink = elenco.filter(d => !d.url).length;
+      // L'estratto resta corto di proposito: il catalogo è la PRIMA cosa che il
+      // modello chiede, e con 99 documenti ogni carattere si moltiplica per 99.
+      // A 200 caratteri il risultato superava gli 11.000 token e mangiava il
+      // budget prima ancora di leggere un documento.
       return {
         record: elenco.map(d => record(d, {
           tipo: d.tipo,
-          raccolta: d.raccolta,
           editore: d.editore || null,
           parti: Math.ceil(d.frammenti.length / FRAMMENTI_PER_PARTE),
-          incipit: incipit(d, 200),
+          incipit: incipit(d, 110),
         })),
         nota: `${elenco.length} documenti. ` +
               (senzaLink ? `${senzaLink} non hanno un link pubblico: vanno citati per titolo. ` : '') +

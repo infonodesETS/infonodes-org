@@ -182,8 +182,15 @@ async function chiedi(testo) {
                    : (dati.error || 'Errore');
       aggiungi('marla errore', 'ERRORE', rendi(spiega));
     } else {
-      const attrezzi = (dati.strumenti || []).length
-        ? `<div class="attrezzi">consultato: ${[...new Set(dati.strumenti)].join(', ')}</div>` : '';
+      const d = dati.diagnostica || {};
+      // La diagnostica serve a capire un blocco senza dover leggere i log di
+      // Vercel: giri di strumenti e motivo per cui il modello si è fermato.
+      const dettagli = [
+        (dati.strumenti || []).length ? `consultato: ${[...new Set(dati.strumenti)].join(', ')}` : null,
+        d.giri ? `giri: ${d.giri}` : null,
+        d.stop_reason && d.stop_reason !== 'end_turn' ? `interrotta: ${d.stop_reason}` : null,
+      ].filter(Boolean);
+      const attrezzi = dettagli.length ? `<div class="attrezzi">${dettagli.join(' · ')}</div>` : '';
       aggiungi('marla', 'MARLA', rendi(dati.reply) + attrezzi);
       storico.push({ role: 'assistant', content: dati.reply });
     }
