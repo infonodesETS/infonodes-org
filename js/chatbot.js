@@ -45,6 +45,7 @@ class InfonodesChat {
       if (!text || this.isTyping) return;
       this.input.value = '';
       if (this.attendoCodice) return this.salvaCodice(text);
+      if (/^\/config(urazione)?$/i.test(text)) return this.controllaConfigurazione();
       this.send(text);
     });
   }
@@ -124,6 +125,39 @@ class InfonodesChat {
       .replace(/</g, '&lt;')
       .replace(/>/g, '&gt;')
       .replace(/"/g, '&quot;');
+  }
+
+  /* Scrivendo "/config" nella chat si vede quali variabili d'ambiente il deploy
+     in esecuzione vede davvero. Serve dopo ogni aggiunta su Vercel: le variabili
+     nuove valgono solo per i deploy successivi, e senza questo controllo la
+     differenza fra "non l'ho messa" e "non ho ridistribuito" non si vede. */
+  async controllaConfigurazione() {
+    this.addMessage('user', '/config');
+    this.isTyping = true;
+    this.showTyping();
+    try {
+      const res = await fetch(ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: this.codice, controlla: 'configurazione' })
+      });
+      const d = await res.json().catch(() => ({}));
+      this.hideTyping();
+
+      if (res.status === 401) { this.dimenticaCodice(); return this.addMessage('bot', 'Il codice non va bene. Riscrivilo.'); }
+      if (!res.ok) return this.addMessage('bot', d.error || `Errore ${res.status}.`);
+
+      const righe = Object.entries(d)
+        .filter(([k]) => k !== 'nota')
+        .map(([k, v]) => `${/MANCANTE/.test(v) ? '✗' : '✓'} ${k}: ${v}`)
+        .join('\n');
+      this.addMessage('bot', `**Configurazione del deploy in esecuzione**\n\n${righe}`, d.nota);
+    } catch (e) {
+      this.hideTyping();
+      this.addMessage('bot', 'Non riesco a raggiungere il server: ' + e.message);
+    } finally {
+      this.isTyping = false;
+    }
   }
 
   async send(userText) {
