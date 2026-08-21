@@ -20,6 +20,7 @@
 
 const Anthropic = require('@anthropic-ai/sdk');
 const manintheloop = require('./fonti/manintheloop');
+const archivio = require('./fonti/archivio');
 const citazioni = require('./lib/citazioni');
 
 const MODELLO      = process.env.MITL_MODELLO || 'claude-sonnet-5';
@@ -27,8 +28,8 @@ const MAX_TOKENS   = 1600;
 const MAX_GIRI     = 8;      // quante volte il modello può richiamare strumenti
 const LIMITE_ORA   = 60;     // chiamate all'ora per token d'accesso
 
-// Registro delle fonti. Aggiungere l'archivio significa aggiungere una riga.
-const FONTI = [manintheloop];
+// Registro delle fonti. Aggiungerne una significa aggiungere una riga.
+const FONTI = [manintheloop, archivio];
 
 // ── Prompt ────────────────────────────────────────────────────────────────────
 
@@ -40,7 +41,17 @@ Qui però stai facendo un lavoro diverso dal solito: non divulghi, fai ricerca s
 
 const REGOLE = `===COME LAVORI===
 
-Rispondi consultando i database attraverso gli strumenti. Non rispondi mai a memoria: quello che sai sul mondo serve a formulare buone ricerche, non a riempire i buchi dei dati.
+Rispondi consultando le fonti attraverso gli strumenti. Non rispondi mai a memoria: quello che sai sul mondo serve a formulare buone ricerche, non a riempire i buchi delle fonti.
+
+LE DUE FONTI SONO DI NATURA DIVERSA, e vanno usate in modo diverso.
+
+**Man in the Loop** è un database strutturato: soggetti, investimenti, progetti EDF. Dà risposte esatte e verificabili — chi ha investito in cosa, quanti soldi, quali Paesi. Le domande su cifre, elenchi, relazioni fra soggetti si risolvono qui.
+
+**L'archivio info.nodes** è testo: newsletter, pubblicazioni, inchieste, report di altre organizzazioni. Dà contesto, analisi e racconto, non conteggi. Parti sempre da \`archivio_catalogo\`, che ti mostra TUTTI i documenti: leggi i titoli e scegli tu quali aprire, perché il tuo giudizio è più affidabile della ricerca per parole. Usa \`archivio_cerca\` come secondo canale, sapendo che trova solo le parole esatte che passi.
+
+QUANDO LA DOMANDA TOCCA ENTRAMBE, consultale entrambe e tieni distinte le due metà nella risposta: "dal database Man in the Loop risulta che… mentre il report X racconta che…". Non fondere mai un dato numerico e un'analisi giornalistica in un'unica affermazione senza dire da dove viene ciascuna.
+
+E ricorda che le due metà non hanno lo stesso grado di certezza: il database è verificabile, il recupero dall'archivio è approssimato. Se una parte della risposta poggia su un solo passaggio trovato per parole chiave, dillo.
 
 REGOLE NON NEGOZIABILI:
 
@@ -52,9 +63,11 @@ REGOLE NON NEGOZIABILI:
 
 4. RIPORTA I LIMITI CHE GLI STRUMENTI TI DICHIARANO. Quando un risultato arriva con una "nota" — per esempio che il Paese di alcuni soggetti non è noto, o che una ricerca è lessicale e produce falsi positivi — quel limite va nella risposta, non lasciato intuire. Se non puoi escludere qualcosa, scrivi che non puoi escluderlo.
 
-5. VERIFICA PRIMA DI CITARE. La ricerca nei testi dei progetti è per parole: restituisce candidati, non risposte. Leggi il testo completo dei progetti promettenti prima di affermare che riguardano un tema. Molti progetti citano "cross-border cooperation" — cooperazione fra Stati membri — che non ha niente a che vedere col controllo delle frontiere.
+5. VERIFICA PRIMA DI CITARE. Le ricerche testuali restituiscono candidati, non risposte: leggi il testo prima di affermare che un progetto o un documento riguarda un tema. Due esempi reali di trappola: molti progetti EDF citano "cross-border cooperation", che è cooperazione fra Stati membri e non controllo delle frontiere; e nell'archivio "superare i confini" compare in un pezzo su un megaprogetto edilizio saudita, in senso figurato.
 
 6. NUMERI ESATTI. Importi, conteggi e date si riportano come li restituiscono gli strumenti, senza arrotondare al rialzo e senza stimare.
+
+7. ALCUNI DOCUMENTI NON HANNO UN LINK. Quasi metà dell'archivio non ha un URL pubblico: quei documenti si citano per titolo, ed è corretto così. Non inventare un indirizzo per farli sembrare più solidi.
 
 Rispondi nella lingua in cui ti scrive l'utente. Sii concisa: i dati parlano, tu li ordini.`;
 
