@@ -49,6 +49,26 @@ def slugify(testo):
     return re.sub(r'[\s\-]+', '-', testo.strip())[:60]
 
 
+def titolo_da_nome_file(nome_base):
+    """
+    Substack esporta ogni post come '<id numerico>.<slug-del-titolo>.html', e
+    il file contiene solo il corpo: niente <title>, niente og:title. Il titolo
+    vero sta quindi nel nome del file, ed è più affidabile di qualunque <h1>
+    trovato nel testo — vedi la nota in processa_cartella().
+
+    '139099781.sesso-e-potere-2023' -> 'Sesso e potere 2023'
+    Restituisce None se il nome non ha quella forma.
+    """
+    m = re.match(r'^\d{6,}\.(.+)$', nome_base)
+    if not m:
+        return None
+    parole = m.group(1).replace('_', ' ').replace('-', ' ').split()
+    if not parole:
+        return None
+    testo = ' '.join(parole)
+    return testo[0].upper() + testo[1:]
+
+
 def pulisci(testo):
     """Rimuove spazi multipli e righe vuote eccessive."""
     testo = re.sub(r'\r\n', '\n', testo)
@@ -90,12 +110,21 @@ def leggi_metadati_txt(percorso_txt):
     return meta
 
 
-def chunkerizza(testo, titolo, fonte_cartella, tipo, url='', fonte_nome=''):
-    """Divide il testo in chunk sovrapposti."""
+def chunkerizza(testo, titolo, fonte_cartella, tipo, url='', fonte_nome='',
+                base_id=None):
+    """
+    Divide il testo in chunk sovrapposti.
+
+    `base_id` identifica il DOCUMENTO e deve essere unico: gli id dei chunk sono
+    'base_id-N' e chi legge la kb risale al documento togliendo il suffisso.
+    Derivarlo dal titolo non basta — due documenti con lo stesso titolo si
+    fonderebbero in uno — quindi chi chiama passa un valore reso unico.
+    """
     parole = testo.split()
     if not parole:
         return []
 
+    base = base_id or slugify(titolo)
     chunks = []
     i = 0
     indice = 0
@@ -103,7 +132,7 @@ def chunkerizza(testo, titolo, fonte_cartella, tipo, url='', fonte_nome=''):
         fine = min(i + CHUNK_PAROLE, len(parole))
         chunk_testo = ' '.join(parole[i:fine])
         chunks.append({
-            'id':         f"{slugify(titolo)}-{indice}",
+            'id':         f"{base}-{indice}",
             'fonte':      fonte_cartella,
             'titolo':     titolo,
             'tipo':       tipo,
@@ -229,6 +258,7 @@ def estrai_txt(percorso):
 def processa_cartella(cartella, tipo):
     chunks = []
     file_list = sorted(os.listdir(cartella))
+    id_usati = {}   # base_id -> quante volte, per non fondere documenti omonimi
 
     for nome_file in file_list:
         percorso = os.path.join(cartella, nome_file)
@@ -266,8 +296,13 @@ def processa_cartella(cartella, tipo):
             testo = estrai_pdf(percorso)
         elif estensione in ('.html', '.htm'):
             testo, titolo_html = estrai_html(percorso)
-            if not titolo_estratto and titolo_html:
-                titolo_estratto = titolo_html
+            # Negli export Substack il nome del file batte l'<h1> del corpo:
+            # l'<h1> è la prima rubrica del numero, non il titolo del pezzo.
+            # Undici newsletter diverse si chiamavano tutte "FACTS ARE FACTS.
+            # FICTION IS FICTION" e finivano fuse in un unico documento, con
+            # le citazioni attribuite al pezzo sbagliato.
+            if not titolo_estratto:
+                titolo_estratto = titolo_da_nome_file(nome_base) or titolo_html
         elif estensione == '.docx':
             testo = estrai_docx(percorso)
         else:
@@ -286,8 +321,18 @@ def processa_cartella(cartella, tipo):
 
         titolo_finale = titolo_estratto if titolo_estratto else nome_base
 
+        # Identificativo del documento: dal titolo, ma reso unico. Due file con
+        # lo stesso titolo devono restare due documenti distinti, altrimenti si
+        # fondono e le citazioni finiscono sul documento sbagliato.
+        base_id = slugify(titolo_finale) or slugify(nome_base) or 'documento'
+        id_usati[base_id] = id_usati.get(base_id, 0) + 1
+        if id_usati[base_id] > 1:
+            base_id = f"{base_id}--{slugify(nome_base)[:24]}"
+            print(f"    ⚠ titolo ripetuto: \"{titolo_finale}\" → id {base_id}")
+
         nuovi_chunks = chunkerizza(testo, titolo_finale, cartella, tipo,
-                                   url=url, fonte_nome=fonte_nome)
+                                   url=url, fonte_nome=fonte_nome,
+                                   base_id=base_id)
         chunks.extend(nuovi_chunks)
         n_parole = len(testo.split())
         extra = f" [{fonte_nome} — {url}]" if url else ""
