@@ -83,5 +83,16 @@ console.log('\n8. Neutralizzazione parziale: i riferimenti buoni sopravvivono');
   prova('link inventato rimosso', !out.includes('esempio.invalido'), out);
 }
 
-console.log('\n' + (falliti ? `${falliti} TEST FALLITI` : 'tutti i test passati'));
+console.log('\n9. Identificativi FOIA (fonte interna)');
+{
+  const c2 = c.raccogli([
+    { id: 'FOIA-12', fonte: 'foia', titolo: 'Accesso atti — Ministero X',
+      url: 'https://foia-nodes.vercel.app', visibilita: 'interno' },
+  ], c.nuoviConsentiti());
+  prova('FOIA restituito passa', c.nonValide('Vedi FOIA-12.', c2).length === 0);
+  prova('FOIA inventato segnalato', c.nonValide('Vedi FOIA-99.', c2).includes('FOIA-99'));
+  prova('non confonde con altri prefissi', c.nonValide('EDF-0047 e FOIA-12', c2).includes('EDF-0047'));
+}
+
+console.log('\n' + (falliti ? `${falliti} TEST FALLITI (totale)` : 'tutti i test passati (totale)'));
 process.exit(falliti ? 1 : 0);

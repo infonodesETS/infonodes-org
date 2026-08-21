@@ -13,7 +13,10 @@
  */
 
 const RE_URL = /https?:\/\/[^\s)\]<>"']+/g;
-const RE_ID  = /\b(?:IN|IV|EDF)-\d{3,5}\b/g;
+// Identificativi citabili, per fonte: IN/IV/EDF vengono da Man in the Loop,
+// FOIA dal registro delle richieste di accesso. Una fonte nuova che usa un
+// prefisso diverso va aggiunta qui, altrimenti i suoi id inventati passano.
+const RE_ID  = /\b(?:IN|IV|EDF)-\d{3,5}\b|\bFOIA-\d{1,5}\b/g;
 
 // Link che non arrivano dagli strumenti ma sono legittimi: il sito
 // dell'organizzazione, che MARLA cita per sua natura.

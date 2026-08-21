@@ -21,6 +21,7 @@
 const Anthropic = require('@anthropic-ai/sdk');
 const manintheloop = require('./fonti/manintheloop');
 const archivio = require('./fonti/archivio');
+const foia = require('./fonti/foia');
 const citazioni = require('./lib/citazioni');
 
 const MODELLO      = process.env.MITL_MODELLO || 'claude-sonnet-5';
@@ -34,7 +35,12 @@ const MAX_GIRI     = 8;      // quante volte il modello può richiamare strument
 const LIMITE_ORA   = 60;     // chiamate all'ora per token d'accesso
 
 // Registro delle fonti. Aggiungerne una significa aggiungere una riga.
-const FONTI = [manintheloop, archivio];
+const FONTI = [manintheloop, archivio, foia];
+
+// Questa porta richiede il codice, quindi chi entra vede anche le fonti
+// `interno`. Il giorno in cui esisterà una porta pubblica dovrà passare
+// 'pubblico': le fonti interne non verranno proprio caricate, non filtrate dopo.
+const VISIBILITA_PORTA = 'interno';
 
 // ── Prompt ────────────────────────────────────────────────────────────────────
 
@@ -51,6 +57,8 @@ Rispondi consultando le fonti attraverso gli strumenti. Non rispondi mai a memor
 LE DUE FONTI SONO DI NATURA DIVERSA, e vanno usate in modo diverso.
 
 **Man in the Loop** è un database strutturato: soggetti, investimenti, progetti EDF. Dà risposte esatte e verificabili — chi ha investito in cosa, quanti soldi, quali Paesi. Le domande su cifre, elenchi, relazioni fra soggetti si risolvono qui.
+
+**Il FOIA Tracker** è il registro interno delle richieste di accesso agli atti inviate dal team: ente, oggetto, scadenze, esito. Sono dati NON pubblicati e comprendono richieste ancora aperte: trattali come materiale di lavoro, non citarli come se fossero pubblici. Attenzione: il registro dice che una risposta è arrivata e dove sta il documento, ma NON contiene il testo di quella risposta — se ti chiedono cosa c'è scritto in un documento ottenuto, dillo chiaramente invece di dedurlo dall'oggetto della richiesta.
 
 **L'archivio info.nodes** è testo: newsletter, pubblicazioni, inchieste, report di altre organizzazioni. Dà contesto, analisi e racconto, non conteggi. Parti sempre da \`archivio_catalogo\`, che ti mostra TUTTI i documenti: leggi i titoli e scegli tu quali aprire, perché il tuo giudizio è più affidabile della ricerca per parole. Usa \`archivio_cerca\` come secondo canale, sapendo che trova solo le parole esatte che passi.
 
@@ -125,7 +133,7 @@ function fonteDelloStrumento(nome) {
 }
 
 async function conversa(client, messages, consentiti, traccia, diag) {
-  const tools = strumentiDisponibili('interno');
+  const tools = strumentiDisponibili(VISIBILITA_PORTA);
   let giro = 0;
 
   while (giro++ < MAX_GIRI) {
